@@ -9,8 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "#1f1f1f",
+        primaryColor: "#4C30B5",
+        secondaryColor: "#E6F0FF",
+      },
+      backgroundImage: {
+        "gradient-header": "linear-gradient(to bottom, #000, #000, #1f1f1f)",
       },
     },
   },

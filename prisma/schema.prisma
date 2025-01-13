@@ -34,10 +34,12 @@ model Product {
 }
 
 model Testimonial {
-  id          String   @id @default(uuid())
-  Date        DateTime
-  Assessment  String
-  Description String
+  id         String   @id @default(uuid())
+  date       DateTime
+  clientName String
+  assessment String
+  text       String
+  imageUrl   String
 }
 
 model User {

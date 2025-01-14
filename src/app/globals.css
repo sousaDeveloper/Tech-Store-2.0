@@ -8,3 +8,7 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+.bg-gradient {
+  background: linear-gradient(to right, #ac59d6, #8b5cf6);
+}

@@ -16,7 +16,7 @@ export default function Home() {
           <h2 className="text-gradient text-xl">
             Turbine seu setup com os melhores periféricos do mercado!
           </h2>
-          <button className="bg-gradient-to-r from-[#ac59d6] to-[#8b5cf6] my-10 py-2 rounded-md w-[80%] text-white hover:bg-primaryColor">
+          <button className="bg-gradient my-10 py-2 rounded-md w-[80%] text-white hover:bg-primaryColor">
             Quero turbinar meu setup!
           </button>
           <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />

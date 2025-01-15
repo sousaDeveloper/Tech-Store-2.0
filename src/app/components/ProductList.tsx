@@ -1,18 +1,23 @@
-import { prisma } from "@/lib/prisma";
+import { computeProductTotalPrice } from "@/helpers/product";
 import ProductItem from "./ProductItem";
+import { Product } from "@prisma/client";
 
-const ProductList = async () => {
-  const products = await prisma.product.findMany({});
+interface ProductListProps {
+  products: Product[];
+}
 
+const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="flex overflow-x-auto overflow-hidden gap-5 [&::-webkit-scrollbar]:hidden">
-      {products
-        .filter((product) => product.discountPercentage > 0)
-        .map((product) => (
-          <div key={product.id}>
-            <ProductItem product={product} />
-          </div>
-        ))}
+      {products.map((product) => (
+        <ProductItem
+          key={product.id}
+          product={{
+            ...product,
+            totalPrice: computeProductTotalPrice(product),
+          }}
+        />
+      ))}
     </div>
   );
 };

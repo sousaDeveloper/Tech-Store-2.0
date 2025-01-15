@@ -1,6 +1,6 @@
-import { prisma } from "@/lib/prisma";
-import ProductItem from "./ProductItem";
 import { Poppins } from "next/font/google";
+import ProductList from "./ProductList";
+import { prisma } from "@/lib/prisma";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,12 +9,18 @@ const poppins = Poppins({
 });
 
 const Offers = async () => {
-  const products = await prisma.product.findMany({});
+  const productWithDiscount = await prisma.product.findMany({
+    where: {
+      discountPercentage: {
+        gt: 0,
+      },
+    },
+  });
 
   return (
     <section className="my-5 px-5 text-secondaryColor">
       <div className="mb-5">
-        <h1 className="text-xl">
+        <h1 className="text-2xl">
           Ofertas <span className="text-gradient">Imperdíveis</span>!
         </h1>
         <h2
@@ -24,15 +30,7 @@ const Offers = async () => {
           feliz é a nossa felicidade.
         </h2>
       </div>
-      <div className="flex overflow-x-auto overflow-hidden gap-5 [&::-webkit-scrollbar]:hidden">
-        {products
-          .filter((product) => product.discountPercentage > 0)
-          .map((product) => (
-            <div key={product.id}>
-              <ProductItem product={product} />
-            </div>
-          ))}
-      </div>
+      <ProductList products={productWithDiscount} />
     </section>
   );
 };

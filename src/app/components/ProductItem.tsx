@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
-import { StarIcon } from "lucide-react";
+import { ArrowDownIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 
 interface ProductItemProps {
@@ -10,13 +10,14 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <div className="flex flex-col w-[8.5rem] h-[15rem] relative">
+    <div className="flex flex-col w-[8.5rem] h-[15rem] relative text-secondaryColor">
       {product.discountPercentage > 0 && (
-        <Badge className="absolute bg-gradient mt-2 ml-2">
-          -{product.discountPercentage}%
+        <Badge className="absolute bg-gradient mt-2 ml-2 flex">
+          <ArrowDownIcon size={14} />
+          {product.discountPercentage}%
         </Badge>
       )}
-      <div className="bg-[#333739] h-36 grid place-content-center rounded-lg text-secondaryColor">
+      <div className="bg-[#333739] h-36 grid place-content-center rounded-lg">
         <Image
           src={product.imageURLs[0]}
           alt={product.slug}

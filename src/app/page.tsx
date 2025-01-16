@@ -1,7 +1,12 @@
+import { prisma } from "@/lib/prisma";
+import Catalog from "./components/Catalog";
 import Header from "./components/Header";
 import Offers from "./components/Offers";
 
-export default function Home() {
+export default async function Home() {
+  const products = await prisma.product.findMany({});
+  const categories = await prisma.category.findMany({});
+
   return (
     <main>
       <div className="bg-gradient-header px-5">
@@ -23,6 +28,7 @@ export default function Home() {
         </section>
       </div>
       <Offers />
+      <Catalog products={products} categories={categories} />
     </main>
   );
 }

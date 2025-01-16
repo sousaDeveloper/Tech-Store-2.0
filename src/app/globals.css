@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 .text-gradient {
   color: transparent;
   background: linear-gradient(to right, #ac59d6, #8b5cf6);

@@ -11,6 +11,7 @@ import { CATEGORY_ICON } from "@/constants/category-icon";
 import ProductList from "./ProductList";
 import { Category, Product } from "@prisma/client";
 import { useState } from "react";
+import SubText from "./SubText";
 
 interface CatalogProps {
   products: Product[];
@@ -18,28 +19,46 @@ interface CatalogProps {
 }
 
 const Catalog = ({ products, categories }: CatalogProps) => {
-  const [categorySelected, setCategorySelected] = useState<Category>();
+  const [categorySelected, setCategorySelected] = useState<
+    Category | undefined
+  >(undefined);
 
   const filteredProducts = categorySelected
     ? products.filter((product) => product.categoryID === categorySelected.id)
     : products;
 
-  const handleCategorySelected = (categoryName: string) => {
-    const category = categories.find((cat) => cat.name === categoryName);
+  const categoriesMap = categories.reduce((acc, category) => {
+    acc[category.name] = category;
+    return acc;
+  }, {} as Record<string, Category>);
 
-    setCategorySelected(category);
+  const handleCategorySelected = (categoryName: string) => {
+    const category = categoriesMap[categoryName];
+    if (category) {
+      setCategorySelected(category);
+    }
   };
 
   return (
-    <section className="my-5 px-5 text-secondaryColor">
+    <section className="my-5 px-5 text-secondaryColor" id="catalog">
       <h1 className="text-2xl">
         Encontre exatamente o que{" "}
         <span className="text-gradient">você precisa</span>!
       </h1>
-      <Select onValueChange={(value) => handleCategorySelected(value)}>
-        <SelectTrigger className="w-full mt-2 mb-3 opacity-70">
+      <SubText
+        text="Explore os melhores periféricos do mercado."
+        className="text-[0.9rem]"
+      />
+      <Select
+        onValueChange={(value) => handleCategorySelected(value)}
+        aria-label="Selecione uma categoria"
+      >
+        <SelectTrigger
+          className="w-full mt-2 mb-3 opacity-70"
+          aria-label="Selecionar categoria"
+        >
           <SelectValue
-            placeholder="Selecione a categoria desejada e explore"
+            placeholder="Selecionar categoria"
             className="opacity-70 text-sm"
           />
         </SelectTrigger>

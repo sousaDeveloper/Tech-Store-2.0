@@ -16,6 +16,7 @@ export default {
       },
       backgroundImage: {
         "gradient-header": "linear-gradient(to bottom, #000, #000, #1f1f1f)",
+        "gradient-footer": "linear-gradient(to top, #000, #000, #1f1f1f)",
       },
     },
   },

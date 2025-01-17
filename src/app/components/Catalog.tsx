@@ -40,7 +40,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
   };
 
   return (
-    <section className="my-5 px-5 text-secondaryColor" id="catalog">
+    <section className="my-5 px-5 text-secondaryColor">
       <h1 className="text-2xl">
         Encontre exatamente o que{" "}
         <span className="text-gradient">você precisa</span>!

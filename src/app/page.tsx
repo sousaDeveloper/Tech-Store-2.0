@@ -3,6 +3,7 @@ import Catalog from "./components/Catalog";
 import Header from "./components/Header";
 import Offers from "./components/Offers";
 import Testimonials from "./components/Testimonials/Testimonials";
+import Footer from "./components/Footer";
 
 export default async function Home() {
   const products = await prisma.product.findMany({});
@@ -31,9 +32,11 @@ export default async function Home() {
           <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
         </section>
       </div>
+      <span id="catalog"></span>
       <Offers />
       <Catalog products={products} categories={categories} />
       <Testimonials />
+      <Footer />
     </main>
   );
 }

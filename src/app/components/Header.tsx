@@ -1,5 +1,5 @@
-import { SearchIcon, UserIcon } from "lucide-react";
-import Link from "next/link";
+import { SearchIcon } from "lucide-react";
+import UserSheet from "./user/UserSheet";
 
 const Header = () => {
   return (
@@ -17,9 +17,7 @@ const Header = () => {
           <SearchIcon size={20} />
         </span>
       </div>
-      <Link className="bg-primaryColor rounded-md p-2" href="/user/sign-in">
-        <UserIcon />
-      </Link>
+      <UserSheet />
     </header>
   );
 };

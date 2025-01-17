@@ -16,3 +16,28 @@
 .bg-gradient {
   background: linear-gradient(to right, #ac59d6, #8b5cf6);
 }
+
+.bg-blur-purple {
+  background-color: hsla(67, 0%, 12%, 1);
+  background-image: radial-gradient(
+      at 69% 66%,
+      hsla(258, 89%, 66%, 0.34) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 0% 63%, hsla(279, 100%, 59%, 0.69) 0px, transparent 50%),
+    radial-gradient(at 14% 0%, hsla(215, 0%, 12%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(258, 89%, 66%, 0.47) 0px, transparent 50%),
+    radial-gradient(at 61% 100%, hsla(120, 0%, 12%, 1) 0px, transparent 50%),
+    radial-gradient(at 23% 0%, hsla(323, 0%, 12%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 37%, hsla(201, 0%, 12%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(258, 100%, 66%, 1) 0px, transparent 50%),
+    radial-gradient(at 90% 86%, hsla(279, 100%, 59%, 1) 0px, transparent 50%);
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 45%;
+}

@@ -1,6 +1,15 @@
+import { signIn } from "next-auth/react";
+
 const ButtonGoogle = () => {
+  const handleLogin = async () => {
+    await signIn();
+  };
+
   return (
-    <button className="cursor-pointer text-black mt-4 flex gap-2 items-center justify-center bg-white px-4 py-2 text-center rounded-lg  hover:bg-zinc-300 transition-all ease-in duration-200 w-full">
+    <button
+      className="cursor-pointer text-black mt-4 flex gap-2 items-center justify-center bg-white px-4 py-2 text-center rounded-lg  hover:bg-zinc-300 transition-all ease-in duration-200 w-full"
+      onClick={handleLogin}
+    >
       <svg
         viewBox="0 0 48 48"
         xmlns="http://www.w3.org/2000/svg"

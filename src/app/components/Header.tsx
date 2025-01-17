@@ -1,4 +1,5 @@
 import { SearchIcon, UserIcon } from "lucide-react";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -16,9 +17,9 @@ const Header = () => {
           <SearchIcon size={20} />
         </span>
       </div>
-      <button className="bg-primaryColor rounded-md p-2">
+      <Link className="bg-primaryColor rounded-md p-2" href="/user/sign-in">
         <UserIcon />
-      </button>
+      </Link>
     </header>
   );
 };

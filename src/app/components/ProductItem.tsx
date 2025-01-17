@@ -17,7 +17,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           {product.discountPercentage}%
         </Badge>
       )}
-      <div className="bg-[#333739] h-36 grid place-content-center rounded-lg">
+      <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg">
         <Image
           src={product.imageURLs[0]}
           alt={product.slug}

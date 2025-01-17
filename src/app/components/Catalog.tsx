@@ -62,7 +62,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
             className="opacity-70 text-sm"
           />
         </SelectTrigger>
-        <SelectContent className="bg-[#333739]">
+        <SelectContent className="bg-backgroundItem">
           {categories.map((category) => (
             <SelectItem value={category.name} key={category.id}>
               <div className="flex gap-2 py-2 items-center">

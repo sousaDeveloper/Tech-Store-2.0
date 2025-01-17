@@ -1,0 +1,84 @@
+.scroll-parent {
+  position: relative;
+  width: 100%;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #fff 20%,
+    #fff 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #fff 10%,
+    #fff 90%,
+    transparent
+  );
+}
+
+.scroll-element {
+  position: absolute;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+.primary {
+  animation: primary 20s linear infinite;
+}
+
+.secondary {
+  animation: secondary 20s linear infinite;
+}
+
+@keyframes primary {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -200%;
+  }
+}
+
+@keyframes secondary {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: -200%;
+  }
+}
+
+@media (max-width: 639px) {
+  .scroll-parent {
+    height: 11rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .primary {
+    animation: primary 60s linear infinite;
+  }
+
+  .secondary {
+    animation: secondary 60s linear infinite;
+  }
+}
+
+@media (min-width: 1024px) {
+  .primary {
+    animation: primary 80s linear infinite;
+  }
+
+  .secondary {
+    animation: secondary 80s linear infinite;
+  }
+}

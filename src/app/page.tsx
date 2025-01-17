@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import Catalog from "./components/Catalog";
 import Header from "./components/Header";
 import Offers from "./components/Offers";
+import Testimonials from "./components/Testimonials/Testimonials";
 
 export default async function Home() {
   const products = await prisma.product.findMany({});
@@ -21,14 +22,18 @@ export default async function Home() {
           <h2 className="text-gradient text-xl">
             Turbine seu setup com os melhores periféricos do mercado!
           </h2>
-          <button className="bg-gradient my-10 py-2 rounded-md w-[80%] text-white hover:bg-primaryColor">
+          <a
+            className="bg-gradient my-10 py-2 rounded-md w-[80%] text-white hover:bg-primaryColor"
+            href="#catalog"
+          >
             Quero turbinar meu setup!
-          </button>
+          </a>
           <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
         </section>
       </div>
       <Offers />
       <Catalog products={products} categories={categories} />
+      <Testimonials />
     </main>
   );
 }

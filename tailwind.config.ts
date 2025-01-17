@@ -12,6 +12,7 @@ export default {
         background: "#1f1f1f",
         primaryColor: "#4C30B5",
         secondaryColor: "#E6F0FF",
+        backgroundItem: "#333739",
       },
       backgroundImage: {
         "gradient-header": "linear-gradient(to bottom, #000, #000, #1f1f1f)",

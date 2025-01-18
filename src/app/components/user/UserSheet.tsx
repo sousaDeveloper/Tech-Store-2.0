@@ -64,7 +64,7 @@ const UserSheet = () => {
         </div>
         <h3 className="text-sm mt-3 text-center">
           Não possui uma conta?{" "}
-          <Link className="underline" href="/user/sign-up">
+          <Link className="underline" href="/sign-up">
             Registre-se
           </Link>
         </h3>

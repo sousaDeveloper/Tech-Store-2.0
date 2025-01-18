@@ -11,7 +11,8 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="bg-gradient-header px-5">
+      <div className="px-5">
+        <div className="bg-gradient-header top-0 left-0 w-full h-[20.75rem] z-[-1]" />
         <Header />
         <section className="flex flex-col text-center items-center mt-5">
           <h3 className="text-secondaryColor opacity-70 text-md">

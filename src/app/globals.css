@@ -41,3 +41,29 @@
   z-index: -1;
   opacity: 45%;
 }
+
+.bg-gradient-header {
+  background-color: hsla(171, 0%, 12%, 1);
+  background-image: radial-gradient(
+      at 28% 51%,
+      hsla(70, 0%, 0%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 68% 51%, hsla(213, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 50% 52%, hsla(323, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 51% 4%, hsla(197, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 98% 18%, hsla(289, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 99% 55%, hsla(279, 100%, 59%, 0.74) 0px, transparent 50%),
+    radial-gradient(at 50% 99%, hsla(279, 59%, 59%, 0.07) 0px, transparent 50%),
+    radial-gradient(at 2% 22%, hsla(215, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 3% 6%, hsla(129, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 98% 2%, hsla(30, 0%, 0%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(279, 59%, 59%, 1) 0px, transparent 50%),
+    radial-gradient(at 99% 96%, hsla(258, 89%, 66%, 0.74) 0px, transparent 50%),
+    radial-gradient(at 0% 56%, hsla(279, 100%, 59%, 0.86) 0px, transparent 50%);
+  z-index: -1;
+  opacity: 30%;
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+}

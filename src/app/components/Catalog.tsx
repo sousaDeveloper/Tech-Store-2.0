@@ -66,8 +66,12 @@ const Catalog = ({ products, categories }: CatalogProps) => {
         </SelectTrigger>
         <SelectContent className="bg-backgroundItem">
           {categories.map((category) => (
-            <SelectItem value={category.name} key={category.id}>
-              <div className="flex gap-2 py-2 items-center">
+            <SelectItem
+              value={category.name}
+              key={category.id}
+              className="py-2"
+            >
+              <div className="flex gap-2 justify-center items-center">
                 {CATEGORY_ICON[category.slug as keyof typeof CATEGORY_ICON]}
                 <span className="text-secondaryColor">{category.name}</span>
               </div>

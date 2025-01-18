@@ -1,23 +1,40 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
-import { ArrowDownIcon, StarIcon } from "lucide-react";
+import { ArrowDownIcon, Loader2Icon, StarIcon } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleRouterClick = () => {
+    setLoading(true);
+    router.push(`/product/${product.slug}`);
+  };
+
   return (
-    <div className="flex flex-col w-[8.5rem] h-[15rem] relative text-secondaryColor">
+    <div
+      className="flex flex-col w-[8.5rem] h-[15rem] relative text-secondaryColor cursor-pointer"
+      onClick={handleRouterClick}
+    >
       {product.discountPercentage > 0 && (
         <Badge className="absolute bg-gradient mt-2 ml-2 flex">
           <ArrowDownIcon size={14} />
-          {product.discountPercentage}%
+          {product.discountPercentage}
+          {"%"}
         </Badge>
       )}
-      <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg">
+      <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg relative">
         <Image
           src={product.imageURLs[0]}
           alt={product.slug}
@@ -25,8 +42,14 @@ const ProductItem = ({ product }: ProductItemProps) => {
           height={0}
           sizes="100vh"
           loading="lazy"
-          className="object-contain w-24 h-24"
+          className={`object-contain w-24 h-24 ${loading && "opacity-20"}`}
         />
+        {loading && (
+          <Loader2Icon
+            className="animate-spin absolute top-[3.2rem] left-[3.2rem]"
+            size={34}
+          />
+        )}
       </div>
       <h2 className="truncate">{product.name}</h2>
       {product.discountPercentage > 0 ? (

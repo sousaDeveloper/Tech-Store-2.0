@@ -23,7 +23,7 @@ const Footer = () => {
         <h1 className="text-xl">Fale Conosco</h1>
         <p className="text-sm opacity-60">
           Tem alguma dúvida? Entre em contato com nossa equipe pelo e-mail{" "}
-          devlpsousa@gmail.com ou pelo telefone (45) 99836-5461
+          devlpsousa@gmail.com ou pelo telefone {"(45)"} 99836-5461
         </p>
       </div>
       <div className="flex flex-col">

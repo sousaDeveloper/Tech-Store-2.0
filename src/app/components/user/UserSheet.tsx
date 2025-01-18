@@ -30,7 +30,7 @@ const UserSheet = () => {
         description: "Redirecionando para a página do usuário.",
       });
       setTimeout(() => {
-        router.push("/user/profile");
+        router.push("/user-profile");
         setLoading(false);
       }, 4000);
     }
@@ -44,17 +44,15 @@ const UserSheet = () => {
       <SheetContent className="flex flex-col p-10 pt-5 text-secondaryColor min-h-screen">
         <div className="bg-blur-purple absolute top-0 left-0 w-full h-full z-[-1]"></div>
         <div className="flex justify-between">
-          <SheetClose>
+          <SheetClose className="outline-none">
             <ChevronRight size={30} className="-ml-2 cursor-pointer mt-5" />
           </SheetClose>
           {loading && <Loader2Icon className="animate-spin" size={30} />}
         </div>
 
+        <DialogTitle className="text-2xl mt-10">Acesse sua conta!</DialogTitle>
         <div>
-          <DialogTitle className="text-2xl mt-10">
-            Acesse sua conta!
-          </DialogTitle>
-          <form className="flex flex-col">
+          <form className="flex flex-col gap-2">
             <CustomInput label="Email" type="text" />
             <CustomInput label="Senha" type="password" />
 

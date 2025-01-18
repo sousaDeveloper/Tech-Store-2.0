@@ -39,6 +39,8 @@ const Catalog = ({ products, categories }: CatalogProps) => {
     }
   };
 
+  const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
+
   return (
     <section className="my-5 px-5 text-secondaryColor">
       <h1 className="text-2xl">
@@ -73,7 +75,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
           ))}
         </SelectContent>
       </Select>
-      <ProductList products={filteredProducts} />
+      <ProductList products={shuffledProducts} />
     </section>
   );
 };

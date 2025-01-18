@@ -5,20 +5,20 @@
 
 .input-container input[type="text"],
 .input-container input[type="password"] {
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   border: none;
   border-bottom: 2px solid #ccc;
   background-color: transparent;
   outline: none;
+  border-radius: 0px;
 }
 
 .input-container .label {
   position: absolute;
   top: 0;
   left: 0;
-  color: #ccc;
-  padding: 1px 0;
+  padding: 0 0 1.2rem 0;
   transition: all 0.3s ease;
   pointer-events: none;
 }

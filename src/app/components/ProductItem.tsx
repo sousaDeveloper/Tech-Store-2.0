@@ -28,7 +28,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
       onClick={handleRouterClick}
     >
       {product.discountPercentage > 0 && (
-        <Badge className="absolute bg-gradient mt-2 ml-2 flex">
+        <Badge className="absolute bg-gradient mt-2 ml-2 flex z-10">
           <ArrowDownIcon size={14} />
           {product.discountPercentage}
           {"%"}

@@ -1,11 +1,12 @@
 "use client";
 
-import { ChevronLeft, Loader2Icon } from "lucide-react";
+import { ChevronLeft, Loader2Icon, ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ProductInfo from "./ProductInfo";
 import { ProductWithTotalPrice } from "@/helpers/product";
+import toCurrency from "@/helpers/toCurrency";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
@@ -33,24 +34,33 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   return (
     <section className="text-secondaryColor">
       <div className="bg-backgroundItem relative px-5 pt-3 w-full grid place-content-center h-[20rem]">
-        <ChevronLeft
-          size={36}
-          onClick={handleRouterBackClick}
-          className={`cursor-pointer absolute top-3 left-5 bg-background rounded-xl ${
-            loading && "flex-none hidden"
-          }`}
-        />
-        {loading && (
-          <div className="flex justify-between">
+        {loading ? (
+          <div className="flex justify-between items-center">
             <ChevronLeft
               size={36}
               onClick={handleRouterBackClick}
               className="cursor-pointer bg-background top-3 left-5 rounded-xl absolute"
             />
+            <h1 className="top-5 right-28 text-center absolute">
+              Detalhes do Produto
+            </h1>
             <Loader2Icon
               className="animate-spin top-3 right-5 absolute"
               size={36}
             />
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <ChevronLeft
+              size={36}
+              onClick={handleRouterBackClick}
+              className={`cursor-pointer absolute top-3 left-5 bg-background rounded-xl ${
+                loading && "flex-none hidden"
+              }`}
+            />
+            <h1 className="top-5 right-28 text-center absolute">
+              Detalhes do Produto
+            </h1>
           </div>
         )}
 
@@ -94,6 +104,34 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       </div>
 
       <ProductInfo product={product} />
+      <div className="w-full fixed bottom-0 rounded-tl-3xl rounded-tr-3xl bg-[#131313] p-4 px-5 flex gap-2 justify-between items-center z-50">
+        {product.discountPercentage > 0 ? (
+          <div className="flex flex-col">
+            <h3 className="text-sm opacity-60">
+              De:{" "}
+              <span className="line-through">
+                {toCurrency({ price: +product.basePrice })}
+              </span>
+            </h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg">
+                Por:{" "}
+                <span className="text-xl">
+                  {toCurrency({ price: product.totalPrice })}
+                </span>
+              </h3>
+            </div>
+          </div>
+        ) : (
+          <h1 className="text-xl">
+            {toCurrency({ price: +product.basePrice })}
+          </h1>
+        )}
+        <button className="bg-gradient w-fit p-2 rounded-lg flex items-center justify-center gap-1">
+          <ShoppingCartIcon size={18} />
+          Adicionar ao carrinho
+        </button>
+      </div>
     </section>
   );
 };

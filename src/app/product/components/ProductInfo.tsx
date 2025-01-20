@@ -1,4 +1,5 @@
-import { Badge } from "@/components/ui/badge";
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -7,8 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ProductWithTotalPrice } from "@/helpers/product";
-import toCurrency from "@/helpers/toCurrency";
-import { ArrowDownIcon } from "lucide-react";
+import { useState } from "react";
 
 interface ProductInfoProps {
   product: Pick<
@@ -18,42 +18,37 @@ interface ProductInfoProps {
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
+  const [isShow, setIsShow] = useState(false);
+
   return (
-    <main className="bg-[#131313] px-5 pt-2 rounded-tl-3xl rounded-tr-3xl mt-2">
+    <main className="px-5 pt-2 mt-2 min-h-max">
       <div className="flex items-center justify-between">
-        <span className="text-sm opacity-60">Novo | 100 vendidos</span>
+        <span className="text-sm opacity-60">Novo | +100 vendidos</span>
         <span className="text-primaryColor text-[0.8rem]">
           Disponível em Estoque
         </span>
       </div>
-      <h1 className="text-2xl">{product.name}</h1>
-      {product.discountPercentage > 0 ? (
-        <div className="flex flex-col mt-1">
-          <h3 className="text-sm opacity-60">
-            De:{" "}
-            <span className="line-through">
-              {toCurrency({ price: +product.basePrice })}
-            </span>
-          </h3>
-          <div className="flex items-center gap-2">
-            <h3 className="text-lg">
-              Por:{" "}
-              <span className="text-xl">
-                {toCurrency({ price: product.totalPrice })}
-              </span>
-            </h3>
-            <Badge className="bg-gradient flex">
-              <ArrowDownIcon size={14} />
-              {product.discountPercentage}
-              {"%"}
-            </Badge>
-          </div>
-        </div>
-      ) : (
-        <h1 className="text-lg">{toCurrency({ price: +product.basePrice })}</h1>
-      )}
-      <div className="flex items-center gap-1 mt-2">
-        <h3 className="text-md">Quantidade:</h3>
+      <h1 className="text-2xl mt-2">{product.name}</h1>
+
+      <div className="mt-2">
+        <h3 className="text-md">Descrição do produto</h3>
+        <p
+          className={`text-sm opacity-70  ${
+            isShow ? "h-36 overflow-y-auto" : "h-16 overflow-hidden"
+          }`}
+        >
+          {product.description}
+        </p>
+        <span
+          className="flex justify-end text-sm underline cursor-pointer"
+          onClick={() => setIsShow((currentState) => !currentState)}
+        >
+          {isShow ? "Ver menos" : "Ver mais"}
+        </span>
+      </div>
+      <hr className="text-secondaryColor mt-4 mb-3 opacity-60" />
+      <div className="flex flex-col gap-1">
+        <h3 className="text-md">Quantidade</h3>
         <Select aria-label="Selecione quantidade">
           <SelectTrigger
             className="w-fit h-fit opacity-70"
@@ -73,11 +68,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           </SelectContent>
         </Select>
       </div>
-      <button className="bg-gradient w-full py-2 rounded-lg mt-5 mb-8">
-        Adicionar ao carrinho
-      </button>
-      <h3 className="text-md">Descrição</h3>
-      <p className="text-sm opacity-70">{product.description}</p>
+      <hr className="text-secondaryColor my-4 opacity-60" />
     </main>
   );
 };

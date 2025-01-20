@@ -1,6 +1,10 @@
 import { signIn } from "next-auth/react";
 
-const ButtonGoogle = () => {
+interface ButtonGoogleProps {
+  text: string;
+}
+
+const ButtonGoogle = ({ text }: ButtonGoogleProps) => {
   const handleLogin = async () => {
     await signIn();
   };
@@ -32,7 +36,7 @@ const ButtonGoogle = () => {
           fill="#1976D2"
         ></path>
       </svg>
-      Continuar com o Google
+      {text}
     </button>
   );
 };

@@ -15,7 +15,7 @@ const SignUp = () => {
         <ChevronLeft
           size={36}
           onClick={() => router.back()}
-          className="cursor-pointer bg-background top-3 left-5 rounded-xl absolute"
+          className="cursor-pointer bg-background top-6 left-5 rounded-xl absolute"
         />
         <h2 className="text-2xl mt-10">Criar Conta</h2>
         <h3 className="text-sm opacity-60">
@@ -26,11 +26,12 @@ const SignUp = () => {
             <CustomInput label="Nome" type="text" />
             <CustomInput label="Email" type="text" />
             <CustomInput label="Senha" type="password" />
+            <CustomInput label="Confirmar senha" type="password" />
 
             <button className="w-full py-2 bg-gradient mt-5 rounded-lg">
               Criar Conta
             </button>
-            <div className="flex justify-center items-center space-x-4 mt-5">
+            <div className="flex justify-center items-center space-x-4 mt-4">
               <hr className="flex-grow border-t-1 border-gray-300" />
               <h3 className="text-sm opacity-60">Ou crie sua conta com</h3>
               <hr className="flex-grow border-t-1 border-gray-300" />

@@ -18,11 +18,14 @@ const UserSheet = () => {
       <SheetTrigger className="bg-background rounded-md p-2 text-secondaryColor">
         <User2Icon />
       </SheetTrigger>
-      <SheetContent className="flex flex-col p-10 pt-5 text-secondaryColor min-h-screen text-center">
+      <SheetContent
+        className="flex flex-col p-10 pt-5 text-secondaryColor min-h-screen text-center 
+      rounded-tl-[3rem] rounded-bl-[3rem]w-[90%] max-w-[90%]"
+      >
         <div className="bg-blur-purple absolute top-0 left-0 w-full h-full z-[-1]"></div>
         <div className="flex justify-between">
           <SheetClose className="outline-none">
-            <ChevronRight size={30} className="-ml-2 cursor-pointer mt-5" />
+            <ChevronRight size={36} className="-ml-3 cursor-pointer mt-5" />
           </SheetClose>
         </div>
 

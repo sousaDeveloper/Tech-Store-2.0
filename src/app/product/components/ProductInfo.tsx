@@ -15,9 +15,10 @@ interface ProductInfoProps {
     ProductWithTotalPrice,
     "name" | "basePrice" | "description" | "totalPrice" | "discountPercentage"
   >;
+  setQuantity: (value: number) => void;
 }
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -49,22 +50,22 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       <hr className="text-secondaryColor mt-4 mb-3 opacity-60" />
       <div className="flex flex-col gap-1">
         <h3 className="text-md">Quantidade</h3>
-        <Select aria-label="Selecione quantidade">
+        <Select
+          aria-label="Selecione quantidade"
+          onValueChange={(value) => setQuantity(Number(value))}
+        >
           <SelectTrigger
             className="w-fit h-fit opacity-70"
             aria-label="Selecionar quantidade"
           >
-            <SelectValue
-              placeholder="Selecionar quantidade"
-              className="opacity-70 text-sm"
-            />
+            <SelectValue placeholder="1" className="opacity-70 text-sm" />
           </SelectTrigger>
           <SelectContent className="bg-backgroundItem">
-            <SelectItem value="one">1</SelectItem>
-            <SelectItem value="two">2</SelectItem>
-            <SelectItem value="three">3</SelectItem>
-            <SelectItem value="four">4</SelectItem>
-            <SelectItem value="five">5</SelectItem>
+            <SelectItem value="1">1</SelectItem>
+            <SelectItem value="2">2</SelectItem>
+            <SelectItem value="3">3</SelectItem>
+            <SelectItem value="4">4</SelectItem>
+            <SelectItem value="5">5</SelectItem>
           </SelectContent>
         </Select>
       </div>

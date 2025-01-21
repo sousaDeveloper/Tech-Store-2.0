@@ -3,19 +3,24 @@
 import { ChevronLeft, Loader2Icon, ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProductInfo from "./ProductInfo";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
+import { CartContext } from "@/providers/cart";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductDetails = ({ product }: ProductDetailsProps) => {
+  const { addProductToCart } = useContext(CartContext);
   const [imageUrl, setImageUrl] = useState(product.imageURLs[1] || "");
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [quantity, setQuantity] = useState(1);
+  const { toast } = useToast();
 
   const handleRouterBackClick = () => {
     setLoading(true);
@@ -29,6 +34,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const handleImageClick = (url: string) => {
     setLoading(true);
     setImageUrl(url);
+  };
+
+  const handleAddProductToCart = () => {
+    toast({
+      title: "Produto adicionado ao carrinho.",
+      description: "Clique no ícone e veja os itens do seu carrinho.",
+    });
+    addProductToCart({ ...product, quantity });
   };
 
   return (
@@ -103,7 +116,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         ))}
       </div>
 
-      <ProductInfo product={product} />
+      <ProductInfo product={product} setQuantity={setQuantity} />
       <div className="w-full fixed bottom-0 rounded-tl-3xl rounded-tr-3xl bg-[#131313] p-4 px-5 flex gap-2 justify-between items-center z-50">
         {product.discountPercentage > 0 ? (
           <div className="flex flex-col">
@@ -127,7 +140,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             {toCurrency({ price: +product.basePrice })}
           </h1>
         )}
-        <button className="bg-gradient w-fit p-2 rounded-lg flex items-center justify-center gap-1">
+        <button
+          className="bg-gradient w-fit p-2 rounded-lg flex items-center justify-center gap-1"
+          onClick={handleAddProductToCart}
+        >
           <ShoppingCartIcon size={18} />
           Adicionar ao carrinho
         </button>

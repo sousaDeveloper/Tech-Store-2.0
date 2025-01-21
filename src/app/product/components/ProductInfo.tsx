@@ -21,6 +21,10 @@ interface ProductInfoProps {
 const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   const [isShow, setIsShow] = useState(false);
 
+  const handleChangeIsShow = () => {
+    setIsShow((currentState) => !currentState);
+  };
+
   return (
     <main className="px-5 pt-2 mt-2 min-h-max">
       <div className="flex items-center justify-between">
@@ -34,7 +38,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
       <div className="mt-2">
         <h3 className="text-md">Descrição do produto</h3>
         <p
-          className={`text-sm opacity-70  ${
+          className={`text-sm opacity-70 ${
             isShow ? "h-36 overflow-y-auto" : "h-16 overflow-hidden"
           }`}
         >
@@ -42,7 +46,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
         </p>
         <span
           className="flex justify-end text-sm underline cursor-pointer"
-          onClick={() => setIsShow((currentState) => !currentState)}
+          onClick={handleChangeIsShow}
         >
           {isShow ? "Ver menos" : "Ver mais"}
         </span>
@@ -61,11 +65,11 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
             <SelectValue placeholder="1" className="opacity-70 text-sm" />
           </SelectTrigger>
           <SelectContent className="bg-backgroundItem">
-            <SelectItem value="1">1</SelectItem>
-            <SelectItem value="2">2</SelectItem>
-            <SelectItem value="3">3</SelectItem>
-            <SelectItem value="4">4</SelectItem>
-            <SelectItem value="5">5</SelectItem>
+            {[1, 2, 3, 4, 5].map((num) => (
+              <SelectItem key={num} value={num.toString()}>
+                {num}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>

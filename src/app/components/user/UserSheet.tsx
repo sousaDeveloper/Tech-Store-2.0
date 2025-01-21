@@ -12,10 +12,16 @@ import Link from "next/link";
 import CustomInput from "./CustomInput/CustomInput";
 import ButtonGoogle from "./ButtonGoogle";
 
-const UserSheet = () => {
+interface UserSheetProps {
+  className?: string;
+}
+
+const UserSheet = ({ className }: UserSheetProps) => {
   return (
     <Sheet>
-      <SheetTrigger className="bg-background rounded-md p-2 text-secondaryColor">
+      <SheetTrigger
+        className={`bg-background rounded-md p-2 text-secondaryColor ${className}`}
+      >
         <User2Icon />
       </SheetTrigger>
       <SheetContent

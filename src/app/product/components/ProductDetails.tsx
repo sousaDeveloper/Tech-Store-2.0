@@ -9,17 +9,21 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
 import { CartContext } from "@/providers/cart";
 import { useToast } from "@/hooks/use-toast";
+import { useSession } from "next-auth/react";
+import UserSheet from "@/app/components/user/UserSheet";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductDetails = ({ product }: ProductDetailsProps) => {
-  const { addProductToCart } = useContext(CartContext);
-  const [imageUrl, setImageUrl] = useState(product.imageURLs[1] || "");
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
+  const [imageUrl, setImageUrl] = useState(product.imageURLs[1] || "");
+  const [showUserSheet, setShowUserSheet] = useState(false);
+  const { status } = useSession();
+  const { addProductToCart } = useContext(CartContext);
+  const router = useRouter();
   const { toast } = useToast();
 
   const handleRouterBackClick = () => {
@@ -37,11 +41,20 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
 
   const handleAddProductToCart = () => {
-    toast({
-      title: "Produto adicionado ao carrinho.",
-      description: "Clique no ícone e veja os itens do seu carrinho.",
-    });
-    addProductToCart({ ...product, quantity });
+    if (status === "authenticated") {
+      toast({
+        title: "Primeiro realize seu login.",
+        description: "Clique no ícone acima e faça seu login.",
+      });
+      setShowUserSheet(true);
+    } else {
+      setShowUserSheet(false);
+      toast({
+        title: "Produto adicionado ao carrinho.",
+        description: "Clique no ícone e veja os itens do seu carrinho.",
+      });
+      addProductToCart({ ...product, quantity });
+    }
   };
 
   return (
@@ -148,6 +161,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           Adicionar ao carrinho
         </button>
       </div>
+      {showUserSheet && (
+        <div className="fixed bottom-24 left-5 z-50 bg-gradient p-1 rounded-full animate-bounce">
+          <UserSheet className="bg-transparent" />
+        </div>
+      )}
     </section>
   );
 };

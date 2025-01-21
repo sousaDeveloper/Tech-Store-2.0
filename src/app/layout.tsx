@@ -3,6 +3,7 @@ import "./globals.css";
 import { Manrope } from "next/font/google";
 import { AuthProvider } from "@/providers/auth";
 import { Toaster } from "@/components/ui/toaster";
+import CartContextProvider from "@/providers/Cart";
 
 const manrope = Manrope({ subsets: ["latin"], weight: "400" });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-background ${manrope.className}`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </AuthProvider>
         <Toaster />
       </body>
     </html>

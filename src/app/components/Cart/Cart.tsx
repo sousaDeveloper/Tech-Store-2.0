@@ -13,10 +13,11 @@ import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import CartItem from "./CartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
+import toCurrency from "@/helpers/toCurrency";
 
 const Cart = () => {
   const pathname = usePathname();
-  const { products } = useContext(CartContext);
+  const { products, total, totalDiscount, subtotal } = useContext(CartContext);
 
   const totalItems = products.reduce(
     (acc, product) => acc + product.quantity,
@@ -41,7 +42,7 @@ const Cart = () => {
         </div>
       </SheetTrigger>
       <SheetContent
-        className="bg-[#131313] border-none rounded-tr-3xl rounded-tl-3xl h-[30rem] text-secondaryColor px-5 py-2"
+        className="bg-[#131313] border-none rounded-tr-3xl rounded-tl-3xl h-[30rem] text-secondaryColor px-5 py-2 flex flex-col"
         side={"bottom"}
         aria-describedby={undefined}
       >
@@ -63,6 +64,26 @@ const Cart = () => {
               key={product.id}
             />
           ))}
+        </div>
+        <div className="flex flex-col mt-auto gap-2">
+          <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
+          <div className="flex items-center justify-between">
+            <h2 className="opacity-70">Sub-Total</h2>
+            <span>{toCurrency({ price: subtotal })}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <h2 className="opacity-70">Desconto</h2>
+            <span className="text-red-500">
+              -{toCurrency({ price: totalDiscount })}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <h2 className="opacity-70">Preço final</h2>
+            <span>{toCurrency({ price: total })}</span>
+          </div>
+          <button className="w-full bg-gradient rounded-md py-2">
+            Ir para o checkout
+          </button>
         </div>
       </SheetContent>
     </Sheet>

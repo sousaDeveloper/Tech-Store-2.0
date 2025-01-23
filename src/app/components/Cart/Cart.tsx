@@ -6,7 +6,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { CartContext } from "@/providers/cart";
+import { CartContext, CartProduct } from "@/providers/cart";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { ChevronDownIcon, ShoppingCartIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -14,15 +14,32 @@ import { useContext } from "react";
 import CartItem from "./CartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
+import { useToast } from "@/hooks/use-toast";
 
 const Cart = () => {
   const pathname = usePathname();
-  const { products, total, totalDiscount, subtotal } = useContext(CartContext);
+  const {
+    products,
+    total,
+    totalDiscount,
+    subtotal,
+    removeProductToCart,
+    increasedQuantity,
+    decreasedQuantity,
+  } = useContext(CartContext);
+  const { toast } = useToast();
 
   const totalItems = products.reduce(
     (acc, product) => acc + product.quantity,
     0
   );
+
+  const handleDeleteItemClick = (product: CartProduct) => {
+    toast({
+      title: "Item excluído com sucesso",
+    });
+    removeProductToCart(product);
+  };
 
   return (
     <Sheet>
@@ -46,7 +63,7 @@ const Cart = () => {
         side={"bottom"}
         aria-describedby={undefined}
       >
-        <div className="flex justify-between items-center mb-5">
+        <div className="flex justify-between items-center mb-1">
           <DialogTitle className="text-2xl">
             Meu <span className="text-primaryColor">carrinho</span>
           </DialogTitle>
@@ -61,11 +78,14 @@ const Cart = () => {
                 ...product,
                 totalPrice: computeProductTotalPrice(product),
               }}
+              handleDeleteItem={handleDeleteItemClick}
+              handleIncreasedQuantity={increasedQuantity}
+              handleDecreasedQuantity={decreasedQuantity}
               key={product.id}
             />
           ))}
         </div>
-        <div className="flex flex-col mt-auto gap-2">
+        <div className="flex flex-col mt-auto mb-2 gap-2">
           <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
           <div className="flex items-center justify-between">
             <h2 className="opacity-70">Sub-Total</h2>
@@ -73,7 +93,7 @@ const Cart = () => {
           </div>
           <div className="flex items-center justify-between">
             <h2 className="opacity-70">Desconto</h2>
-            <span className="text-red-500">
+            <span className="text-green-400">
               -{toCurrency({ price: totalDiscount })}
             </span>
           </div>

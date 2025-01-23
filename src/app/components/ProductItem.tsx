@@ -24,7 +24,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
   return (
     <div
-      className="flex flex-col w-[8.5rem] h-[15rem] relative text-secondaryColor cursor-pointer"
+      className="flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] relative text-secondaryColor cursor-pointer"
       onClick={handleRouterClick}
     >
       {product.discountPercentage > 0 && (

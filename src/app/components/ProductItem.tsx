@@ -3,22 +3,23 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
+import { LoadingContext } from "@/providers/loading";
 import { ArrowDownIcon, Loader2Icon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext } from "react";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const [loading, setLoading] = useState(false);
+  const { handleLoadingClick, isLoading } = useContext(LoadingContext);
 
   const router = useRouter();
 
   const handleRouterClick = () => {
-    setLoading(true);
+    handleLoadingClick(true);
     router.push(`/product/${product.slug}`);
   };
 
@@ -42,9 +43,9 @@ const ProductItem = ({ product }: ProductItemProps) => {
           height={0}
           sizes="100vh"
           loading="lazy"
-          className={`object-contain w-24 h-24 ${loading && "opacity-20"}`}
+          className={`object-contain w-24 h-24 ${isLoading && "opacity-20"}`}
         />
-        {loading && (
+        {isLoading && (
           <Loader2Icon
             className="animate-spin absolute top-[3.2rem] left-[3.2rem]"
             size={34}

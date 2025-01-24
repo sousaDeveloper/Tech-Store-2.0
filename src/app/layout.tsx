@@ -5,6 +5,7 @@ import { AuthProvider } from "@/providers/auth";
 import { Toaster } from "@/components/ui/toaster";
 import Cart from "./components/Cart/Cart";
 import CartContextProvider from "@/providers/cart";
+import LoadingProvider from "@/providers/loading";
 
 const manrope = Manrope({ subsets: ["latin"], weight: "400" });
 
@@ -21,12 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-background ${manrope.className}`}>
-        <AuthProvider>
-          <CartContextProvider>
-            <Cart />
-            {children}
-          </CartContextProvider>
-        </AuthProvider>
+        <LoadingProvider>
+          <AuthProvider>
+            <CartContextProvider>
+              <Cart />
+              {children}
+            </CartContextProvider>
+          </AuthProvider>
+        </LoadingProvider>
+
         <Toaster />
       </body>
     </html>

@@ -10,7 +10,6 @@ import toCurrency from "@/helpers/toCurrency";
 import { CartContext } from "@/providers/cart";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
-import UserSheet from "@/app/components/user/UserSheet";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
@@ -20,7 +19,6 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [imageUrl, setImageUrl] = useState(product.imageURLs[1] || "");
-  const [showUserSheet, setShowUserSheet] = useState(false);
   const { status } = useSession();
   const { addProductToCart } = useContext(CartContext);
   const router = useRouter();
@@ -46,9 +44,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         title: "Primeiro realize seu login.",
         description: "Clique no ícone acima e faça seu login.",
       });
-      setShowUserSheet(true);
+      router.push("/user/sign-in");
     } else {
-      setShowUserSheet(false);
       toast({
         title: "Produto adicionado ao carrinho.",
         description: "Clique no ícone e veja os itens do seu carrinho.",
@@ -161,11 +158,6 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           Adicionar ao carrinho
         </button>
       </div>
-      {showUserSheet && (
-        <div className="fixed bottom-24 left-5 z-50 bg-gradient p-1 rounded-full animate-bounce">
-          <UserSheet className="bg-transparent" />
-        </div>
-      )}
     </section>
   );
 };

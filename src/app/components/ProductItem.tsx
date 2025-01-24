@@ -3,24 +3,25 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
-import { LoadingContext } from "@/providers/loading";
 import { ArrowDownIcon, Loader2Icon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useState } from "react";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const { handleLoadingClick, isLoading } = useContext(LoadingContext);
-
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleRouterClick = () => {
-    handleLoadingClick(true);
+    setIsLoading(true);
     router.push(`/product/${product.slug}`);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   return (
@@ -31,8 +32,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
       {product.discountPercentage > 0 && (
         <Badge className="absolute bg-gradient mt-2 ml-2 flex z-10">
           <ArrowDownIcon size={14} />
-          {product.discountPercentage}
-          {"%"}
+          {product.discountPercentage}%
         </Badge>
       )}
       <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg relative">
@@ -58,7 +58,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
           <span className="line-through text-xs opacity-70">
             {toCurrency({ price: Number(product.basePrice) })}
-          </span>{" "}
+          </span>
         </h2>
       ) : (
         <h2>{toCurrency({ price: Number(product.basePrice) })}</h2>

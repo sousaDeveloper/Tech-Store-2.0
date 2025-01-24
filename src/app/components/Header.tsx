@@ -1,7 +1,10 @@
-import { SearchIcon } from "lucide-react";
-import UserSheet from "./user/UserSheet";
+"use client";
+import { SearchIcon, User2Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+
   return (
     <header className="flex justify-between gap-2 py-5">
       <div className="relative">
@@ -17,7 +20,7 @@ const Header = () => {
           <SearchIcon size={20} />
         </span>
       </div>
-      <UserSheet />
+      <User2Icon onClick={() => router.push("/api/auth/signin")} />
     </header>
   );
 };

@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import ButtonGoogle from "@/app/components/user/ButtonGoogle";
+import ButtonGoogle from "@/app/user/components/ButtonGoogle";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 

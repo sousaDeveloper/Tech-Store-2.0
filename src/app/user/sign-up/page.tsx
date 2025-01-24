@@ -2,7 +2,7 @@
 
 import { ChevronLeft, Loader2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import ButtonGoogle from "../../components/user/ButtonGoogle";
+import ButtonGoogle from "../components/ButtonGoogle";
 import { FormProvider, useForm } from "react-hook-form";
 import {
   FormControl,

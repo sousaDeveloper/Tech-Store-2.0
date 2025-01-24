@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Loader2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ButtonGoogle from "../components/user/ButtonGoogle";
 import { FormProvider, useForm } from "react-hook-form";
@@ -14,12 +14,18 @@ import {
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useContext } from "react";
+import { LoadingContext } from "@/providers/loading";
 
 const formSchema = z
   .object({
-    username: z.string().min(2, {
-      message: "O nome de usuário deve ter pelo menos 2 caracteres.",
-    }),
+    name: z
+      .string()
+      .min(4, {
+        message: "O nome de usuário deve ter pelo menos 4 caracteres.",
+      })
+      .max(20),
     email: z.string().email("Email inválido").min(1, "Email é obrigatório"),
     password: z
       .string()
@@ -36,19 +42,64 @@ const formSchema = z
 
 const SignUp = () => {
   const router = useRouter();
+  const { toast } = useToast();
+  const { handleLoadingClick, isLoading } = useContext(LoadingContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    handleLoadingClick(true);
+    try {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+
+      console.log(response.status);
+
+      if (response.status === 409) {
+        toast({
+          title: "Algo deu errado!",
+          description: responseData.message,
+          variant: "destructive",
+        });
+
+        form.setError("email", {
+          type: "manual",
+          message: responseData.message,
+        });
+        return;
+      }
+
+      if (response.ok) {
+        toast({
+          title: "Conta criada com sucesso.",
+          description: "Agora, realize seu login.",
+        });
+        router.push("/");
+      } else {
+        toast({
+          title: responseData.message,
+        });
+      }
+    } catch (error) {
+      console.error("Something went wrong.", error);
+    } finally {
+      handleLoadingClick(false);
+    }
   };
 
   return (
@@ -71,12 +122,12 @@ const SignUp = () => {
           >
             <FormField
               control={form.control}
-              name="username"
+              name="name"
               render={({ field }) => (
                 <FormItem className="text-left">
                   <FormLabel className="text-md">Nome de Usuário</FormLabel>
                   <FormControl>
-                    <Input type="text" className="mt-0" {...field} />
+                    <Input type="text" {...field} />
                   </FormControl>
                   <FormMessage className="text-red-400 text-start" />
                 </FormItem>
@@ -132,7 +183,14 @@ const SignUp = () => {
               className="w-full py-2 bg-gradient mt-5 rounded-lg"
               type="submit"
             >
-              Criar Conta
+              {isLoading ? (
+                <span className="flex gap-1 justify-center items-center">
+                  Criar Conta
+                  <Loader2Icon className="animate-spin" size={22} />
+                </span>
+              ) : (
+                <>Criar Conta</>
+              )}
             </button>
 
             <div className="flex justify-center items-center space-x-4 mt-4">

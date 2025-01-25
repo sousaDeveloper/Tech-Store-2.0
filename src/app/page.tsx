@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Offers from "./components/Offers";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Footer from "./components/Footer";
+import Separator from "./components/Separator";
 
 export default async function Home() {
   const products = await prisma.product.findMany({});
@@ -30,7 +31,7 @@ export default async function Home() {
           >
             Quero turbinar meu setup!
           </a>
-          <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
+          <Separator />
         </section>
       </div>
       <span id="catalog"></span>

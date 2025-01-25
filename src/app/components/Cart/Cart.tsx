@@ -15,6 +15,7 @@ import CartItem from "./CartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
 import { useToast } from "@/hooks/use-toast";
+import Separator from "../Separator";
 
 const Cart = () => {
   const pathname = usePathname();
@@ -47,7 +48,9 @@ const Cart = () => {
         className={`fixed z-50 cursor-pointer ${
           pathname === "/" ? "bottom-5 right-5" : "bottom-24 left-5"
         } rounded-full bg-gradient h-12 w-12 grid place-content-center text-secondaryColor animate-bounce ${
-          products.length <= 0 && "flex-none hidden"
+          products.length <= 0 || pathname === "/user-profile"
+            ? "flex-none hidden"
+            : ""
         }`}
       >
         <div className="relative">
@@ -86,7 +89,7 @@ const Cart = () => {
           ))}
         </div>
         <div className="flex flex-col mt-auto mb-2 gap-2">
-          <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
+          <Separator />
           <div className="flex items-center justify-between">
             <h2 className="opacity-70">Sub-Total</h2>
             <span>{toCurrency({ price: subtotal })}</span>

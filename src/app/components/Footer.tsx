@@ -1,3 +1,5 @@
+import Separator from "./Separator";
+
 const Footer = () => {
   return (
     <footer className="flex flex-col text-secondaryColor px-5 mt-14 gap-5 bg-gradient-footer">
@@ -40,7 +42,7 @@ const Footer = () => {
           ainda mais prática.
         </p>
       </div>
-      <div className="w-full text-center bg-gradient-to-r from-[#1f1f1f] via-secondaryColor to-[#1f1f1f] h-[0.05rem]" />
+      <Separator />
       <h2 className="text-md text-center pb-5">
         <span className="text-primaryColor font-bold">Tech Store</span> | Todos
         os direitos reservados | Política de Privacidade | Termos e Condições

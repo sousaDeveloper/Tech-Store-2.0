@@ -19,9 +19,6 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const handleRouterClick = () => {
     setIsLoading(true);
     router.push(`/product/${product.slug}`);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
   };
 
   return (

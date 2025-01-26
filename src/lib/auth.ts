@@ -9,20 +9,17 @@ import { Adapter } from "next-auth/adapters";
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "/user/sign-in", // Página de login personalizada
+    signIn: "/user/sign-in",
   },
   session: {
-    strategy: "jwt", // Estratégia JWT
+    strategy: "jwt",
   },
-  adapter: PrismaAdapter(prisma) as Adapter, // Adaptador Prisma para integração com o banco de dados
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
-    // Provedor Google
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-
-    // Provedor de credenciais (email e senha)
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -38,47 +35,44 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        // Verificando se o usuário existe no banco de dados
         const existsUser = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
 
         if (!existsUser) {
-          return null; // Usuário não encontrado
+          return null;
         }
 
-        // Verificando a senha
-        const passwordMatch = await compare(
-          credentials.password,
-          existsUser.password
-        );
-        if (!passwordMatch) {
-          return null; // Senha incorreta
+        if (existsUser.password) {
+          const passwordMatch = await compare(
+            credentials.password,
+            existsUser.password
+          );
+          if (!passwordMatch) {
+            return null;
+          }
         }
 
-        // Garantindo que o nome não seja nulo
         return {
           id: `${existsUser.id}`,
-          name: existsUser.name || "", // Caso name seja null, retorna uma string vazia
+          name: existsUser.name || "",
           email: existsUser.email,
         };
       },
     }),
   ],
   callbacks: {
-    // Ajustando os dados que ficam disponíveis na sessão do usuário
     async session({ session, user }) {
       return {
         ...session,
         user: {
-          id: user?.id ?? "", // Garantindo que o ID do usuário esteja presente
+          id: user?.id ?? "",
           name: user?.name ?? "",
           email: user?.email ?? "",
         },
       };
     },
 
-    // Modificando o JWT para adicionar dados do usuário
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -88,5 +82,5 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET, // Chave secreta para assinatura do token
+  secret: process.env.NEXTAUTH_SECRET,
 };

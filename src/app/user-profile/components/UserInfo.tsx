@@ -6,9 +6,11 @@ import { LoadingContext } from "@/providers/loading";
 import {
   ChevronLeft,
   ChevronRight,
+  Heart,
   Inbox,
   Loader2Icon,
   LogOutIcon,
+  User2Icon,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -37,6 +39,7 @@ const UserInfo = ({ session }: UserInfoProps) => {
   };
 
   const handleLogoutClick = async () => {
+    handleLoadingClick(true);
     await signOut({ redirect: false });
     router.push("/");
     toast({
@@ -56,31 +59,48 @@ const UserInfo = ({ session }: UserInfoProps) => {
         <button onClick={handleRouterBackClick}>
           <ChevronLeft size={40} className="cursor-pointer" />
         </button>
-        <h1 className="text-2xl ml-20">Minha conta</h1>
-        {isLoading && <Loader2Icon className="animate-spin ml-20" />}
+        <h1 className="text-2xl ml-20" data-aos="fade-down">
+          Minha conta
+        </h1>
+        {isLoading && <Loader2Icon className="animate-spin ml-16" />}
       </div>
       <Separator />
-      <section className="mt-5 ml-1">
-        <h2 className="text-xl">
-          Olá, {session.name.split(" ")}. Bem-vindo de volta!
+      <section className="mt-3 ml-1">
+        <h2 className="text-xl" data-aos="fade-up" data-aos-delay="100">
+          Bem-vindo de volta, {session.name.split(" ")}.
         </h2>
         <div className="flex flex-col gap-1 mt-10 text-md">
           <Link
-            className="text-left flex items-center gap-1 hover:opacity-60 hover:translate-x-2 duration-300"
+            className="text-left flex items-center gap-1 hover:text-gray-400"
             href="/orders"
+            data-aos="fade-right"
+            data-aos-delay="300"
           >
             <Inbox size={20} />
-            Ver meu pedidos
+            Meus Pedidos
+            <ChevronRight className="ml-auto" />
+          </Link>
+          <hr />
+          <Link
+            className="text-left flex items-center gap-1 mt-5 hover:text-gray-400"
+            href="/wishlist"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            <Heart size={20} />
+            Lista de Desejos
             <ChevronRight className="ml-auto" />
           </Link>
           <hr />
           <button
-            className="text-left flex items-center gap-1 mt-5 hover:opacity-60 hover:translate-x-2 duration-300"
+            className="text-left flex items-center gap-1 mt-5 hover:text-gray-400"
             onClick={handleLogoutClick}
+            data-aos="fade-right"
+            data-aos-delay="500"
           >
-            <LogOutIcon size={20} />
+            <User2Icon size={20} />
             Sair da conta
-            <ChevronRight className="ml-auto" />
+            <LogOutIcon size={20} className="ml-auto" />
           </button>
           <hr />
         </div>

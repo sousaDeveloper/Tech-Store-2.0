@@ -16,7 +16,7 @@ const Offers = async () => {
   return (
     <section className="my-5 px-5 text-secondaryColor">
       <div className="mb-5">
-        <h1 className="text-2xl">
+        <h1 className="text-2xl" data-aos-delay="200" data-aos="fade-right">
           Ofertas <span className="text-gradient">Imperdíveis</span>!
         </h1>
         <SubText

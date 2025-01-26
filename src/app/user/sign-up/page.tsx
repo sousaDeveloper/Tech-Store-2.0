@@ -109,8 +109,14 @@ const SignUp = () => {
           onClick={() => router.back()}
           className="cursor-pointer bg-background -ml-3 -mt-12 rounded-xl absolute"
         />
-        <h2 className="text-2xl mt-5">Crie sua conta!</h2>
-        <h3 className="text-sm opacity-60">
+        <h2 className="text-2xl mt-5" data-aos="fade-down">
+          Crie sua conta!
+        </h2>
+        <h3
+          className="text-sm text-gray-400"
+          data-aos="fade-down"
+          data-aos-delay="200"
+        >
           Preencha seus dados para começar a sua jornada com a gente.
         </h3>
         <FormProvider {...form}>
@@ -122,7 +128,11 @@ const SignUp = () => {
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className="text-left">
+                <FormItem
+                  className="text-left"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                >
                   <FormLabel className="text-md">Nome de Usuário</FormLabel>
                   <FormControl>
                     <Input type="text" {...field} />
@@ -137,7 +147,11 @@ const SignUp = () => {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="text-left">
+                <FormItem
+                  className="text-left"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   <FormLabel className="text-md">Email</FormLabel>
                   <FormControl>
                     <Input type="email" {...field} />
@@ -152,7 +166,11 @@ const SignUp = () => {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem className="text-left">
+                <FormItem
+                  className="text-left"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
                   <FormLabel className="text-md">Senha</FormLabel>
                   <FormControl>
                     <Input type="password" {...field} />
@@ -167,7 +185,11 @@ const SignUp = () => {
               control={form.control}
               name="confirmPassword"
               render={({ field }) => (
-                <FormItem className="text-left">
+                <FormItem
+                  className="text-left"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
                   <FormLabel className="text-md">Confirmar Senha</FormLabel>
                   <FormControl className="m-0">
                     <Input type="password" {...field} />
@@ -180,6 +202,8 @@ const SignUp = () => {
             <button
               className="w-full py-2 bg-gradient mt-5 rounded-lg"
               type="submit"
+              data-aos="zoom-in"
+              data-aos-delay="200"
             >
               {isLoading ? (
                 <span className="flex gap-1 justify-center items-center">

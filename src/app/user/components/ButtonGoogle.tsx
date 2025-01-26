@@ -25,6 +25,8 @@ const ButtonGoogle = ({ text }: ButtonGoogleProps) => {
     <button
       className="cursor-pointer text-black mt-4 flex gap-2 items-center justify-center bg-white px-4 py-2 text-center rounded-lg  hover:bg-zinc-300 transition-all ease-in duration-200 w-full"
       onClick={handleLogin}
+      data-aos="zoom-in"
+      data-aos-delay="300"
     >
       <svg
         viewBox="0 0 48 48"

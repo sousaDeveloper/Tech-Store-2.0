@@ -4,8 +4,14 @@ const Footer = () => {
   return (
     <footer className="flex flex-col text-secondaryColor px-5 mt-14 gap-5 bg-gradient-footer">
       <div className="flex flex-col">
-        <h1 className="text-xl">Receba Ofertas Exclusivas</h1>
-        <p className="text-sm opacity-60">
+        <h1 className="text-xl" data-aos="fade-up">
+          Receba Ofertas Exclusivas
+        </h1>
+        <p
+          className="text-sm text-gray-400"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Assine nossa newsletter e receba descontos e promoções diretamente no
           seu e-mail!
         </p>
@@ -22,22 +28,40 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl">Fale Conosco</h1>
-        <p className="text-sm opacity-60">
+        <h1 className="text-xl" data-aos="fade-up">
+          Fale Conosco
+        </h1>
+        <p
+          className="text-sm text-gray-400"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Tem alguma dúvida? Entre em contato com nossa equipe pelo e-mail{" "}
           devlpsousa@gmail.com ou pelo telefone {"(45)"} 99836-5461
         </p>
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl">Acompanhe-nos</h1>
-        <p className="text-sm opacity-60">
+        <h1 className="text-xl" data-aos="fade-up">
+          Acompanhe-nos
+        </h1>
+        <p
+          className="text-sm text-gray-400"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Siga-nos nas redes sociais e não perca nenhuma oportunidade. Fique por
           dentro das novidades, promoções e lançamentos!
         </p>
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl">Formas de Pagamento</h1>
-        <p className="text-sm opacity-60">
+        <h1 className="text-xl" data-aos="fade-up">
+          Formas de Pagamento
+        </h1>
+        <p
+          className="text-sm text-gray-400"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Aceitamos diversos meios de pagamento para tornar sua experiência
           ainda mais prática.
         </p>

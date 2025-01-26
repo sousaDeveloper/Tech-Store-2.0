@@ -112,6 +112,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             key={index}
             className="cursor-pointer bg-backgroundItem rounded-xl"
             onClick={() => handleImageClick(url)}
+            data-aos="zoom-in"
+            data-aos-delay={index * 100}
           >
             <Image
               src={url}

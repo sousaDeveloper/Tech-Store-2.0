@@ -1,6 +1,5 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Testimonial } from "@prisma/client";
-import SubText from "../SubText";
 import { StarIcon } from "lucide-react";
 
 interface TestimonialCardProps {
@@ -20,7 +19,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
               {testimonial.clientName.split(" ")[0]}{" "}
               {testimonial.clientName.split(" ")[1][0]}.
             </h2>
-            <SubText text={`${testimonial.date}`} className="text-[0.8rem]" />
+            <p className="text-[0.8rem] opacity-60">{`${testimonial.date}`}</p>
           </div>
         </div>
         <h3 className="flex items-center gap-1">

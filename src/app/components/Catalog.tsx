@@ -43,7 +43,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
 
   return (
     <section className="my-5 px-5 text-secondaryColor">
-      <h1 className="text-2xl">
+      <h1 className="text-2xl" data-aos="fade-right" data-aos-delay="200">
         Encontre exatamente o que{" "}
         <span className="text-gradient">você precisa</span>!
       </h1>
@@ -58,6 +58,8 @@ const Catalog = ({ products, categories }: CatalogProps) => {
         <SelectTrigger
           className="w-full mt-2 mb-3 opacity-70"
           aria-label="Selecionar categoria"
+          data-aos="fade-zoom"
+          data-aos-delay="300"
         >
           <SelectValue
             placeholder="Selecionar categoria"

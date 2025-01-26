@@ -10,9 +10,10 @@ import { useState } from "react";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
+  dataAosDelay: number;
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItem = ({ product, dataAosDelay }: ProductItemProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -25,6 +26,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
     <div
       className="flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] relative text-secondaryColor cursor-pointer"
       onClick={handleRouterClick}
+      data-aos="fade-up"
+      data-aos-delay={dataAosDelay}
     >
       {product.discountPercentage > 0 && (
         <Badge className="absolute bg-gradient mt-2 ml-2 flex z-10">

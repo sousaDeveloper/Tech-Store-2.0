@@ -9,13 +9,14 @@ interface ProductListProps {
 const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="flex overflow-x-auto overflow-hidden gap-5 [&::-webkit-scrollbar]:hidden">
-      {products.map((product) => (
+      {products.map((product, index) => (
         <ProductItem
           key={product.id}
           product={{
             ...product,
             totalPrice: computeProductTotalPrice(product),
           }}
+          dataAosDelay={index * 100}
         />
       ))}
     </div>

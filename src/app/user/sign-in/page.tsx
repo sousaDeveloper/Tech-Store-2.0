@@ -76,19 +76,27 @@ const SignInPage = () => {
         />
       </div>
 
-      <h2 className="text-2xl mt-10">
+      <h2 className="text-2xl mt-10" data-aos="fade-down">
         Já tem uma conta? Faça login para continuar.
       </h2>
-      <h4 className="text-sm opacity-50">
+      <h3
+        className="text-sm text-gray-400"
+        data-aos="fade-down"
+        data-aos-delay="200"
+      >
         Bem-vindo de volta! Entre com seu e-mail e senha para acessar sua conta.
-      </h4>
+      </h3>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-7">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="text-left">
+              <FormItem
+                className="text-left"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
                 <FormLabel className="text-md">Email</FormLabel>
                 <FormControl>
                   <Input
@@ -109,7 +117,11 @@ const SignInPage = () => {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="text-left">
+              <FormItem
+                className="text-left"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <FormLabel className="text-md">Senha</FormLabel>
                 <FormControl>
                   <Input
@@ -127,14 +139,24 @@ const SignInPage = () => {
           />
 
           {authError && (
-            <div className="text-red-400 text-start">{authError}</div>
+            <div className="text-red-400 text-start" data-aos="zoom-in">
+              {authError}
+            </div>
           )}
 
-          <button className="w-full py-2 bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2">
+          <button
+            className="w-full py-2 bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
             Acessar{" "}
             {isLoading && <Loader2Icon className="animate-spin" size={22} />}
           </button>
-          <div className="flex justify-center items-center space-x-4 my-5">
+          <div
+            className="flex justify-center items-center space-x-4 my-5"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <hr className="flex-grow border-t-1 border-gray-300" />
             <h3 className="text-sm opacity-70">Ou faça login com</h3>
             <hr className="flex-grow border-t-1 border-gray-300" />

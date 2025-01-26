@@ -9,7 +9,7 @@ const Testimonials = async () => {
 
   return (
     <section className="text-secondaryColor">
-      <h1 className="text-2xl px-5">
+      <h1 className="text-2xl px-5" data-aos="fade-right" data-aos-delay="200">
         O que <span className="text-gradient">nossos clientes</span> dizem sobre
         nós?
       </h1>

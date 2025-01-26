@@ -66,8 +66,8 @@ const SignInPage = () => {
   };
 
   return (
-    <section className="flex flex-col p-10 pt-5 text-secondaryColor min-h-[38rem] text-center">
-      <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[38rem] z-[-1]"></div>
+    <section className="flex flex-col p-10 pt-5 text-secondaryColor min-h-[40rem] text-center">
+      <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[40rem] z-[-1]"></div>
       <div className="flex justify-between">
         <ChevronLeft
           size={36}
@@ -76,12 +76,14 @@ const SignInPage = () => {
         />
       </div>
 
-      <h2 className="text-2xl mt-10">Acesse sua conta!</h2>
+      <h2 className="text-2xl mt-10">
+        Já tem uma conta? Faça login para continuar.
+      </h2>
+      <h4 className="text-sm opacity-50">
+        Bem-vindo de volta! Entre com seu e-mail e senha para acessar sua conta.
+      </h4>
       <FormProvider {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 mt-10"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-7">
           <FormField
             control={form.control}
             name="email"

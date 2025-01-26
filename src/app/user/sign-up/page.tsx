@@ -68,8 +68,6 @@ const SignUp = () => {
 
       const responseData = await response.json();
 
-      console.log(response.status);
-
       if (response.status === 409) {
         toast({
           title: "Algo deu errado!",
@@ -103,17 +101,17 @@ const SignUp = () => {
   };
 
   return (
-    <main className="flex flex-col text-secondaryColor min-h-[48rem] text-center">
-      <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[48rem] z-[-1]"></div>
-      <section className="px-8 mt-12">
+    <main className="flex flex-col text-secondaryColor min-h-[54rem] text-center p-10">
+      <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[54rem] z-[-1]"></div>
+      <section className="mt-12">
         <ChevronLeft
           size={36}
           onClick={() => router.back()}
-          className="cursor-pointer bg-background top-6 left-5 rounded-xl absolute"
+          className="cursor-pointer bg-background -ml-3 -mt-12 rounded-xl absolute"
         />
-        <h2 className="text-2xl mt-5">Criar Conta</h2>
+        <h2 className="text-2xl mt-5">Crie sua conta!</h2>
         <h3 className="text-sm opacity-60">
-          Preencha suas informações abaixo e registre-se.
+          Preencha seus dados para começar a sua jornada com a gente.
         </h3>
         <FormProvider {...form}>
           <form

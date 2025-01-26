@@ -62,8 +62,8 @@
     radial-gradient(at 99% 96%, hsla(258, 89%, 66%, 0.74) 0px, transparent 50%),
     radial-gradient(at 0% 56%, hsla(279, 100%, 59%, 0.86) 0px, transparent 50%);
   z-index: -1;
-  opacity: 30%;
-  filter: blur(8px);
+  opacity: 60%;
+  filter: blur(3rem);
   position: absolute;
   top: 0;
 }

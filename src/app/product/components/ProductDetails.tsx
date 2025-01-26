@@ -39,12 +39,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
 
   const handleAddProductToCart = () => {
-    if (status === "authenticated") {
+    if (status === "unauthenticated") {
       toast({
         title: "Primeiro realize seu login.",
-        description: "Clique no ícone acima e faça seu login.",
       });
-      router.push("/user/sign-in");
+      router.push("/api/auth/signin");
     } else {
       toast({
         title: "Produto adicionado ao carrinho.",

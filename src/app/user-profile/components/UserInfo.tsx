@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import { toast } from "sonner";
 
@@ -28,9 +28,11 @@ interface UserInfoProps {
 const UserInfo = ({ session }: UserInfoProps) => {
   const router = useRouter();
   const { handleLoadingClick } = useContext(LoadingContext);
+  const [isNavigate, setIsNavigate] = useState(false);
 
   const handleLogoutClick = async () => {
     handleLoadingClick(true);
+    setIsNavigate(true);
     await signOut({ redirect: false });
     router.push("/");
     toast("Você saiu da conta com sucesso.", {
@@ -39,13 +41,18 @@ const UserInfo = ({ session }: UserInfoProps) => {
   };
 
   const handleRouterClick = (path: string) => {
-    router.push(`/user-profile/${path}`);
     handleLoadingClick(true);
+    setIsNavigate(true);
+    router.push(`/user-profile/${path}`);
   };
 
   useEffect(() => {
-    handleLoadingClick(false);
-  }, [handleLoadingClick]);
+    if (isNavigate) {
+      handleLoadingClick(true);
+    } else {
+      handleLoadingClick(false);
+    }
+  }, [handleLoadingClick, isNavigate]);
 
   return (
     <main className="p-5 text-secondaryColor flex flex-col justify-center">

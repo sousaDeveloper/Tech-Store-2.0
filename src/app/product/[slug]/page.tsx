@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import ProductDetails from "../components/ProductDetails";
 import { computeProductTotalPrice } from "@/helpers/product";
-import ProductList from "@/app/components/ProductList";
+import ProductList from "@/app/components/Product/ProductList";
 
 interface ProductPageProps {
   params: {

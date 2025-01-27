@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CATEGORY_ICON } from "@/constants/category-icon";
-import ProductList from "./ProductList";
+import ProductList from "./Product/ProductList";
 import { Category, Product } from "@prisma/client";
 import { useState } from "react";
 import SubText from "./SubText";

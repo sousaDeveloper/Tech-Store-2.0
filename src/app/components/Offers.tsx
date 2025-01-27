@@ -1,4 +1,4 @@
-import ProductList from "./ProductList";
+import ProductList from "./Product/ProductList";
 import { prisma } from "@/lib/prisma";
 import SubText from "./SubText";
 

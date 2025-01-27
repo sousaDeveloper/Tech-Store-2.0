@@ -4,12 +4,12 @@ import { NextRequest } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(req: NextRequest) {
   const { favorite } = await req.json();
-  const { id } = await params;
+  const urlParts = req.nextUrl.pathname.split("/");
+
+  const id = urlParts[urlParts.length - 1];
+  console.log(id);
 
   const session = await getServerSession(authOptions);
 

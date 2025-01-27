@@ -7,6 +7,7 @@ import { ArrowDownIcon, Loader2Icon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import FavoriteButton from "./FavoriteButton";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -24,17 +25,20 @@ const ProductItem = ({ product, dataAosDelay }: ProductItemProps) => {
 
   return (
     <div
-      className="flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] relative text-secondaryColor cursor-pointer"
-      onClick={handleRouterClick}
+      className="flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] relative text-secondaryColor"
       data-aos="fade-up"
       data-aos-delay={dataAosDelay}
     >
-      {product.discountPercentage > 0 && (
-        <Badge className="absolute bg-gradient mt-2 ml-2 flex z-10">
-          <ArrowDownIcon size={14} />
-          {product.discountPercentage}%
-        </Badge>
-      )}
+      <div className="flex justify-end items-center absolute w-full">
+        {product.discountPercentage > 0 && (
+          <Badge className="bg-gradient ml-2 mr-auto flex z-10">
+            <ArrowDownIcon size={14} />
+            {product.discountPercentage}%
+          </Badge>
+        )}
+        <FavoriteButton product={product} />
+      </div>
+
       <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg relative">
         <Image
           src={product.imageURLs[0]}
@@ -52,24 +56,26 @@ const ProductItem = ({ product, dataAosDelay }: ProductItemProps) => {
           />
         )}
       </div>
-      <h2 className="truncate">{product.name}</h2>
-      {product.discountPercentage > 0 ? (
-        <h2 className="flex items-center gap-1 truncate">
-          <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
-          <span className="line-through text-xs opacity-70">
-            {toCurrency({ price: Number(product.basePrice) })}
-          </span>
-        </h2>
-      ) : (
-        <h2>{toCurrency({ price: Number(product.basePrice) })}</h2>
-      )}
-      <div className="flex gap-[0.1rem] items-center mt-2">
-        <StarIcon className="text-primaryColor" size={17} />
-        <StarIcon className="text-primaryColor" size={17} />
-        <StarIcon className="text-primaryColor" size={17} />
-        <StarIcon className="text-primaryColor" size={17} />
-        <StarIcon size={17} className="text-secondaryColor" />
-        <span className="text-sm">(50)</span>
+      <div onClick={handleRouterClick} className="cursor-pointer">
+        <h2 className="truncate">{product.name}</h2>
+        {product.discountPercentage > 0 ? (
+          <h2 className="flex items-center gap-1 truncate">
+            <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
+            <span className="line-through text-xs opacity-70">
+              {toCurrency({ price: Number(product.basePrice) })}
+            </span>
+          </h2>
+        ) : (
+          <h2>{toCurrency({ price: Number(product.basePrice) })}</h2>
+        )}
+        <div className="flex gap-[0.1rem] items-center mt-2">
+          <StarIcon className="text-primaryColor" size={17} />
+          <StarIcon className="text-primaryColor" size={17} />
+          <StarIcon className="text-primaryColor" size={17} />
+          <StarIcon className="text-primaryColor" size={17} />
+          <StarIcon size={17} className="text-secondaryColor" />
+          <span className="text-sm">(50)</span>
+        </div>
       </div>
     </div>
   );

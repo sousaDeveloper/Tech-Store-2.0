@@ -2,7 +2,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
-
 import { prisma } from "./prisma";
 import { compare } from "bcrypt";
 import { Adapter } from "next-auth/adapters";
@@ -37,6 +36,7 @@ export const authOptions: NextAuthOptions = {
 
         const existsUser = await prisma.user.findUnique({
           where: { email: credentials.email },
+          include: { Favorite: true },
         });
 
         if (!existsUser) {
@@ -57,22 +57,37 @@ export const authOptions: NextAuthOptions = {
           id: `${existsUser.id}`,
           name: existsUser.name || "",
           email: existsUser.email,
+          favorites: existsUser.Favorite.map((fav) => fav.productId),
         };
       },
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
+    // Callback de session para incluir os favoritos na sessão
+    async session({ session, token }) {
+      // Se o token contiver o id do usuário, podemos buscar seus favoritos
+      if (token?.id) {
+        const favorites = await prisma.favorite.findMany({
+          where: { userId: token.id },
+          select: { productId: true },
+        });
+
+        // Adicionando os favoritos à sessão
+        session.user.favorites = favorites.map((fav) => fav.productId);
+      }
+
       return {
         ...session,
         user: {
-          id: user?.id ?? "",
-          name: user?.name ?? "",
-          email: user?.email ?? "",
+          id: token.id ?? "",
+          name: token.name ?? "",
+          email: token.email ?? "",
+          favorites: session.user.favorites ?? [], // Adiciona favoritos se existir
         },
       };
     },
 
+    // Callback de JWT para incluir o id do usuário no token
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;

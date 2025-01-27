@@ -67,7 +67,7 @@ const UserInfo = ({ session }: UserInfoProps) => {
       <Separator />
       <section className="mt-3 ml-1">
         <h2 className="text-xl" data-aos="fade-up" data-aos-delay="100">
-          Bem-vindo de volta, {session.name.split(" ")}.
+          Bem-vindo de volta, {session.name.split(" ")[0]}.
         </h2>
         <div className="flex flex-col gap-1 mt-10 text-md">
           <Link

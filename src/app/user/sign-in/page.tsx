@@ -16,9 +16,9 @@ import { Input } from "@/components/ui/input";
 import ButtonGoogle from "@/app/user/components/ButtonGoogle";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useToast } from "@/hooks/use-toast";
 import { useContext, useState } from "react";
 import { LoadingContext } from "@/providers/loading";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email("Email inválido").min(1, "Email é obrigatório"),
@@ -31,7 +31,6 @@ const formSchema = z.object({
 const SignInPage = () => {
   const [authError, setAuthError] = useState<string | null>(null);
   const router = useRouter();
-  const { toast } = useToast();
   const { isLoading, handleLoadingClick } = useContext(LoadingContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,8 +56,7 @@ const SignInPage = () => {
       handleLoadingClick(false);
     } else {
       router.push("/user-profile");
-      toast({
-        title: "Login realizado com sucesso!",
+      toast("Login realizado com sucesso!", {
         description: "Redirecionando para página do usuário em instantes.",
       });
       handleLoadingClick(false);

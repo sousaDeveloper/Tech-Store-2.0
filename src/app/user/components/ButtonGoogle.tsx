@@ -1,21 +1,19 @@
 "use client";
 
-import { useToast } from "@/hooks/use-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface ButtonGoogleProps {
   text: string;
 }
 
 const ButtonGoogle = ({ text }: ButtonGoogleProps) => {
-  const { toast } = useToast();
   const router = useRouter();
 
   const handleLogin = async () => {
     await signIn("google", { redirect: false });
-    toast({
-      title: "Login com o Google realizado",
+    toast("Login com o Google realizado", {
       description: "Redirecionando para página do usuário em instantes.",
     });
     router.push("/user-profile");

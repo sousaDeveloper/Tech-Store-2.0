@@ -14,9 +14,9 @@ import {
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
 import { useContext } from "react";
 import { LoadingContext } from "@/providers/loading";
+import { toast } from "sonner";
 
 const formSchema = z
   .object({
@@ -42,7 +42,6 @@ const formSchema = z
 
 const SignUp = () => {
   const router = useRouter();
-  const { toast } = useToast();
   const { handleLoadingClick, isLoading } = useContext(LoadingContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -69,11 +68,7 @@ const SignUp = () => {
       const responseData = await response.json();
 
       if (response.status === 409) {
-        toast({
-          title: "Algo deu errado!",
-          description: responseData.message,
-          variant: "destructive",
-        });
+        toast("Algo deu errado!", { description: responseData.message });
 
         form.setError("email", {
           type: "manual",
@@ -83,15 +78,12 @@ const SignUp = () => {
       }
 
       if (response.ok) {
-        toast({
-          title: "Conta criada com sucesso.",
+        toast("Conta criada com sucesso.", {
           description: "Agora, realize seu login.",
         });
         router.push("/");
       } else {
-        toast({
-          title: responseData.message,
-        });
+        toast(responseData.message);
       }
     } catch (error) {
       console.error("Something went wrong.", error);

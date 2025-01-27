@@ -8,8 +8,8 @@ import ProductInfo from "./ProductInfo";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
 import { CartContext } from "@/providers/cart";
-import { useToast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
+import { toast } from "sonner";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
@@ -22,7 +22,6 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const { status } = useSession();
   const { addProductToCart } = useContext(CartContext);
   const router = useRouter();
-  const { toast } = useToast();
 
   const handleRouterBackClick = () => {
     setLoading(true);
@@ -40,13 +39,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   const handleAddProductToCart = () => {
     if (status === "unauthenticated") {
-      toast({
-        title: "Primeiro realize seu login.",
-      });
+      toast("Primeiro realize seu login.");
       router.push("/api/auth/signin");
     } else {
-      toast({
-        title: "Produto adicionado ao carrinho.",
+      toast("Produto adicionado ao carrinho.", {
         description: "Clique no ícone e veja os itens do seu carrinho.",
       });
       addProductToCart({ ...product, quantity });

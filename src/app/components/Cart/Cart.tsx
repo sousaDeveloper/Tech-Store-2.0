@@ -14,8 +14,8 @@ import { useContext } from "react";
 import CartItem from "./CartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
-import { useToast } from "@/hooks/use-toast";
 import Separator from "../Separator";
+import { toast } from "sonner";
 
 const Cart = () => {
   const pathname = usePathname();
@@ -28,7 +28,6 @@ const Cart = () => {
     increasedQuantity,
     decreasedQuantity,
   } = useContext(CartContext);
-  const { toast } = useToast();
 
   const totalItems = products.reduce(
     (acc, product) => acc + product.quantity,
@@ -36,9 +35,7 @@ const Cart = () => {
   );
 
   const handleDeleteItemClick = (product: CartProduct) => {
-    toast({
-      title: "Item excluído com sucesso",
-    });
+    toast("Item excluído com sucesso");
     removeProductToCart(product);
   };
 

@@ -15,8 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useContext, useState } from "react";
-import { LoadingContext } from "@/providers/loading";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -30,7 +29,7 @@ const formSchema = z.object({
 const SignInPage = () => {
   const [authError, setAuthError] = useState<string | null>(null);
   const router = useRouter();
-  const { isLoading, handleLoadingClick } = useContext(LoadingContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,7 +41,7 @@ const SignInPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setAuthError(null);
-    handleLoadingClick(true);
+    setIsLoading(true);
 
     const signInData = await signIn("credentials", {
       email: values.email,
@@ -52,11 +51,11 @@ const SignInPage = () => {
 
     if (signInData?.error) {
       setAuthError("Email ou senha incorretos.");
-      handleLoadingClick(false);
+      setIsLoading(false);
     } else {
       toast("Login realizado com sucesso!");
       router.push("/user-profile");
-      handleLoadingClick(false);
+      setIsLoading(false);
     }
   };
 
@@ -90,7 +89,7 @@ const SignInPage = () => {
               <FormItem
                 className="text-left"
                 data-aos="fade-up"
-                data-aos-delay="100"
+                data-aos-delay="200"
               >
                 <FormLabel className="text-md">Email</FormLabel>
                 <FormControl>
@@ -115,7 +114,7 @@ const SignInPage = () => {
               <FormItem
                 className="text-left"
                 data-aos="fade-up"
-                data-aos-delay="400"
+                data-aos-delay="300"
               >
                 <FormLabel className="text-md">Senha</FormLabel>
                 <FormControl>

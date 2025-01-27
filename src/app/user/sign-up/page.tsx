@@ -193,8 +193,6 @@ const SignUp = () => {
             <button
               className="w-full py-2 bg-gradient mt-5 rounded-lg"
               type="submit"
-              data-aos="zoom-in"
-              data-aos-delay="200"
             >
               {isLoading ? (
                 <span className="flex gap-1 justify-center items-center">

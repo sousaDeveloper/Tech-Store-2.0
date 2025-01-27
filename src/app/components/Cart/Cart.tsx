@@ -45,7 +45,10 @@ const Cart = () => {
         className={`fixed z-50 cursor-pointer ${
           pathname === "/" ? "bottom-5 right-5" : "bottom-24 left-5"
         } rounded-full bg-gradient h-12 w-12 grid place-content-center text-secondaryColor animate-bounce ${
-          products.length <= 0 || pathname === "/user-profile"
+          products.length <= 0 ||
+          pathname === "/user-profile" ||
+          pathname === "/user-profile/wishlist" ||
+          pathname === "/user-profile/orders"
             ? "flex-none hidden"
             : ""
         }`}

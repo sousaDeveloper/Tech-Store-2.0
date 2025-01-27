@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import { toast } from "sonner";
+import { CartContext } from "@/providers/cart";
 
 export interface UserSession {
   id: string;
@@ -28,6 +29,7 @@ interface UserInfoProps {
 const UserInfo = ({ session }: UserInfoProps) => {
   const router = useRouter();
   const { handleLoadingClick } = useContext(LoadingContext);
+  const { setProducts } = useContext(CartContext);
   const [isNavigate, setIsNavigate] = useState(false);
 
   const handleLogoutClick = async () => {
@@ -38,6 +40,7 @@ const UserInfo = ({ session }: UserInfoProps) => {
     toast("Você saiu da conta com sucesso.", {
       description: "Redirecionando para página inicial em instantes.",
     });
+    setProducts([]);
   };
 
   const handleRouterClick = (path: string) => {

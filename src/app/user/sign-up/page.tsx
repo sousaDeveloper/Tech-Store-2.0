@@ -2,7 +2,6 @@
 
 import { ChevronLeft, Loader2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import ButtonGoogle from "../components/ButtonGoogle";
 import { FormProvider, useForm } from "react-hook-form";
 import {
   FormControl,
@@ -206,14 +205,6 @@ const SignUp = () => {
                 <>Criar Conta</>
               )}
             </button>
-
-            <div className="flex justify-center items-center space-x-4 mt-4">
-              <hr className="flex-grow border-t-1 border-gray-300" />
-              <h3 className="text-sm opacity-60">Ou crie sua conta com</h3>
-              <hr className="flex-grow border-t-1 border-gray-300" />
-            </div>
-
-            <ButtonGoogle text="Criar conta com o Google" />
           </form>
         </FormProvider>
       </section>

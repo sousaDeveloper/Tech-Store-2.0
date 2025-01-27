@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import ButtonGoogle from "@/app/user/components/ButtonGoogle";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useContext, useState } from "react";
@@ -55,10 +54,8 @@ const SignInPage = () => {
       setAuthError("Email ou senha incorretos.");
       handleLoadingClick(false);
     } else {
+      toast("Login realizado com sucesso!");
       router.push("/user-profile");
-      toast("Login realizado com sucesso!", {
-        description: "Redirecionando para página do usuário em instantes.",
-      });
       handleLoadingClick(false);
     }
   };
@@ -150,17 +147,7 @@ const SignInPage = () => {
             Acessar{" "}
             {isLoading && <Loader2Icon className="animate-spin" size={22} />}
           </button>
-          <div
-            className="flex justify-center items-center space-x-4 my-5"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <hr className="flex-grow border-t-1 border-gray-300" />
-            <h3 className="text-sm opacity-70">Ou faça login com</h3>
-            <hr className="flex-grow border-t-1 border-gray-300" />
-          </div>
         </form>
-        <ButtonGoogle text="Continuar com o Google" />
         <h3 className="text-sm text-center mt-4">
           Não possui uma conta?{" "}
           <Link className="underline" href="/user/sign-up">

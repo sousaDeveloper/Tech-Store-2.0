@@ -12,9 +12,14 @@ import FavoriteButton from "./FavoriteButton";
 interface ProductItemProps {
   product: ProductWithTotalPrice;
   dataAosDelay: number;
+  className?: string;
 }
 
-const ProductItem = ({ product, dataAosDelay }: ProductItemProps) => {
+const ProductItem = ({
+  product,
+  dataAosDelay,
+  className,
+}: ProductItemProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -25,7 +30,7 @@ const ProductItem = ({ product, dataAosDelay }: ProductItemProps) => {
 
   return (
     <div
-      className="flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] relative text-secondaryColor"
+      className={`flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] ${className} relative text-secondaryColor`}
       data-aos="fade-up"
       data-aos-delay={dataAosDelay}
     >

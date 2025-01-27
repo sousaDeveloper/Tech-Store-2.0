@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, Loader2Icon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import {
   FormControl,
@@ -13,9 +13,10 @@ import {
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoadingContext } from "@/providers/loading";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 const formSchema = z
   .object({
@@ -41,6 +42,7 @@ const formSchema = z
 
 const SignUp = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const { handleLoadingClick, isLoading } = useContext(LoadingContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -90,6 +92,15 @@ const SignUp = () => {
       handleLoadingClick(false);
     }
   };
+
+  useEffect(() => {
+    if (session?.user) {
+      toast("Usuário já autenticado.", {
+        description: "Voltando para página inicial em instantes.",
+      });
+      return redirect("/");
+    }
+  }, []);
 
   return (
     <main className="flex flex-col text-secondaryColor min-h-[54rem] text-center p-10">

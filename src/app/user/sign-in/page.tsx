@@ -13,9 +13,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -30,6 +30,7 @@ const SignInPage = () => {
   const [authError, setAuthError] = useState<string | null>(null);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { data: session } = useSession();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -58,6 +59,15 @@ const SignInPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (session?.user) {
+      toast("Usuário já autenticado.", {
+        description: "Voltando para página inicial em instantes.",
+      });
+      return redirect("/");
+    }
+  }, []);
 
   return (
     <section className="flex flex-col p-10 pt-5 text-secondaryColor min-h-[40rem] text-center">

@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import Header from "../components/Header";
 import { computeProductTotalPrice } from "@/helpers/product";
-import ProductItem from "@/app/components/Product/ProductItem";
+import ProductItem from "@/app/(shop)/_components/Product/ProductItem";
 import { redirect } from "next/navigation";
 
 const WishListPage = async () => {

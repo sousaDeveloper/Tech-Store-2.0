@@ -1,6 +1,6 @@
 "use client";
 
-import Separator from "@/app/components/Separator";
+import Separator from "@/app/(shop)/_components/Separator";
 import { LoadingContext } from "@/providers/loading";
 import { ChevronLeft, Loader2Icon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";

@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/prisma";
-import Catalog from "./components/Catalog";
-import Header from "./components/Header";
-import Offers from "./components/Offers";
-import Testimonials from "./components/Testimonials/Testimonials";
-import Footer from "./components/Footer";
-import Separator from "./components/Separator";
+import Catalog from "./_components/Catalog";
+import Header from "./_components/Header";
+import Offers from "./_components/Offers";
+import Testimonials from "./_components/Testimonials/Testimonials";
+import Footer from "./_components/Footer";
+import Separator from "./_components/Separator";
 
 export default async function Home() {
   const products = await prisma.product.findMany({});

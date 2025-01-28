@@ -1,10 +1,7 @@
 "use client";
-import "./globals.css";
 import { Manrope } from "next/font/google";
 import { AuthProvider } from "@/providers/auth";
 import { Toaster } from "@/components/ui/sonner";
-import Cart from "./components/Cart/Cart";
-import CartContextProvider from "@/providers/cart";
 import LoadingProvider from "@/providers/loading";
 import Script from "next/script";
 import { useEffect } from "react";
@@ -36,12 +33,7 @@ export default function RootLayout({
       </head>
       <body className={`antialiased bg-background ${manrope.className}`}>
         <LoadingProvider>
-          <AuthProvider>
-            <CartContextProvider>
-              <Cart />
-              {children}
-            </CartContextProvider>
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </LoadingProvider>
 
         <Toaster />

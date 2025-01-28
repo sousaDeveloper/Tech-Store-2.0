@@ -14,6 +14,11 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum TypeUser {
+  ADMIN
+  USER
+}
+
 model Category {
   id       String    @id @default(uuid())
   name     String
@@ -65,10 +70,10 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
-
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  Favorite  Favorite[]
+  TypeUser      TypeUser        @default(USER)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  Favorite      Favorite[]
 }
 
 model Account {

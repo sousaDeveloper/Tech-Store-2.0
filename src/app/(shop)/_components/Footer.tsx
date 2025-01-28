@@ -1,20 +1,16 @@
+import ContentFooter from "./ContentFooter";
 import Separator from "./Separator";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col text-secondaryColor px-5 mt-14 gap-5 bg-gradient-footer">
+    <footer className="flex flex-col text-secondaryColor px-5 mt-14 sm:mt-24 gap-5 bg-gradient-footer sm:px-8">
       <div className="flex flex-col">
-        <h1 className="text-xl" data-aos="fade-up">
-          Receba Ofertas Exclusivas
-        </h1>
-        <p
-          className="text-sm text-gray-400"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Assine nossa newsletter e receba descontos e promoções diretamente no
-          seu e-mail!
-        </p>
+        <ContentFooter
+          title="Receba Ofertas Exclusivas"
+          description="Assine nossa newsletter e receba descontos e promoções diretamente no
+          seu e-mail!"
+        />
+
         <div className="flex gap-5 items-center mt-2">
           <input
             type="text"
@@ -28,46 +24,28 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl" data-aos="fade-up">
-          Fale Conosco
-        </h1>
-        <p
-          className="text-sm text-gray-400"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Tem alguma dúvida? Entre em contato com nossa equipe pelo e-mail{" "}
-          devlpsousa@gmail.com ou pelo telefone {"(45)"} 99836-5461
-        </p>
+        <ContentFooter
+          title="Fale Conosco"
+          description="Tem alguma dúvida? Entre em contato com nossa equipe pelo e-mail
+          devlpsousa@gmail.com ou pelo telefone (45)99836-5461."
+        />
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl" data-aos="fade-up">
-          Acompanhe-nos
-        </h1>
-        <p
-          className="text-sm text-gray-400"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Siga-nos nas redes sociais e não perca nenhuma oportunidade. Fique por
-          dentro das novidades, promoções e lançamentos!
-        </p>
+        <ContentFooter
+          title="Acompanhe-nos"
+          description="Siga-nos nas redes sociais e não perca nenhuma oportunidade. Fique por
+          dentro das novidades, promoções e lançamentos!"
+        />
       </div>
       <div className="flex flex-col">
-        <h1 className="text-xl" data-aos="fade-up">
-          Formas de Pagamento
-        </h1>
-        <p
-          className="text-sm text-gray-400"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Aceitamos diversos meios de pagamento para tornar sua experiência
-          ainda mais prática.
-        </p>
+        <ContentFooter
+          title="Formas de Pagamento"
+          description="Aceitamos diversos meios de pagamento para tornar sua experiência
+          ainda mais prática."
+        />
       </div>
       <Separator />
-      <h2 className="text-md text-center pb-5">
+      <h2 className="text-base sm:text-lg text-center pb-5">
         <span className="text-primaryColor font-bold">Tech Store</span> | Todos
         os direitos reservados | Política de Privacidade | Termos e Condições
       </h2>

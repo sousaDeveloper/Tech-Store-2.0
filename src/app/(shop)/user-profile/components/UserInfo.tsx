@@ -61,12 +61,16 @@ const UserInfo = ({ session }: UserInfoProps) => {
     <main className="p-5 text-secondaryColor flex flex-col justify-center">
       <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[38rem] z-[-1]"></div>
 
-      <Header text="Minha conta" className="ml-20" />
+      <Header text="Minha conta" />
       <section className="mt-3 ml-1">
-        <h2 className="text-xl" data-aos="fade-up" data-aos-delay="100">
+        <h2
+          className="text-xl sm:text-2xl"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           Bem-vindo de volta, {session.name.split(" ")[0]}.
         </h2>
-        <div className="flex flex-col gap-1 mt-10 text-md">
+        <div className="flex flex-col gap-1 mt-10 text-md sm:text-lg">
           <button
             className="text-left flex items-center gap-1 hover:text-gray-400"
             onClick={() => handleRouterClick("/orders")}

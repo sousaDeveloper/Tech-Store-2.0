@@ -8,14 +8,18 @@ const Testimonials = async () => {
   const testimonials = await prisma.testimonial.findMany({});
 
   return (
-    <section className="text-secondaryColor">
-      <h1 className="text-2xl px-5" data-aos="fade-right" data-aos-delay="200">
+    <section className="text-secondaryColor sm:px-8 sm:my-12">
+      <h1
+        className="text-2xl sm:text-3xl sm:w-[70%]"
+        data-aos="fade-right"
+        data-aos-delay="200"
+      >
         O que <span className="text-gradient">nossos clientes</span> dizem sobre
         nós?
       </h1>
       <SubText
         text="Junte-se a nossos clientes satisfeitos!"
-        className="px-5 text-sm"
+        className="text-sm"
       />
 
       {/* Primeiro grupo (movendo para a esquerda) */}

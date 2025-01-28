@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
-import { ArrowDownIcon, Loader2Icon, StarIcon } from "lucide-react";
+import { ArrowDownIcon, LoaderIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -30,7 +30,7 @@ const ProductItem = ({
 
   return (
     <div
-      className={`flex flex-col min-w-[8.5rem] max-w-[8.5rem] h-[15rem] ${className} relative text-secondaryColor`}
+      className={`flex flex-col min-w-[8.5rem] max-w-[8.5rem] sm:min-w-[10rem] sm:max-w-[10rem] h-[15rem] ${className} relative text-secondaryColor`}
       data-aos="fade-up"
       data-aos-delay={dataAosDelay}
     >
@@ -44,7 +44,7 @@ const ProductItem = ({
         <FavoriteButton product={product} />
       </div>
 
-      <div className="bg-backgroundItem h-36 grid place-content-center rounded-lg relative">
+      <div className="bg-backgroundItem h-36 sm:h-40 grid place-content-center rounded-lg relative">
         <Image
           src={product.imageURLs[0]}
           alt={product.slug}
@@ -52,19 +52,21 @@ const ProductItem = ({
           height={0}
           sizes="100vh"
           loading="lazy"
-          className={`object-contain w-24 h-24 ${isLoading && "opacity-20"}`}
+          className={`object-contain w-24 h-24 sm:w-28 sm:h-28 ${
+            isLoading && "opacity-20"
+          }`}
         />
         {isLoading && (
-          <Loader2Icon
-            className="animate-spin absolute top-[3.2rem] left-[3.2rem]"
+          <LoaderIcon
+            className="animate-spin absolute top-[3.2rem] left-[3.2rem] sm:top-[4rem] sm:left-[4rem]"
             size={34}
           />
         )}
       </div>
       <div onClick={handleRouterClick} className="cursor-pointer">
-        <h2 className="truncate">{product.name}</h2>
+        <h2 className="truncate sm:text-lg">{product.name}</h2>
         {product.discountPercentage > 0 ? (
-          <h2 className="flex items-center gap-1 truncate">
+          <h2 className="flex items-center gap-1 truncate sm:text-lg">
             <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
             <span className="line-through text-xs opacity-70">
               {toCurrency({ price: Number(product.basePrice) })}

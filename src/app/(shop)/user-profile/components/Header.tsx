@@ -8,10 +8,9 @@ import { useContext } from "react";
 
 interface HeaderProps {
   text: string;
-  className: string;
 }
 
-const Header = ({ text, className }: HeaderProps) => {
+const Header = ({ text }: HeaderProps) => {
   const router = useRouter();
   const { handleLoadingClick, isLoading } = useContext(LoadingContext);
   const pathname = usePathname();
@@ -23,18 +22,22 @@ const Header = ({ text, className }: HeaderProps) => {
 
   return (
     <>
-      <div className="flex items-center text-center mb-2">
-        <button onClick={handleRouterBackClick}>
+      <div className="flex justify-center items-center w-full relative sm:mb-2">
+        <button onClick={handleRouterBackClick} className="absolute left-4">
           <ChevronLeft size={40} className="cursor-pointer" />
         </button>
-        <h1 className={`text-2xl ${className}`} data-aos="fade-down">
+        <h1
+          className="text-2xl sm:text-3xl text-center flex-1 w-[15rem] max-w-[15rem]"
+          data-aos="fade-down"
+        >
           {text}
         </h1>
         {isLoading && (
           <Loader2Icon
-            className={`animate-spin ml-16 ${
+            className={`animate-spin ${
               pathname === "/user-profile/wishlist" && "flex-none hidden"
             }`}
+            size={36}
           />
         )}
       </div>

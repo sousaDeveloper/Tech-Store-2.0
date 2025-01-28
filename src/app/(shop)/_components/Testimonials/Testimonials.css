@@ -65,11 +65,15 @@
 
 @media (min-width: 640px) {
   .primary {
-    animation: primary 60s linear infinite;
+    animation: primary 30s linear infinite;
   }
 
   .secondary {
-    animation: secondary 60s linear infinite;
+    animation: secondary 30s linear infinite;
+  }
+
+  .scroll-parent {
+    height: 11rem;
   }
 }
 

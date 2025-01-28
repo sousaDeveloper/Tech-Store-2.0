@@ -34,34 +34,34 @@ const CartItem = ({
           width={0}
           height={0}
           sizes="100vw"
-          className="w-20 h-20 object-contain bg-backgroundItem rounded-lg p-2"
+          className="w-20 h-20 sm:w-28 sm:h-28 object-contain bg-backgroundItem rounded-lg p-2"
         />
-        <div className="flex flex-col">
-          <h2>{product.name}</h2>
+        <div className="flex flex-col sm:gap-1">
+          <h2 className="sm:text-xl truncate">{product.name}</h2>
           {product.discountPercentage > 0 ? (
             <div className="flex flex-col">
               <h3 className="flex gap-1 items-center">
-                <span className="text-lg">
+                <span className="text-lg sm:text-xl">
                   {toCurrency({ price: +product.totalPrice })}
                 </span>
-                <span className="line-through opacity-60 text-xs">
+                <span className="line-through opacity-60 text-xs sm:text-sm">
                   {toCurrency({ price: +product.basePrice })}
                 </span>
               </h3>
             </div>
           ) : (
-            <h1 className="text-lg">
+            <h1 className="text-lg sm:text-xl">
               {toCurrency({ price: +product.basePrice })}
             </h1>
           )}
           <div className="flex items-center">
-            <h2 className="text-sm">Quantidade:</h2>
+            <h2 className="text-sm sm:text-base">Quantidade:</h2>
             <ChevronLeft
               size={30}
               className="cursor-pointer"
               onClick={() => handleDecreasedQuantity(product.id)}
             />
-            <span className="text-md">{product.quantity}</span>
+            <span className="text-base sm:text-lg">{product.quantity}</span>
             <ChevronRight
               size={30}
               className="cursor-pointer"
@@ -76,20 +76,20 @@ const CartItem = ({
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="sm:text-xl mt-2 sm:w-[90%]">
               Tem certeza que deseja excluir o produto [
               {product.name.split(" ")[0]}] do carrinho?
             </DialogTitle>
-            <DialogDescription className="text-sm">
+            <DialogDescription className="text-sm opacity-70">
               Não será possível reverter essa ação.
             </DialogDescription>
           </DialogHeader>
-          <div className="flex justify-around w-full gap-4">
-            <DialogClose className="w-full bg-gray-400 rounded-lg">
+          <div className="flex justify-around sm:justify-end w-full gap-4">
+            <DialogClose className="w-full sm:w-fit sm:px-7 text-black bg-gray-400 rounded-lg">
               Voltar
             </DialogClose>
             <button
-              className=" w-full bg-red-500 rounded-lg py-1"
+              className="w-full sm:w-fit sm:px-7 bg-red-500 rounded-lg py-1"
               onClick={() => handleDeleteItem(product)}
             >
               Excluir

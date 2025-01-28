@@ -26,18 +26,24 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   };
 
   return (
-    <main className="px-5 pt-2 mt-2 min-h-max">
+    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-12">
       <div className="flex items-center justify-between" data-aos="fade-up">
-        <span className="text-sm opacity-60">Novo | +100 vendidos</span>
-        <span className="text-primaryColor text-[0.8rem]">
+        <span className="text-sm opacity-60 sm:tert-md">
+          Novo | +100 vendidos
+        </span>
+        <span className="text-primaryColor text-[0.8rem] sm:text-sm">
           Disponível em Estoque
         </span>
       </div>
-      <h1 className="text-2xl mt-2" data-aos="fade-up" data-aos-delay="200">
+      <h1
+        className="text-2xl mt-2 sm:text-3xl"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
         {product.name}
       </h1>
 
-      <div className="mt-2">
+      <div className="mt-2 sm:mt-4">
         <h3 className="text-md" data-aos="fade-up" data-aos-delay="300">
           Descrição do produto
         </h3>
@@ -57,7 +63,11 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
       </div>
       <hr className="text-secondaryColor mt-4 mb-3 opacity-60" />
       <div className="flex flex-col gap-1">
-        <h3 className="text-md" data-aos="fade-up" data-aos-delay="200">
+        <h3
+          className="text-md sm:text-lg"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Quantidade
         </h3>
         <Select
@@ -70,7 +80,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <SelectValue placeholder="1" className="opacity-70 text-sm" />
+            <SelectValue placeholder="1" className="opacity-70 text-sm sm:text-lg" />
           </SelectTrigger>
           <SelectContent className="bg-backgroundItem">
             {[1, 2, 3, 4, 5].map((num) => (

@@ -20,7 +20,7 @@ const WishListPage = async () => {
 
   return (
     <main className="p-5 text-secondaryColor flex flex-col justify-center">
-      <Header text="Lista de Desejos" className="ml-12" />
+      <Header text="Lista de Desejos" />
       {userFavorites.length === 0 ? (
         <h1 className="mt-2">Nenhum produto em sua lista de desejos.</h1>
       ) : (

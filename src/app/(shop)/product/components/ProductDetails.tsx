@@ -33,8 +33,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
 
   const handleImageClick = (url: string) => {
-    setLoading(true);
-    setImageUrl(url);
+    // Só altera a imagem se a URL for diferente da imagem atual
+    if (url !== imageUrl) {
+      setLoading(true);
+      setImageUrl(url);
+    }
   };
 
   const handleAddProductToCart = () => {
@@ -51,19 +54,19 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <section className="text-secondaryColor">
-      <div className="bg-backgroundItem relative px-5 pt-3 w-full grid place-content-center h-[20rem]">
+      <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[26rem]">
         {loading ? (
           <div className="flex justify-between items-center">
             <ChevronLeft
               size={36}
               onClick={handleRouterBackClick}
-              className="cursor-pointer bg-background top-3 left-5 rounded-xl absolute"
+              className="cursor-pointer bg-background sm:top-6 sm:left-6 top-3 left-5 rounded-xl absolute"
             />
-            <h1 className="top-5 right-28 text-center absolute">
+            <h1 className="left-1/2 transform -translate-x-1/2 top-4 sm:top-7 absolute text-center sm:text-xl">
               Detalhes do Produto
             </h1>
             <Loader2Icon
-              className="animate-spin top-3 right-5 absolute"
+              className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] absolute"
               size={36}
             />
           </div>
@@ -72,11 +75,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             <ChevronLeft
               size={36}
               onClick={handleRouterBackClick}
-              className={`cursor-pointer absolute top-3 left-5 bg-background rounded-xl ${
+              className={`cursor-pointer absolute top-3 sm:top-6 sm:left-6 left-5 bg-background rounded-xl ${
                 loading && "flex-none hidden"
               }`}
             />
-            <h1 className="top-5 right-28 text-center absolute">
+            <h1 className="left-1/2 transform -translate-x-1/2 sm:top-7 top-4 absolute text-center sm:text-xl">
               Detalhes do Produto
             </h1>
           </div>
@@ -89,20 +92,40 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           height={0}
           sizes="100vw"
           loading="lazy"
-          className="w-[15rem] h-[15rem] object-contain"
+          className="w-[15rem] h-[15rem] sm:w-[20rem] sm:h-[20rem] object-contain"
           onLoad={handleImageLoad}
         />
 
         <ChevronLeft
           size={36}
           onClick={handleRouterBackClick}
-          className={`cursor-pointer absolute top-3 left-5 bg-background rounded-lg ${
+          className={`cursor-pointer absolute top-3 left-5 sm:top-6 sm:left-6 bg-background rounded-lg ${
             loading && "hidden"
           }`}
         />
       </div>
+      <div className="hidden flex-none relative sm:ml-auto sm:flex-col sm:flex sm:w-[80px] gap-4 mx-6 top-6">
+        {product.imageURLs.map((url, index) => (
+          <div
+            key={index}
+            className="cursor-pointer bg-background rounded-xl sm:w-fit"
+            onClick={() => handleImageClick(url)}
+            data-aos="zoom-in"
+            data-aos-delay={index * 100}
+          >
+            <Image
+              src={url}
+              alt={`${product.slug}`}
+              width={70}
+              height={70}
+              loading="lazy"
+              className="w-[5rem] h-[5rem] object-contain"
+            />
+          </div>
+        ))}
+      </div>
 
-      <div className="flex justify-center gap-4 mt-2">
+      <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden">
         {product.imageURLs.map((url, index) => (
           <div
             key={index}
@@ -124,31 +147,31 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       </div>
 
       <ProductInfo product={product} setQuantity={setQuantity} />
-      <div className="w-full fixed bottom-0 rounded-tl-3xl rounded-tr-3xl bg-[#131313] p-4 px-5 flex gap-2 justify-between items-center z-50">
+      <div className="w-full fixed bottom-0 rounded-tl-3xl rounded-tr-3xl bg-[#131313] p-4 px-5 sm:px-10 flex gap-2 justify-between items-center z-50">
         {product.discountPercentage > 0 ? (
           <div className="flex flex-col">
-            <h3 className="text-sm opacity-60">
+            <h3 className="text-sm opacity-60 sm:text-lg">
               De:{" "}
               <span className="line-through">
                 {toCurrency({ price: +product.basePrice })}
               </span>
             </h3>
             <div className="flex items-center gap-2">
-              <h3 className="text-lg">
+              <h3 className="text-lg sm:text-2xl">
                 Por:{" "}
-                <span className="text-xl">
+                <span className="text-xl sm:text-2xl">
                   {toCurrency({ price: product.totalPrice })}
                 </span>
               </h3>
             </div>
           </div>
         ) : (
-          <h1 className="text-xl">
+          <h1 className="text-xl sm:text-2xl">
             {toCurrency({ price: +product.basePrice })}
           </h1>
         )}
         <button
-          className="bg-gradient w-fit p-2 rounded-lg flex items-center justify-center gap-1"
+          className="bg-gradient w-fit p-2 sm:p-4 sm:px-10 sm:text-xl rounded-lg flex items-center justify-center gap-1"
           onClick={handleAddProductToCart}
         >
           <ShoppingCartIcon size={18} />

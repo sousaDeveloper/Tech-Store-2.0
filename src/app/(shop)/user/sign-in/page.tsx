@@ -75,23 +75,26 @@ const SignInPage = () => {
       <div className="flex justify-between">
         <ChevronLeft
           size={36}
-          className="-ml-3 cursor-pointer mt-5"
+          className="-ml-3 cursor-pointer mt-5 sm:mt-8 sm:-ml-1"
           onClick={() => router.back()}
         />
       </div>
 
-      <h2 className="text-2xl mt-10" data-aos="fade-down">
+      <h2 className="text-2xl sm:text-3xl mt-10 sm:px-10" data-aos="fade-down">
         Já tem uma conta? Faça login para continuar.
       </h2>
       <h3
-        className="text-sm text-gray-400"
+        className="text-sm sm:text-lg text-gray-400 sm:px-10"
         data-aos="fade-down"
         data-aos-delay="200"
       >
         Bem-vindo de volta! Entre com seu e-mail e senha para acessar sua conta.
       </h3>
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-7">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 mt-7 sm:px-20"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -101,7 +104,7 @@ const SignInPage = () => {
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <FormLabel className="text-md">Email</FormLabel>
+                <FormLabel className="text-base sm:text-lg">Email</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
@@ -112,7 +115,7 @@ const SignInPage = () => {
                     }}
                   />
                 </FormControl>
-                <FormMessage className="text-red-400 text-start" />
+                <FormMessage className="text-red-400 text-start sm:text-sm" />
               </FormItem>
             )}
           />
@@ -126,7 +129,7 @@ const SignInPage = () => {
                 data-aos="fade-up"
                 data-aos-delay="300"
               >
-                <FormLabel className="text-md">Senha</FormLabel>
+                <FormLabel className="text-md sm:text-lg">Senha</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -137,29 +140,33 @@ const SignInPage = () => {
                     }}
                   />
                 </FormControl>
-                <FormMessage className="text-red-400 text-start" />
+                <FormMessage className="text-red-400 text-start sm:text-sm" />
               </FormItem>
             )}
           />
 
           {authError && (
-            <div className="text-red-400 text-start" data-aos="zoom-in">
+            <div
+              className="text-red-400 text-start sm:text-base"
+              data-aos="zoom-in"
+            >
               {authError}
             </div>
           )}
 
           <button
-            className="w-full py-2 bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2"
+            className="w-full py-2 sm:py-3 sm:text-lg bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2"
             data-aos="zoom-in"
             data-aos-delay="200"
+            disabled={isLoading}
           >
             Acessar{" "}
             {isLoading && <Loader2Icon className="animate-spin" size={22} />}
           </button>
         </form>
-        <h3 className="text-sm text-center mt-4">
+        <h3 className="text-sm text-center mt-4 sm:text-base">
           Não possui uma conta?{" "}
-          <Link className="underline" href="/user/sign-up">
+          <Link className="underline opacity-70" href="/user/sign-up">
             Registre-se
           </Link>
         </h3>

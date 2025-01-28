@@ -45,8 +45,8 @@ const ProductPage = async (props: ProductPageProps) => {
             totalPrice: computeProductTotalPrice(product),
           }}
         />
-        <div className="flex flex-col pb-20 text-secondaryColor px-5">
-          <h2 className="text-lg mb-2">Produtos Relacionados</h2>
+        <div className="flex flex-col pb-20 sm:pb-28 text-secondaryColor px-5">
+          <h2 className="text-lg sm:text-xl mb-2">Produtos Relacionados</h2>
           <ProductList products={products} />
         </div>
       </>

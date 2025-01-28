@@ -4,12 +4,13 @@ import { computeProductTotalPrice } from "@/helpers/product";
 import ProductList from "@/app/components/Product/ProductList";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-const ProductPage = async ({ params }: ProductPageProps) => {
+const ProductPage = async (props: ProductPageProps) => {
+  const params = await props.params;
   const { slug } = params;
 
   const product = await prisma.product.findFirst({

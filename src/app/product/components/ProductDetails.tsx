@@ -18,7 +18,7 @@ interface ProductDetailsProps {
 const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const [imageUrl, setImageUrl] = useState(product.imageURLs[1] || "");
+  const [imageUrl, setImageUrl] = useState(product.imageURLs[0] || "");
   const { status } = useSession();
   const { addProductToCart } = useContext(CartContext);
   const router = useRouter();

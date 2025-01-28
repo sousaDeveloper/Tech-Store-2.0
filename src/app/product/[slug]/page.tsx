@@ -10,7 +10,7 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const { slug } = await params;
+  const { slug } = params;
 
   const product = await prisma.product.findFirst({
     where: {
@@ -18,10 +18,14 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     },
   });
 
+  if (!product) {
+    return <h1>Produto não encontrado</h1>;
+  }
+
   const products = await prisma.product.findMany({
     where: {
       category: {
-        id: product?.categoryID,
+        id: product.categoryID,
       },
       NOT: {
         slug: slug,

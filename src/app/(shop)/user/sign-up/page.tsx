@@ -109,16 +109,21 @@ const SignUp = () => {
         <ChevronLeft
           size={36}
           onClick={() => router.back()}
-          className="cursor-pointer bg-background -ml-3 -mt-12 rounded-xl absolute sm:-mt-9 sm:-ml-1"
+          className="cursor-pointer bg-background -ml-3 -mt-12 rounded-xl absolute sm:-mt-9 sm:-ml-1 md:hidden md:flex-none"
+        />
+        <ChevronLeft
+          size={44}
+          onClick={() => router.back()}
+          className="hidden flex-none cursor-pointer bg-background -mt-12 absolute sm:-mt-9 md:flex"
         />
         <h2
-          className="text-2xl mt-5 sm:text-3xl md:text-4xl sm:px-10"
+          className="text-2xl mt-5 sm:text-3xl md:text-4xl sm:px-10 md:mt-10"
           data-aos="fade-down"
         >
           Crie sua conta!
         </h2>
         <h3
-          className="text-sm sm:text-lg md:text-xl text-gray-400"
+          className="text-sm sm:text-lg md:text-xl lg:w-[50%] lg:mx-auto text-gray-400"
           data-aos="fade-down"
           data-aos-delay="200"
         >

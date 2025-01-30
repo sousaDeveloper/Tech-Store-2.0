@@ -10,7 +10,7 @@ const Testimonials = async () => {
   return (
     <section className="text-secondaryColor px-5 sm:px-8 sm:my-12 md:my-20">
       <h1
-        className="text-2xl sm:text-3xl sm:w-[70%]"
+        className="text-2xl sm:text-3xl lg:text-4xl sm:w-[70%] lg:w-[50%]"
         data-aos="fade-right"
         data-aos-delay="200"
       >
@@ -19,7 +19,7 @@ const Testimonials = async () => {
       </h1>
       <SubText
         text="Junte-se a nossos clientes satisfeitos!"
-        className="text-sm"
+        className="text-sm lg:text-lg"
       />
 
       {/* Primeiro grupo (movendo para a esquerda) */}

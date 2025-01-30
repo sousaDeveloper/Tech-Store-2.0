@@ -34,23 +34,26 @@ const Cart = () => {
     0
   );
 
-  const handleDeleteItemClick = (product: CartProduct) => {
+  const handleDeleteItemClick = (product: CartProduct): void => {
     toast("Item excluído com sucesso");
     removeProductToCart(product);
   };
+
+  const isCartVisible =
+    products.length > 0 &&
+    pathname !== "/user-profile" &&
+    pathname !== "/user-profile/wishlist" &&
+    pathname !== "/user-profile/orders";
+
+  const localCart = pathname === "/";
 
   return (
     <Sheet>
       <SheetTrigger
         className={`fixed z-50 cursor-pointer ${
-          pathname === "/" ? "bottom-5 right-5" : "bottom-24 left-5"
+          localCart ? "bottom-5 right-5" : "bottom-24 left-5"
         } rounded-full bg-gradient h-12 w-12 sm:w-16 sm:h-16 grid place-content-center text-secondaryColor animate-bounce ${
-          products.length <= 0 ||
-          pathname === "/user-profile" ||
-          pathname === "/user-profile/wishlist" ||
-          pathname === "/user-profile/orders"
-            ? "flex-none hidden"
-            : ""
+          !isCartVisible ? "flex-none hidden" : ""
         }`}
       >
         <div className="relative">

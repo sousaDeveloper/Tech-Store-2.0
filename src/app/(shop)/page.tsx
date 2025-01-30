@@ -13,21 +13,21 @@ export default async function Home() {
   return (
     <main>
       <div className="px-5 sm:px-8">
-        <div className="bg-gradient-header top-0 left-0 w-full h-[20.75rem] z-[-1]" />
+        <div className="bg-gradient-header top-0 left-0 w-full h-[20.75rem] lg:h-[26rem] z-[-1]" />
         <Header />
-        <section className="flex flex-col text-center justify-center items-center mt-5 sm:mt-10 md:mt-14">
+        <section className="flex flex-col lg:gap-3 text-center justify-center items-center mt-5 sm:mt-10 md:mt-14">
           <h3 className="text-gray-400 text-md sm:text-xl" data-aos="fade-up">
             Confira nossas ofertas da semana!
           </h3>
           <h1
-            className="text-secondaryColor text-2xl sm:text-3xl md:text-4xl"
+            className="text-secondaryColor text-2xl sm:text-3xl md:text-4xl lg:text-[3rem]"
             data-aos-delay="200"
             data-aos="fade-up"
           >
             A experiência que você merece:
           </h1>
           <h2
-            className="text-gradient text-xl sm:text-2xl md:text-3xl"
+            className="text-gradient text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:w-[85%]"
             data-aos-delay="300"
             data-aos="fade-up"
           >

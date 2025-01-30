@@ -3,7 +3,7 @@ import Separator from "./Separator";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col md:flex-wrap md:flex-row text-secondaryColor px-5 mt-14 sm:mt-24 md:mt-32 gap-5 bg-gradient-footer sm:px-8">
+    <footer className="flex flex-col text-secondaryColor px-5 mt-14 sm:mt-24 md:mt-32 gap-5 bg-gradient-footer sm:px-8">
       <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-10">
         <div className="flex flex-col">
           <ContentFooter
@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       <Separator />
-      <h2 className="text-base sm:text-lg text-center pb-5 md:w-[80%] mx-auto">
+      <h2 className="text-base sm:text-lg text-center md:w-[80%] lg:w-[50%] pb-5 mx-auto">
         <span className="text-primaryColor font-bold">Tech Store</span> | Todos
         os direitos reservados | Política de Privacidade | Termos e Condições
       </h2>

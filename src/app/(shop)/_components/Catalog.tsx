@@ -42,9 +42,9 @@ const Catalog = ({ products, categories }: CatalogProps) => {
   const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
 
   return (
-    <section className="my-5 px-5 sm:px-8 sm:my-12 md:my-20 text-secondaryColor">
+    <section className="my-5 px-5 sm:px-8 sm:my-12 md:my-20 lg:my-24 text-secondaryColor">
       <h1
-        className="text-2xl sm:text-3xl sm:w-[70%]"
+        className="text-2xl sm:text-3xl lg:text-4xl sm:w-[70%] lg:w-[50%]"
         data-aos="fade-right"
         data-aos-delay="200"
       >
@@ -53,7 +53,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
       </h1>
       <SubText
         text="Explore os melhores periféricos do mercado."
-        className="text-[0.9rem]"
+        className="text-[0.9rem] lg:text-lg"
       />
       <Select
         onValueChange={(value) => handleCategorySelected(value)}

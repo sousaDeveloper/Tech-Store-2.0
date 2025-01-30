@@ -72,22 +72,25 @@ const SignInPage = () => {
   return (
     <section className="flex flex-col p-10 pt-5 text-secondaryColor min-h-[40rem] text-center">
       <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[40rem] z-[-1]"></div>
-      <div className="flex justify-between">
-        <ChevronLeft
-          size={36}
-          className="-ml-3 cursor-pointer mt-5 sm:mt-8 sm:-ml-1"
-          onClick={() => router.back()}
-        />
-      </div>
+      <ChevronLeft
+        size={36}
+        className="-ml-3 cursor-pointer mt-5 sm:mt-8 sm:-ml-1 md:hidden md:flex-none"
+        onClick={() => router.back()}
+      />
+      <ChevronLeft
+        size={44}
+        onClick={() => router.back()}
+        className="hidden flex-none cursor-pointer bg-background mt-8 absolute md:flex"
+      />
 
       <h2
-        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20"
+        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20 md:mt-28 lg:w-[70%] lg:mx-auto"
         data-aos="fade-down"
       >
         Já tem uma conta? Faça login para continuar.
       </h2>
       <h3
-        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 md:px-20"
+        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 lg:w-[80%] lg:mx-auto md:px-20"
         data-aos="fade-down"
         data-aos-delay="200"
       >

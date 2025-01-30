@@ -9,12 +9,10 @@ import {
 } from "@/components/ui/select";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { useState } from "react";
+import PriceDetails from "./PriceDetails";
 
 interface ProductInfoProps {
-  product: Pick<
-    ProductWithTotalPrice,
-    "name" | "basePrice" | "description" | "totalPrice" | "discountPercentage"
-  >;
+  product: ProductWithTotalPrice;
   setQuantity: (value: number) => void;
 }
 
@@ -26,9 +24,9 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   };
 
   return (
-    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-12">
+    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-20 lg:mt-4 lg:px-8">
       <div className="flex items-center justify-between" data-aos="fade-up">
-        <span className="text-sm opacity-60 sm:tert-md">
+        <span className="text-sm opacity-60 sm:text-base">
           Novo | +100 vendidos
         </span>
         <span className="text-primaryColor text-[0.8rem] sm:text-sm">
@@ -36,7 +34,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
         </span>
       </div>
       <h1
-        className="text-2xl mt-2 sm:text-3xl"
+        className="text-2xl mt-2 sm:text-3xl lg:text-4xl"
         data-aos="fade-up"
         data-aos-delay="200"
       >
@@ -80,7 +78,10 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <SelectValue placeholder="1" className="opacity-70 text-sm sm:text-lg" />
+            <SelectValue
+              placeholder="1"
+              className="opacity-70 text-sm sm:text-lg"
+            />
           </SelectTrigger>
           <SelectContent className="bg-backgroundItem">
             {[1, 2, 3, 4, 5].map((num) => (
@@ -92,6 +93,11 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
         </Select>
       </div>
       <hr className="text-secondaryColor my-4 opacity-60" />
+      <PriceDetails
+        product={product}
+        className="flex-none hidden lg:flex gap-1"
+        buttonClassName="py-2 px-5"
+      />
     </main>
   );
 };

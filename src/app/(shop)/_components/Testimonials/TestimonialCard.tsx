@@ -8,7 +8,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className="flex flex-col gap-4 bg-backgroundItem rounded-lg min-w-[23rem] min-h-auto shadow-lg p-2">
+    <div className="flex flex-col gap-4 bg-backgroundItem rounded-lg min-w-[23rem] min-h-auto lg:h-[13rem] shadow-lg p-2">
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
           <Avatar>
@@ -28,7 +28,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         </h3>
       </div>
       <div className="text-center opacity-70">
-        <p className="text-sm">{testimonial.text}</p>
+        <p className="text-sm lg:text-base">{testimonial.text}</p>
       </div>
     </div>
   );

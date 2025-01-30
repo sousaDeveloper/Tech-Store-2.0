@@ -2,6 +2,7 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
 import { CartContext } from "@/providers/cart";
 import { ShoppingCartIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "sonner";
@@ -18,6 +19,7 @@ const PriceDetails = ({
   buttonClassName,
 }: PriceDetailsProps) => {
   const router = useRouter();
+  const { status } = useSession();
   const { addProductToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
 
@@ -60,10 +62,11 @@ const PriceDetails = ({
         </h1>
       )}
       <button
-        className={`bg-gradient w-fit p-2  sm:text-xl rounded-lg flex items-center justify-center gap-1 ${buttonClassName}`}
+        className={`bg-gradient w-fit p-2 sm:text-xl rounded-lg flex items-center justify-center gap-1 ${buttonClassName}`}
         onClick={handleAddProductToCart}
       >
-        <ShoppingCartIcon size={18} />
+        <ShoppingCartIcon size={18} className="md:flex-none md:hidden" />
+        <ShoppingCartIcon size={23} className="flex-none hidden md:flex" />
         Adicionar ao carrinho
       </button>
     </div>

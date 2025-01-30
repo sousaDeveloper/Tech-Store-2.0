@@ -85,4 +85,8 @@
   .secondary {
     animation: secondary 80s linear infinite;
   }
+
+  .scroll-parent {
+    height: 15rem;
+  }
 }

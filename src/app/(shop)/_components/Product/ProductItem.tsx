@@ -30,7 +30,7 @@ const ProductItem = ({
 
   return (
     <div
-      className={`flex flex-col min-w-[8.5rem] max-w-[8.5rem] sm:min-w-[10rem] sm:max-w-[10rem] h-[15rem] ${className} relative text-secondaryColor`}
+      className={`flex flex-col min-w-[8.5rem] max-w-[8.5rem] sm:min-w-[10rem] sm:max-w-[10rem] lg:min-w-[11rem] lg:max-w-[11rem] h-[15rem] ${className} relative text-secondaryColor`}
       data-aos="fade-up"
       data-aos-delay={dataAosDelay}
     >
@@ -58,15 +58,15 @@ const ProductItem = ({
         />
         {isLoading && (
           <LoaderIcon
-            className="animate-spin absolute top-[3.2rem] left-[3.2rem] sm:top-[4rem] sm:left-[4rem]"
+            className="animate-spin absolute top-[3.2rem] left-[3.2rem] sm:top-[4rem] sm:left-[4rem] lg:left-[4.5rem]"
             size={34}
           />
         )}
       </div>
       <div onClick={handleRouterClick} className="cursor-pointer">
-        <h2 className="truncate sm:text-lg">{product.name}</h2>
+        <h2 className="truncate sm:text-lg lg:text-xl">{product.name}</h2>
         {product.discountPercentage > 0 ? (
-          <h2 className="flex items-center gap-1 truncate sm:text-lg">
+          <h2 className="flex items-center gap-1 truncate sm:text-lg lg:text-xl">
             <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
             <span className="line-through text-xs opacity-70">
               {toCurrency({ price: Number(product.basePrice) })}

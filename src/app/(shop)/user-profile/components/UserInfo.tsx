@@ -58,7 +58,7 @@ const UserInfo = ({ session }: UserInfoProps) => {
   }, [handleLoadingClick, isNavigate]);
 
   return (
-    <main className="p-5 text-secondaryColor flex flex-col justify-center">
+    <main className="p-5 sm:px-8 text-secondaryColor flex flex-col justify-center">
       <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[38rem] z-[-1]"></div>
 
       <Header text="Minha conta" />

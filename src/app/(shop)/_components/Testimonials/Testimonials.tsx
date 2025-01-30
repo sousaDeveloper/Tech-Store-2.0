@@ -8,7 +8,7 @@ const Testimonials = async () => {
   const testimonials = await prisma.testimonial.findMany({});
 
   return (
-    <section className="text-secondaryColor sm:px-8 sm:my-12">
+    <section className="text-secondaryColor px-5 sm:px-8 sm:my-12 md:my-20">
       <h1
         className="text-2xl sm:text-3xl sm:w-[70%]"
         data-aos="fade-right"

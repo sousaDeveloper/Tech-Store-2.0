@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor">
-      <h2 className="hidden flex-none md:flex text-gradient text-xl">
+      <h2 className="hidden flex-none md:flex text-gradient text-xl font-semibold">
         Tech Store
       </h2>
       <div className="relative">

@@ -42,7 +42,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
   const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
 
   return (
-    <section className="my-5 px-5 sm:px-8 sm:my-12 text-secondaryColor">
+    <section className="my-5 px-5 sm:px-8 sm:my-12 md:my-20 text-secondaryColor">
       <h1
         className="text-2xl sm:text-3xl sm:w-[70%]"
         data-aos="fade-right"

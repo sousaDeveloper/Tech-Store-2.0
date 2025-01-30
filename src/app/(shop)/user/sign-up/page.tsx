@@ -111,11 +111,14 @@ const SignUp = () => {
           onClick={() => router.back()}
           className="cursor-pointer bg-background -ml-3 -mt-12 rounded-xl absolute sm:-mt-9 sm:-ml-1"
         />
-        <h2 className="text-2xl mt-5 sm:text-3xl sm:px-10" data-aos="fade-down">
+        <h2
+          className="text-2xl mt-5 sm:text-3xl md:text-4xl sm:px-10"
+          data-aos="fade-down"
+        >
           Crie sua conta!
         </h2>
         <h3
-          className="text-sm sm:text-lg text-gray-400"
+          className="text-sm sm:text-lg md:text-xl text-gray-400"
           data-aos="fade-down"
           data-aos-delay="200"
         >
@@ -124,14 +127,14 @@ const SignUp = () => {
         <FormProvider {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 mt-10 sm:px-20"
+            className="space-y-4 mt-10 w-full sm:w-[25rem] mx-auto"
           >
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem
-                  className="text-left"
+                  className="text-left w-full"
                   data-aos="fade-up"
                   data-aos-delay="100"
                 >
@@ -152,7 +155,7 @@ const SignUp = () => {
               name="email"
               render={({ field }) => (
                 <FormItem
-                  className="text-left"
+                  className="text-left w-full"
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
@@ -171,7 +174,7 @@ const SignUp = () => {
               name="password"
               render={({ field }) => (
                 <FormItem
-                  className="text-left"
+                  className="text-left w-full"
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
@@ -190,7 +193,7 @@ const SignUp = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem
-                  className="text-left"
+                  className="text-left w-full"
                   data-aos="fade-up"
                   data-aos-delay="400"
                 >

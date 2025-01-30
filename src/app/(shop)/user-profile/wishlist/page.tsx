@@ -24,7 +24,7 @@ const WishListPage = async () => {
       {userFavorites.length === 0 ? (
         <h1 className="mt-2">Nenhum produto em sua lista de desejos.</h1>
       ) : (
-        <div className="flex flex-wrap gap-5 mt-5">
+        <div className="flex flex-wrap gap-5 mt-5 sm:px-8">
           {userFavorites.map((p) => (
             <ProductItem
               key={p.product.id}

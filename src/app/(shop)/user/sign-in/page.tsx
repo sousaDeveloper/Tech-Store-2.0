@@ -80,11 +80,14 @@ const SignInPage = () => {
         />
       </div>
 
-      <h2 className="text-2xl sm:text-3xl mt-10 sm:px-10" data-aos="fade-down">
+      <h2
+        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20"
+        data-aos="fade-down"
+      >
         Já tem uma conta? Faça login para continuar.
       </h2>
       <h3
-        className="text-sm sm:text-lg text-gray-400 sm:px-10"
+        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 md:px-20"
         data-aos="fade-down"
         data-aos-delay="200"
       >
@@ -93,14 +96,14 @@ const SignInPage = () => {
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 mt-7 sm:px-20"
+          className="space-y-4 mt-7 w-full sm:w-[25rem] mx-auto"
         >
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem
-                className="text-left"
+                className="text-left w-full"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -125,7 +128,7 @@ const SignInPage = () => {
             name="password"
             render={({ field }) => (
               <FormItem
-                className="text-left"
+                className="text-left w-full"
                 data-aos="fade-up"
                 data-aos-delay="300"
               >

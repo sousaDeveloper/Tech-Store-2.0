@@ -31,6 +31,7 @@ const UserInfo = ({ session }: UserInfoProps) => {
   const { handleLoadingClick } = useContext(LoadingContext);
   const { setProducts } = useContext(CartContext);
   const [isNavigate, setIsNavigate] = useState(false);
+  const [isWideScreen, setIsWideScreen] = useState(true);
 
   const handleLogoutClick = async () => {
     handleLoadingClick(true);
@@ -50,12 +51,28 @@ const UserInfo = ({ session }: UserInfoProps) => {
   };
 
   useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      setIsWideScreen(true);
+    } else {
+      setIsWideScreen(false);
+      toast("Rota protegida.", {
+        description: "Redirecionando para página inicial em instantes.",
+      });
+      router.push("/");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (isNavigate) {
       handleLoadingClick(true);
     } else {
       handleLoadingClick(false);
     }
   }, [handleLoadingClick, isNavigate]);
+
+  if (!isWideScreen) {
+    return null;
+  }
 
   return (
     <main className="p-5 sm:px-8 text-secondaryColor flex flex-col justify-center">

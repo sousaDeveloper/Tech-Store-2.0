@@ -73,7 +73,9 @@ const ProductItem = ({
             </span>
           </h2>
         ) : (
-          <h2>{toCurrency({ price: Number(product.basePrice) })}</h2>
+          <h2 className="lg:text-xl">
+            {toCurrency({ price: Number(product.basePrice) })}
+          </h2>
         )}
         <div className="flex gap-[0.1rem] items-center mt-2">
           <StarIcon className="text-primaryColor" size={17} />

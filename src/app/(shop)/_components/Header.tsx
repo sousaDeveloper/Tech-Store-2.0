@@ -3,21 +3,19 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Loader2Icon, SearchIcon, User2Icon } from "lucide-react";
+import { Loader2Icon, LogInIcon, SearchIcon, User2Icon } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Separator from "./Separator";
-import Link from "next/link";
 import { useContext, useState } from "react";
 import { toast } from "sonner";
 import { CartContext } from "@/providers/cart";
 
 const Header = () => {
   const router = useRouter();
-  const { status } = useSession();
+  const { status, data: session } = useSession();
   const { setProducts } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -69,18 +67,18 @@ const Header = () => {
               Minha conta
             </>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-background text-secondaryColor">
+          <DropdownMenuContent className="bg-background text-secondaryColor hidden flex-none lg:flex lg:flex-col">
             {status === "authenticated" ? (
               <>
-                <DropdownMenuLabel className="text-xl flex gap-1 items-center">
-                  Minha conta
+                <DropdownMenuLabel className="text-lg flex gap-1 items-center">
+                  Olá, {session.user.name.split(" ")[0]}!
                   {isLoading && (
                     <Loader2Icon className="animate-spin" size={20} />
                   )}
                 </DropdownMenuLabel>
                 <Separator />
 
-                <ul className="px-2 flex flex-col gap-1 text-lg">
+                <ul className="px-2 flex flex-col gap-1 text-lg mt-2">
                   <li
                     onClick={() =>
                       handleRouterClickDesktop("/user-profile/orders")
@@ -106,15 +104,22 @@ const Header = () => {
                 </ul>
               </>
             ) : (
-              <button
-                className="cursor-pointer flex items-center gap-2 hover:text-gray-400 px-2"
-                onClick={() => handleRouterClickDesktop("/api/auth/signin")}
-              >
-                Entrar
-                {isLoading && (
-                  <Loader2Icon className="animate-spin" size={20} />
-                )}
-              </button>
+              <>
+                <DropdownMenuLabel className="text-lg flex gap-1 items-center">
+                  Olá, seja bem-vindo!
+                </DropdownMenuLabel>
+                <Separator />
+                <button
+                  className="cursor-pointer flex items-center gap-2 hover:text-gray-400 px-2 text-lg mt-2"
+                  onClick={() => handleRouterClickDesktop("/api/auth/signin")}
+                >
+                  <LogInIcon size={20} />
+                  Entrar
+                  {isLoading && (
+                    <Loader2Icon className="animate-spin" size={20} />
+                  )}
+                </button>
+              </>
             )}
           </DropdownMenuContent>
         </DropdownMenu>

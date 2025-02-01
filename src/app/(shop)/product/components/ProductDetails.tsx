@@ -36,8 +36,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <section className="text-secondaryColor">
-      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-5">
-        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] lg:w-[33rem] lg:rounded-br-xl">
+      <div className="flex flex-col lg:grid lg:grid-cols-[45%_55%] xl:grid-cols-[55%_45%] lg:gap-5">
+        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[60%] lg:rounded-br-xl">
           {loading ? (
             <div className="flex justify-between items-center">
               <ChevronLeft
@@ -49,7 +49,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 Detalhes do Produto
               </h1>
               <Loader2Icon
-                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:top-[24rem] absolute"
+                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:top-[24rem] xl:top-[26rem] absolute"
                 size={36}
               />
             </div>
@@ -108,11 +108,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           ))}
         </div>
 
-        <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] lg:left-8 lg:relative lg:justify-start">
+        <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] lg:left-8 lg:relative lg:justify-start xl:ml-auto xl:top-0 xl:flex-col xl:w-[6rem] xl:h-[6rem] xl:pt-5">
           {product.imageURLs.map((url, index) => (
             <div
               key={index}
-              className="cursor-pointer bg-backgroundItem rounded-xl"
+              className="cursor-pointer bg-backgroundItem xl:bg-background rounded-xl"
               onClick={() => handleImageClick(url)}
               data-aos="zoom-in"
               data-aos-delay={index * 100}

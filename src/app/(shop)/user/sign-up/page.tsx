@@ -103,7 +103,7 @@ const SignUp = () => {
   }, []);
 
   return (
-    <main className="flex flex-col text-secondaryColor min-h-[54rem] text-center p-10">
+    <main className="flex flex-col text-secondaryColor min-h-[54rem] text-center p-10 xl:px-16">
       <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[54rem] z-[-1]"></div>
       <section className="mt-12">
         <ChevronLeft

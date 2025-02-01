@@ -23,6 +23,14 @@ export default function RootLayout({
         Aos.init();
       }, 100);
     }
+    const disableRightClick = (event: MouseEvent) => {
+      event.preventDefault();
+    };
+
+    document.addEventListener("contextmenu", disableRightClick);
+    return () => {
+      document.removeEventListener("contextmenu", disableRightClick);
+    };
   }, []);
   return (
     <html lang="en">

@@ -62,11 +62,11 @@ const PriceDetails = ({
         </h1>
       )}
       <button
-        className={`bg-gradient w-fit p-2 sm:text-xl rounded-lg flex items-center justify-center gap-1 ${buttonClassName}`}
+        className={`bg-gradient w-fit p-2 sm:text-xl rounded-lg flex items-center justify-center gap-1 hover:text-background duration-300 ${buttonClassName}`}
         onClick={handleAddProductToCart}
       >
         <ShoppingCartIcon size={18} className="md:flex-none md:hidden" />
-        <ShoppingCartIcon size={23} className="flex-none hidden md:flex" />
+        <ShoppingCartIcon size={23} className="flex-none hidden md:flex mb-1" />
         Adicionar ao carrinho
       </button>
     </div>

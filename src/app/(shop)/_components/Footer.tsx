@@ -3,8 +3,8 @@ import Separator from "./Separator";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col text-secondaryColor px-5 mt-14 sm:mt-24 md:mt-32 gap-5 bg-gradient-footer sm:px-8">
-      <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-10">
+    <footer className="flex flex-col text-secondaryColor px-5 mt-14 sm:mt-24 md:mt-32 gap-5 bg-gradient-footer sm:px-8 xl:px-16">
+      <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-10 xl:mx-[5rem]">
         <div className="flex flex-col">
           <ContentFooter
             title="Receba Ofertas Exclusivas"

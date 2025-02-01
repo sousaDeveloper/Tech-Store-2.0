@@ -22,7 +22,7 @@ const Header = ({ text }: HeaderProps) => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full relative mb-3">
+      <div className="flex justify-center items-center w-full relative mb-3 xl:mb-0">
         <button onClick={handleRouterBackClick} className="absolute left-4">
           <ChevronLeft size={40} className="cursor-pointer" />
         </button>

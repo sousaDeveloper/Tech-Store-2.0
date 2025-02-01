@@ -70,7 +70,7 @@ const SignInPage = () => {
   }, []);
 
   return (
-    <section className="flex flex-col p-10 pt-5 text-secondaryColor min-h-[40rem] text-center">
+    <section className="flex flex-col p-10 pt-5 xl:px-16 text-secondaryColor min-h-[40rem] text-center">
       <div className="bg-blur-purple absolute top-0 left-0 w-full min-h-[40rem] z-[-1]"></div>
       <ChevronLeft
         size={36}
@@ -84,13 +84,13 @@ const SignInPage = () => {
       />
 
       <h2
-        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20 md:mt-28 lg:w-[70%] lg:mx-auto"
+        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20 md:mt-28 lg:w-[70%] lg:mx-auto xl:w-[60%]"
         data-aos="fade-down"
       >
         Já tem uma conta? Faça login para continuar.
       </h2>
       <h3
-        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 lg:w-[80%] lg:mx-auto md:px-20"
+        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 lg:w-[80%] lg:mx-auto md:px-20 xl:w-[60%]"
         data-aos="fade-down"
         data-aos-delay="200"
       >
@@ -161,7 +161,7 @@ const SignInPage = () => {
           )}
 
           <button
-            className="w-full py-2 sm:py-3 sm:text-lg bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2"
+            className="w-full py-2 sm:py-3 sm:text-lg bg-gradient mt-5 rounded-lg flex items-center justify-center gap-2 hover:text-background"
             data-aos="zoom-in"
             data-aos-delay="200"
             disabled={isLoading}
@@ -172,7 +172,10 @@ const SignInPage = () => {
         </form>
         <h3 className="text-sm text-center mt-4 sm:text-base">
           Não possui uma conta?{" "}
-          <Link className="underline opacity-70" href="/user/sign-up">
+          <Link
+            className="underline opacity-70 hover:text-blue-500 duration-300"
+            href="/user/sign-up"
+          >
             Registre-se
           </Link>
         </h3>

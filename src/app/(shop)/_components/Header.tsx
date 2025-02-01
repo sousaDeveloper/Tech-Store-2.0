@@ -8,7 +8,7 @@ import {
 import { Loader2Icon, LogInIcon, SearchIcon, User2Icon } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { CartContext } from "@/providers/cart";
 
@@ -40,6 +40,10 @@ const Header = () => {
     });
     setProducts([]);
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [session]);
 
   return (
     <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor">

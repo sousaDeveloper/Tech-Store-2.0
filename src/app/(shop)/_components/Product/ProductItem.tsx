@@ -36,7 +36,11 @@ const ProductItem = ({
     >
       <div className="flex justify-end items-center absolute w-full">
         {product.discountPercentage > 0 && (
-          <Badge className="bg-gradient ml-2 mr-auto flex z-10">
+          <Badge
+            className="bg-gradient ml-2 mr-auto flex z-10"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
             <ArrowDownIcon size={14} />
             {product.discountPercentage}%
           </Badge>
@@ -69,26 +73,65 @@ const ProductItem = ({
           isLoading ? "pointer-events-none" : ""
         }cursor-pointer duration-300 hover:text-gray-400`}
       >
-        <h2 className="truncate sm:text-lg lg:text-xl">{product.name}</h2>
+        <h2
+          className="truncate sm:text-lg lg:text-xl"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          {product.name}
+        </h2>
         {product.discountPercentage > 0 ? (
           <h2 className="flex items-center gap-1 truncate sm:text-lg lg:text-xl">
-            <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
-            <span className="line-through text-xs opacity-70">
+            <span data-aos="fade-up" data-aos-delay="300">
+              {toCurrency({ price: Number(product.totalPrice) })}
+            </span>{" "}
+            <span
+              className="line-through text-xs opacity-70"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
               {toCurrency({ price: Number(product.basePrice) })}
             </span>
           </h2>
         ) : (
-          <h2 className="lg:text-xl">
+          <h2 className="lg:text-xl" data-aos="fade-up" data-aos-delay="300">
             {toCurrency({ price: Number(product.basePrice) })}
           </h2>
         )}
         <div className="flex gap-[0.1rem] items-center mt-2">
-          <StarIcon className="text-primaryColor" size={17} />
-          <StarIcon className="text-primaryColor" size={17} />
-          <StarIcon className="text-primaryColor" size={17} />
-          <StarIcon className="text-primaryColor" size={17} />
-          <StarIcon size={17} className="text-secondaryColor" />
-          <span className="text-sm">(50)</span>
+          <StarIcon
+            className="text-primaryColor"
+            size={17}
+            data-aos="fade-up"
+            data-aos-delay="300"
+          />
+          <StarIcon
+            className="text-primaryColor"
+            size={17}
+            data-aos="fade-up"
+            data-aos-delay="400"
+          />
+          <StarIcon
+            className="text-primaryColor"
+            size={17}
+            data-aos="fade-up"
+            data-aos-delay="500"
+          />
+          <StarIcon
+            className="text-primaryColor"
+            size={17}
+            data-aos="fade-up"
+            data-aos-delay="600"
+          />
+          <StarIcon
+            size={17}
+            className="text-secondaryColor"
+            data-aos="fade-up"
+            data-aos-delay="700"
+          />
+          <span className="text-sm" data-aos="fade-up" data-aos-delay="800">
+            (50)
+          </span>
         </div>
       </div>
     </div>

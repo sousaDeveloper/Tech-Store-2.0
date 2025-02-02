@@ -5,7 +5,7 @@ interface ContentFooterProps {
 
 const ContentFooter = ({ title, description }: ContentFooterProps) => {
   return (
-    <>
+    <div>
       <h1 className="text-xl sm:text-2xl" data-aos="fade-up">
         {title}
       </h1>
@@ -16,7 +16,7 @@ const ContentFooter = ({ title, description }: ContentFooterProps) => {
       >
         {description}
       </p>
-    </>
+    </div>
   );
 };
 

@@ -43,7 +43,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               <ChevronLeft
                 size={36}
                 onClick={handleRouterBackClick}
-                className="cursor-pointer bg-background sm:top-6 sm:left-6 top-3 left-5 rounded-xl absolute"
+                className="cursor-pointer bg-background sm:top-6 sm:left-6 top-3 left-5 2xl:left-14 rounded-lg absolute"
               />
               <h1 className="left-1/2 transform -translate-x-1/2 top-4 sm:top-7 absolute text-center sm:text-xl">
                 Detalhes do Produto
@@ -58,7 +58,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               <ChevronLeft
                 size={36}
                 onClick={handleRouterBackClick}
-                className={`cursor-pointer absolute top-3 sm:top-6 sm:left-6 left-5 bg-background rounded-xl ${
+                className={`cursor-pointer absolute top-3 sm:top-6 sm:left-6 left-5 2xl:left-14 bg-background rounded-lg ${
                   loading && "flex-none hidden"
                 }`}
               />
@@ -82,8 +82,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           <ChevronLeft
             size={36}
             onClick={handleRouterBackClick}
-            className={`cursor-pointer absolute top-3 left-5 sm:top-6 sm:left-6 bg-background rounded-lg ${
-              loading && "hidden"
+            className={`cursor-pointer absolute top-3 left-5 sm:top-6 sm:left-6 2xl:left-14 bg-background rounded-lg ${
+              loading && "hidden flex-none"
             }`}
           />
         </div>

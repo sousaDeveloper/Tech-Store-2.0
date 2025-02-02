@@ -69,6 +69,8 @@ const FavoriteButton = ({ product }: FavoriteButtonProps) => {
       className="z-10 rounded-lg p-1"
       onClick={handleAddFavoriteClick}
       disabled={isLoading}
+      data-aos="zoom-in"
+      data-aos-delay="300"
     >
       <HeartIcon
         size={30}

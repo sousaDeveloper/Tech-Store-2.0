@@ -90,3 +90,17 @@
     height: 12rem;
   }
 }
+
+@media (min-width: 1536px) {
+  .primary {
+    animation: primary 80s linear infinite;
+  }
+
+  .secondary {
+    animation: secondary 80s linear infinite;
+  }
+
+  .scroll-parent {
+    height: 14rem;
+  }
+}

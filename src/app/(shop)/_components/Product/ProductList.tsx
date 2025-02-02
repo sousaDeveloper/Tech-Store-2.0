@@ -54,7 +54,7 @@ const ProductList = ({ products, widthContainer }: ProductListProps) => {
           onClick={handlePrev}
           className={`${
             pathname !== "/" && "lg:hidden lg:flex-none"
-          } hidden lg:flex absolute right-16 -top-16 transform -translate-y-1/2 z-10 bg-backgroundItem hover:text-gray-400 duration-300 p-2 rounded-lg shadow-md`}
+          } hidden lg:flex absolute right-16 -top-16 2xl:right-20 transform -translate-y-1/2 z-10 bg-backgroundItem hover:text-gray-400 duration-300 p-2 rounded-lg shadow-md`}
           data-aos="zoom-in"
         >
           <ChevronLeft size={24} />
@@ -83,7 +83,7 @@ const ProductList = ({ products, widthContainer }: ProductListProps) => {
           onClick={handleNext}
           className={`${
             pathname !== "/" && "lg:hidden lg:flex-none"
-          } hidden lg:flex absolute right-0 -top-16 transform -translate-y-1/2 z-10 bg-backgroundItem p-2 rounded-lg shadow-md hover:text-gray-400 duration-300`}
+          } hidden lg:flex absolute right-0 -top-16 2xl:right-5 transform -translate-y-1/2 z-10 bg-backgroundItem p-2 rounded-lg shadow-md hover:text-gray-400 duration-300`}
           data-aos="zoom-in"
           data-aos-delay="100"
         >

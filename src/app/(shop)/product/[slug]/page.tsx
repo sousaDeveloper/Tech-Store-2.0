@@ -46,7 +46,7 @@ const ProductPage = async (props: ProductPageProps) => {
             totalPrice: computeProductTotalPrice(product),
           }}
         />
-        <div className="flex flex-col pb-20 sm:pb-28 text-secondaryColor px-5 lg:px-8 lg:mt-44 lg:pb-10 xl:mt-16 xl:pb-0">
+        <div className="flex flex-col pb-20 sm:pb-28 text-secondaryColor px-5 lg:px-8 lg:mt-44 lg:pb-10 xl:mt-16 2xl:px-24 xl:pb-0">
           <div className="hidden flex-none lg:flex lg:mb-2">
             <Separator />
           </div>

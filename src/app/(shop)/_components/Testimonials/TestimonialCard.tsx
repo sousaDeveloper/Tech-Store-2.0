@@ -8,18 +8,21 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className="flex flex-col gap-4 bg-backgroundItem rounded-lg min-w-[23rem] min-h-auto lg:min-w-[25rem] shadow-lg p-2">
+    <div
+      className="flex flex-col gap-4 bg-backgroundItem rounded-lg min-w-[23rem] min-h-auto lg:min-w-[25rem] 2xl:min-w-[28rem] 
+    2xl:h-[13rem] shadow-lg p-2"
+    >
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
-          <Avatar>
-            <AvatarImage src={testimonial.imageUrl} />
+          <Avatar className="2xl:w-14 2xl:h-14">
+            <AvatarImage src={testimonial.imageUrl} sizes="100vw" />
           </Avatar>
           <div className="flex flex-col">
-            <h2>
+            <h2 className="2xl:text-lg">
               {testimonial.clientName.split(" ")[0]}{" "}
               {testimonial.clientName.split(" ")[1][0]}.
             </h2>
-            <p className="text-[0.8rem] opacity-60">{`${testimonial.date}`}</p>
+            <p className="text-[0.8rem] opacity-60 2xl:text-sm">{`${testimonial.date}`}</p>
           </div>
         </div>
         <h3 className="flex items-center gap-1">
@@ -28,7 +31,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         </h3>
       </div>
       <div className="text-center opacity-70">
-        <p className="text-sm lg:text-base">{testimonial.text}</p>
+        <p className="text-sm lg:text-base 2xl:text-lg">{testimonial.text}</p>
       </div>
     </div>
   );

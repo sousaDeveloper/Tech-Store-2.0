@@ -12,10 +12,10 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="px-5 sm:px-8 xl:px-16">
-        <div className="bg-gradient-header top-0 left-0 w-full h-[20.75rem] lg:h-[26rem] xl:h-[30rem] z-[-1]"/>
+      <div className="px-5 sm:px-8 xl:px-16 2xl:px-32">
+        <div className="bg-gradient-header top-0 left-0 w-full h-[20.75rem] lg:h-[26rem] xl:h-[30rem] z-[-1]" />
         <Header />
-        <section className="flex flex-col lg:gap-3 text-center justify-center items-center mt-5 sm:mt-10 md:mt-14 xl:mt-[4rem] xl:px-32">
+        <section className="flex flex-col lg:gap-3 text-center justify-center items-center mt-5 sm:mt-10 md:mt-14 xl:mt-[4rem] xl:px-32 2xl:px-52">
           <h3
             className="text-gray-400 text-md sm:text-xl xl:text-[1.3rem]"
             data-aos="fade-up"

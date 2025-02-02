@@ -14,10 +14,10 @@ const Offers = async () => {
   const shuffledProducts = productWithDiscount.sort(() => Math.random() - 0.5);
 
   return (
-    <section className="my-5 px-5 sm:px-8 xl:px-16 sm:my-12 md:mb-20 lg:mb-24 text-secondaryColor">
+    <section className="my-5 px-5 sm:px-8 xl:px-16 sm:my-12 md:mb-20 lg:mb-24 text-secondaryColor 2xl:px-32">
       <div className="mb-2 xl:mb-5">
         <h1
-          className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.5rem]"
+          className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.5rem] xl:mb-1"
           data-aos-delay="200"
           data-aos="fade-right"
         >

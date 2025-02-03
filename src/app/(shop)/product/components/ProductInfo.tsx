@@ -24,7 +24,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   };
 
   return (
-    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-20 lg:mt-4 lg:w-[88%] 2xl:w-[80%] lg:ml-10 2xl:ml-20">
+    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-20 lg:mt-4 lg:w-[80%] 3xl:w-[70%] lg:ml-14 2xl:ml-20">
       <div className="flex items-center justify-between" data-aos="fade-up">
         <span className="text-sm opacity-60 sm:text-base">
           Novo | +100 vendidos

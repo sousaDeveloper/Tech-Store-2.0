@@ -22,7 +22,9 @@ const WishListPage = async () => {
     <main className="p-5 text-secondaryColor flex flex-col justify-center xl:px-16">
       <Header text="Lista de Desejos" />
       {userFavorites.length === 0 ? (
-        <h1 className="mt-2">Nenhum produto em sua lista de desejos.</h1>
+        <h1 className="mt-2 lg:text-lg xl:text-xl">
+          Nenhum produto em sua lista de desejos.
+        </h1>
       ) : (
         <div className="flex flex-wrap gap-5 mt-5 sm:px-8 lg:gap-10">
           {userFavorites.map((p) => (

@@ -18,6 +18,9 @@ export default {
       backgroundImage: {
         "gradient-footer": "linear-gradient(to top, #000, #000, #1f1f1f)",
       },
+      screens: {
+        "3xl": "1750px",
+      },
     },
   },
   plugins: [tailwindcssAnimate],

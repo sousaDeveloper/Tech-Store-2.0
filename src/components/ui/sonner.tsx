@@ -14,8 +14,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
       className="toaster group"
       toastOptions={{
         classNames: {
-          toast: "bg-backgroundItem border-none text-secondaryColor",
-          description: " ",
+          toast:
+            "bg-backgroundItem border-none text-secondaryColor 2xl:py-3 2xl:text-lg w-full",
+          description: "xl:text-sm",
           actionButton:
             "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground ",
           cancelButton:

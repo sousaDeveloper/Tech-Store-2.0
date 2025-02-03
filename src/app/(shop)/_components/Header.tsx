@@ -46,14 +46,37 @@ const Header = () => {
   }, [session]);
 
   return (
-    <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor">
-      <h2
-        className="hidden flex-none md:flex text-gradient text-xl lg:text-2xl font-semibold"
-        data-aos="fade-down"
-        data-aos-delay="100"
+    <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor 3xl:py-7">
+      <div
+        className="hidden flex-none md:block text-gradient text-xl lg:text-2xl font-semibold -mt-3"
+        data-aos="zoom-in"
       >
-        Tech Store
-      </h2>
+        <span data-aos="zoom-in">T</span>
+        <span data-aos-delay="100" data-aos="zoom-in">
+          e
+        </span>
+        <span data-aos-delay="200" data-aos="zoom-in">
+          c
+        </span>
+        <span data-aos-delay="300" data-aos="zoom-in">
+          h
+        </span>
+        <span className="ml-2" data-aos-delay="400" data-aos="zoom-in">
+          S
+        </span>
+        <span data-aos-delay="500" data-aos="zoom-in">
+          t
+        </span>
+        <span data-aos-delay="600" data-aos="zoom-in">
+          o
+        </span>
+        <span data-aos-delay="700" data-aos="zoom-in">
+          r
+        </span>
+        <span data-aos-delay="800" data-aos="zoom-in">
+          e
+        </span>
+      </div>
       <div className="relative">
         <input
           type="text"

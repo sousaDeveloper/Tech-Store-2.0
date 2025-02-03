@@ -36,8 +36,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <section className="text-secondaryColor">
-      <div className="flex flex-col lg:grid lg:grid-cols-[45%_55%] xl:grid-cols-[55%_45%] lg:gap-5">
-        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[60%] lg:rounded-br-xl">
+      <div className="flex flex-col lg:grid lg:grid-cols-[45%_55%] xl:grid-cols-[55%_45%] 3xl:grid-cols-[50%_50%] lg:gap-5">
+        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[55%] lg:rounded-br-xl">
           {loading ? (
             <div className="flex justify-between items-center">
               <ChevronLeft
@@ -49,7 +49,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 Detalhes do Produto
               </h1>
               <Loader2Icon
-                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:top-[24rem] xl:top-[26rem] absolute"
+                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:top-[24rem] xl:top-[26rem] xl:left-14 absolute"
                 size={36}
               />
             </div>
@@ -102,6 +102,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 width={70}
                 height={70}
                 loading="lazy"
+                sizes="100vw"
                 className="w-[5rem] h-[5rem] object-contain"
               />
             </div>
@@ -123,6 +124,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 width={70}
                 height={70}
                 loading="lazy"
+                sizes="100vw"
                 className="w-[5rem] h-[5rem] lg:w-[6rem] lg:h-[6rem] object-contain"
               />
             </div>

@@ -9,9 +9,9 @@ const Testimonials = async () => {
 
   return (
     <section className="text-secondaryColor sm:my-12 md:my-20">
-      <div className="px-5 sm:px-8 xl:px-16 2xl:px-32">
+      <div className="px-5 sm:px-8 xl:px-16 2xl:px-32 3xl:px-48">
         <h1
-          className="text-2xl sm:text-3xl lg:text-4xl sm:w-[70%] lg:w-[50%] xl:text-[2.5rem]"
+          className="text-2xl sm:text-3xl lg:text-4xl sm:w-[70%] lg:w-[50%] xl:text-[2.5rem] 3xl:w-[35%]"
           data-aos="fade-right"
           data-aos-delay="200"
         >

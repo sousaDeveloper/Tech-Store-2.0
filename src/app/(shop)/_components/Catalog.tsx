@@ -44,9 +44,9 @@ const Catalog = ({ products, categories }: CatalogProps) => {
   const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
 
   return (
-    <section className="my-5 px-5 sm:px-8 xl:px-16 sm:my-12 md:my-20 lg:my-24 xl:my-32 text-secondaryColor 2xl:px-32 2xl:my-40">
+    <section className="my-5 px-5 sm:px-8 xl:px-16 sm:my-12 md:my-20 lg:my-24 xl:my-32 text-secondaryColor 2xl:px-32 2xl:my-40 3xl:px-48">
       <h1
-        className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-[2.5rem] sm:w-[70%] md:w-[60%] lg:w-[50%] 2xl:w-[45%] xl:mb-2"
+        className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-[2.5rem] sm:w-[70%] md:w-[60%] lg:w-[50%] 2xl:w-[45%] 3xl:w-[35%] xl:mb-2"
         data-aos="fade-right"
         data-aos-delay="200"
       >
@@ -88,7 +88,7 @@ const Catalog = ({ products, categories }: CatalogProps) => {
           ))}
         </SelectContent>
       </Select>
-      <div className="flex lg:grid lg:grid-cols-[20%_80%]">
+      <div className="flex lg:grid lg:grid-cols-[20%_80%] 3xl:grid-cols-[17%_83%]">
         <div className="hidden lg:flex lg:flex-col gap-2">
           {categories.map((category, index) => (
             <button

@@ -229,6 +229,13 @@ const SignUp = () => {
             </button>
           </form>
         </FormProvider>
+        <p
+          className="mt-14 text-gray-400"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          © Tech Store 2.0 | 2025.
+        </p>
       </section>
     </main>
   );

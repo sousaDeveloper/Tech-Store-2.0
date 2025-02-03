@@ -74,11 +74,12 @@ const CartItem = ({
         <DialogTrigger>
           <TrashIcon size={22} className="mr-2" />
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="2xl:w-[40%] 3xl:w-[25%]">
           <DialogHeader>
             <DialogTitle className="sm:text-xl mt-2 sm:w-[90%]">
-              Tem certeza que deseja excluir o produto [
-              {product.name.split(" ")[0]}] do carrinho?
+              Tem certeza que deseja excluir o produto{" "}
+              <span className="text-primaryColor">{product.name}</span> do
+              carrinho?
             </DialogTitle>
             <DialogDescription className="text-sm opacity-70">
               Não será possível reverter essa ação.

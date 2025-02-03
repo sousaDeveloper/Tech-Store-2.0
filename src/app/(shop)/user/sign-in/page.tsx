@@ -84,13 +84,13 @@ const SignInPage = () => {
       />
 
       <h2
-        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20 md:mt-28 lg:w-[70%] lg:mx-auto xl:w-[60%] 2xl:mt-36 2xl:w-[50%]"
+        className="text-2xl sm:text-3xl md:text-4xl mt-10 sm:px-20 md:px-20 md:mt-28 lg:w-[70%] lg:mx-auto xl:w-[60%] 2xl:mt-36 2xl:w-[50%] 3xl:w-[40%]"
         data-aos="fade-down"
       >
         Já tem uma conta? Faça login para continuar.
       </h2>
       <h3
-        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 lg:w-[80%] lg:mx-auto md:px-20 xl:w-[60%] 2xl:w-[50%]"
+        className="text-sm sm:text-lg md:text-xl text-gray-400 sm:px-14 lg:w-[80%] lg:mx-auto md:px-20 xl:w-[60%] 2xl:w-[50%] 3xl:w-[40%]"
         data-aos="fade-down"
         data-aos-delay="200"
       >
@@ -180,6 +180,9 @@ const SignInPage = () => {
           </Link>
         </h3>
       </FormProvider>
+      <p className="mt-14 text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        © Tech Store 2.0 | 2025.
+      </p>
     </section>
   );
 };

@@ -24,7 +24,7 @@ export default async function Home() {
           </h3>
           <div className="flex text-secondaryColor text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[3.8rem]">
             <p data-aos="fade-up">A</p>
-            <p className="ml-3" data-aos="fade-up" data-aos-delay="100">
+            <p className="ml-1 lg:ml-3" data-aos="fade-up" data-aos-delay="100">
               e
             </p>
             <p data-aos="fade-up" data-aos-delay="200">
@@ -57,7 +57,11 @@ export default async function Home() {
             <p data-aos="fade-up" data-aos-delay="1100">
               a
             </p>
-            <p className="ml-3" data-aos="fade-up" data-aos-delay="1200">
+            <p
+              className="ml-1 lg:ml-3"
+              data-aos="fade-up"
+              data-aos-delay="1200"
+            >
               q
             </p>
             <p data-aos="fade-up" data-aos-delay="1300">
@@ -66,7 +70,11 @@ export default async function Home() {
             <p data-aos="fade-up" data-aos-delay="1400">
               e
             </p>
-            <p className="ml-3" data-aos="fade-up" data-aos-delay="1500">
+            <p
+              className="ml-1 lg:ml-3"
+              data-aos="fade-up"
+              data-aos-delay="1500"
+            >
               v
             </p>
             <p data-aos="fade-up" data-aos-delay="1600">
@@ -78,7 +86,11 @@ export default async function Home() {
             <p data-aos="fade-up" data-aos-delay="1800">
               ê
             </p>
-            <p className="ml-3" data-aos="fade-up" data-aos-delay="1900">
+            <p
+              className="ml-1 lg:ml-3"
+              data-aos="fade-up"
+              data-aos-delay="1900"
+            >
               m
             </p>
             <p data-aos="fade-up" data-aos-delay="2000">

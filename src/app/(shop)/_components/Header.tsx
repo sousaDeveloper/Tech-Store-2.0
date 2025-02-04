@@ -5,7 +5,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Loader2Icon, LogInIcon, SearchIcon, User2Icon } from "lucide-react";
+import {
+  ChevronDown,
+  Loader2Icon,
+  LogInIcon,
+  SearchIcon,
+  User2Icon,
+} from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -47,36 +53,12 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor 3xl:py-7">
-      <div
-        className="hidden flex-none md:block text-gradient text-xl lg:text-2xl font-semibold -mt-3"
-        data-aos="zoom-in"
+      <h1
+        className="hidden flex-none md:block text-gradient text-xl lg:text-2xl font-semibold"
+        data-aos="fade-down"
       >
-        <span data-aos="zoom-in">T</span>
-        <span data-aos-delay="100" data-aos="zoom-in">
-          e
-        </span>
-        <span data-aos-delay="200" data-aos="zoom-in">
-          c
-        </span>
-        <span data-aos-delay="300" data-aos="zoom-in">
-          h
-        </span>
-        <span className="ml-2" data-aos-delay="400" data-aos="zoom-in">
-          S
-        </span>
-        <span data-aos-delay="500" data-aos="zoom-in">
-          t
-        </span>
-        <span data-aos-delay="600" data-aos="zoom-in">
-          o
-        </span>
-        <span data-aos-delay="700" data-aos="zoom-in">
-          r
-        </span>
-        <span data-aos-delay="800" data-aos="zoom-in">
-          e
-        </span>
-      </div>
+        Tech Store
+      </h1>
       <div className="relative">
         <input
           type="text"
@@ -106,12 +88,17 @@ const Header = () => {
             <>
               <User2Icon size={20} />
               Minha conta
+              <ChevronDown size={20} className="mt-1" />
             </>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-background text-secondaryColor hidden flex-none lg:flex lg:flex-col">
+          <DropdownMenuContent className="bg-backgroundItem text-secondaryColor hidden flex-none lg:flex lg:flex-col">
             {status === "authenticated" ? (
               <>
-                <DropdownMenuLabel className="text-lg flex gap-1 items-center">
+                <DropdownMenuLabel
+                  className="text-lg flex gap-1 items-center truncate"
+                  data-aos="fade-down"
+                  data-aos-delay="100"
+                >
                   Olá, {session.user.name.split(" ")[0]}!
                   {isLoading && (
                     <Loader2Icon className="animate-spin" size={20} />
@@ -127,6 +114,8 @@ const Header = () => {
                     className={`cursor-pointer hover:text-gray-400 hover:translate-x-1 duration-300 ${
                       isLoading ? "pointer-events-none" : ""
                     }`}
+                    data-aos="fade-right"
+                    data-aos-delay="200"
                   >
                     Meus pedidos{" "}
                   </li>
@@ -137,6 +126,8 @@ const Header = () => {
                     className={`cursor-pointer hover:text-gray-400 hover:translate-x-1 duration-300 ${
                       isLoading ? "pointer-events-none" : ""
                     }`}
+                    data-aos="fade-right"
+                    data-aos-delay="300"
                   >
                     Lista de desejos{" "}
                   </li>
@@ -145,6 +136,8 @@ const Header = () => {
                     className={`cursor-pointer  hover:text-red-500 hover:translate-x-1 duration-300 ${
                       isLoading ? "pointer-events-none" : ""
                     }`}
+                    data-aos="fade-right"
+                    data-aos-delay="400"
                   >
                     Sair da conta{" "}
                   </li>

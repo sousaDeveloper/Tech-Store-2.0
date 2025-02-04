@@ -16,7 +16,7 @@ const SubText = ({ text, className }: SubTextProps) => {
     <h2
       className={`text-gray-400 font-light sm:text-base ${poppins.className} ${className}`}
       data-aos-delay="300"
-      data-aos="fade-up"
+      data-aos="fade-right"
     >
       {text}
     </h2>

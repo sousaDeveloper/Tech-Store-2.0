@@ -10,6 +10,15 @@ import {
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { useState } from "react";
 import PriceDetails from "./PriceDetails";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -24,7 +33,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
   };
 
   return (
-    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-20 lg:mt-4 lg:w-[80%] 3xl:w-[70%] lg:ml-14 2xl:ml-20">
+    <main className="px-5 pt-2 mt-2 min-h-max sm:mt-20 lg:mt-4 lg:w-[85%] 3xl:w-[70%] lg:ml-14 2xl:ml-20">
       <div className="flex items-center justify-between" data-aos="fade-up">
         <span className="text-sm opacity-60 sm:text-base">
           Novo | +100 vendidos
@@ -53,11 +62,38 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
           {product.description}
         </p>
         <span
-          className="flex justify-end text-sm underline cursor-pointer"
+          className="flex justify-end text-sm underline cursor-pointer lg:flex-none lg:hidden"
           onClick={handleChangeIsShow}
         >
           {isShow ? "Ver menos" : "Ver mais"}
         </span>
+        <Dialog>
+          <DialogTrigger className="flex justify-end">
+            <span className="underline cursor-pointer">Ver mais</span>
+          </DialogTrigger>
+          <DialogContent className="2xl:w-[40%]">
+            <DialogHeader>
+              <DialogTitle
+                className="sm:text-xl mt-2 sm:w-[90%]"
+                data-aos="fade-up"
+              >
+                Descrição do produto
+              </DialogTitle>
+              <DialogDescription
+                className="text-md text-gray-400"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                {product.description}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-end w-full">
+              <DialogClose className="transition-all w-fit px-7 py-1 text-lg text-black bg-gray-400 hover:text-gray-200 hover:bg-gray-600 rounded-lg">
+                Voltar
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
       <hr className="text-secondaryColor mt-4 mb-3 opacity-60" />
       <div className="flex flex-col gap-1">

@@ -22,13 +22,81 @@ export default async function Home() {
           >
             Confira nossas ofertas da semana!
           </h3>
-          <h1
-            className="text-secondaryColor text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[3.8rem]"
-            data-aos-delay="200"
-            data-aos="fade-up"
-          >
-            A experiência que você merece:
-          </h1>
+          <div className="flex text-secondaryColor text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[3.8rem]">
+            <p data-aos="fade-up">A</p>
+            <p className="ml-3" data-aos="fade-up" data-aos-delay="100">
+              e
+            </p>
+            <p data-aos="fade-up" data-aos-delay="200">
+              x
+            </p>
+            <p data-aos="fade-up" data-aos-delay="300">
+              p
+            </p>
+            <p data-aos="fade-up" data-aos-delay="400">
+              e
+            </p>
+            <p data-aos="fade-up" data-aos-delay="500">
+              r
+            </p>
+            <p data-aos="fade-up" data-aos-delay="600">
+              i
+            </p>
+            <p data-aos="fade-up" data-aos-delay="700">
+              ê
+            </p>
+            <p data-aos="fade-up" data-aos-delay="800">
+              n
+            </p>
+            <p data-aos="fade-up" data-aos-delay="900">
+              c
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1000">
+              i
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1100">
+              a
+            </p>
+            <p className="ml-3" data-aos="fade-up" data-aos-delay="1200">
+              q
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1300">
+              u
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1400">
+              e
+            </p>
+            <p className="ml-3" data-aos="fade-up" data-aos-delay="1500">
+              v
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1600">
+              o
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1700">
+              c
+            </p>
+            <p data-aos="fade-up" data-aos-delay="1800">
+              ê
+            </p>
+            <p className="ml-3" data-aos="fade-up" data-aos-delay="1900">
+              m
+            </p>
+            <p data-aos="fade-up" data-aos-delay="2000">
+              e
+            </p>
+            <p data-aos="fade-up" data-aos-delay="2100">
+              r
+            </p>
+            <p data-aos="fade-up" data-aos-delay="2200">
+              e
+            </p>
+            <p data-aos="fade-up" data-aos-delay="2300">
+              c
+            </p>
+            <p data-aos="fade-up" data-aos-delay="2400">
+              e:
+            </p>
+          </div>
           <h2
             className="text-gradient text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:w-[75%] xl:mt-3 3xl:text-[2.5rem] 2xl:w-[70%] 2xl:mt-1"
             data-aos-delay="300"

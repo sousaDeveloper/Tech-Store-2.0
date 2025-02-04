@@ -36,7 +36,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <section className="text-secondaryColor">
-      <div className="flex flex-col lg:grid lg:grid-cols-[45%_55%] xl:grid-cols-[55%_45%] 3xl:grid-cols-[50%_50%] lg:gap-5">
+      <div className="flex flex-col lg:grid lg:grid-cols-[43%_57%] xl:grid-cols-[55%_45%] 3xl:grid-cols-[50%_50%] lg:gap-5">
         <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[55%] lg:rounded-br-xl">
           {loading ? (
             <div className="flex justify-between items-center">

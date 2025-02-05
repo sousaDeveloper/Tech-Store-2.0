@@ -15,8 +15,8 @@ const Footer = () => {
           <div className="flex gap-5 items-center mt-2">
             <input
               type="text"
-              name="search"
-              id="search"
+              name="offers"
+              id="offers"
               placeholder="Digite seu email.."
               autoComplete="off"
               className="rounded-md flex justify-end p-2 w-[14rem] bg-background text-secondaryColor pr-8"

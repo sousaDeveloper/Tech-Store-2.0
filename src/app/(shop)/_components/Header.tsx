@@ -75,7 +75,7 @@ const Header = () => {
           id="search"
           placeholder="O que você procura?"
           autoComplete="off"
-          className="rounded-md flex justify-end px-3 py-2 w-[17rem] lg:w-[20rem] lg:ml-12 bg-background"
+          className="rounded-md flex justify-end px-3 py-2 w-[17rem] lg:w-[22rem] md:ml-10 lg:ml-20 bg-background"
           data-aos="fade-down"
           data-aos-delay="300"
         />
@@ -119,7 +119,7 @@ const Header = () => {
                   )}
                   {status === "authenticated" ? (
                     <>
-                      <h3 className="font-semibold mt-1 text-base">
+                      <h3 className="font-semibold mt-2 text-base">
                         O que deseja fazer?
                       </h3>
                       <ul className="flex flex-col text-lg">

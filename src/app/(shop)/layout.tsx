@@ -7,35 +7,35 @@ import Cart from "./_components/Cart/Cart";
 import CartContextProvider from "@/providers/cart";
 import LoadingProvider from "@/providers/loading";
 import { useEffect } from "react";
-import "aos/dist/aos.css";
 import Aos from "aos";
+import "aos/dist/aos.css";
 
 const manrope = Manrope({ subsets: ["latin"], weight: "400" });
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      Aos.init();
-    }
+    Aos.init();
 
-    const disableRightClick = (event: MouseEvent) => {
-      event.preventDefault();
-    };
-
+    const disableRightClick = (event: MouseEvent) => event.preventDefault();
     document.addEventListener("contextmenu", disableRightClick);
+
     return () => {
       document.removeEventListener("contextmenu", disableRightClick);
     };
   }, []);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <title>Tech Store</title>
+        <meta
+          name="description"
+          content="Compre os melhores periféricos para seu setup gamer com preços incríveis e ofertas exclusivas."
+        />
       </head>
       <body className={`antialiased bg-background ${manrope.className}`}>
         <LoadingProvider>
@@ -46,7 +46,6 @@ export default function RootLayout({
             </CartContextProvider>
           </AuthProvider>
         </LoadingProvider>
-
         <Toaster />
       </body>
     </html>

@@ -36,8 +36,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   return (
     <section className="text-secondaryColor">
-      <div className="flex flex-col lg:grid lg:grid-cols-[43%_57%] xl:grid-cols-[55%_45%] 3xl:grid-cols-[50%_50%] lg:gap-5">
-        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[55%] lg:rounded-br-xl">
+      <div className="flex flex-col lg:grid lg:grid-cols-[43%_57%] xl:grid-cols-[53%_47%] 2xl:grid-cols-[52%_48%] 3xl:grid-cols-[51%_49%] lg:gap-5 lg:pl-8 xl:pl-16 2xl:pl-32 3xl:pl-48">
+        <div className="bg-backgroundItem relative sm:absolute px-5 pt-3 w-full grid place-content-center h-[20rem] sm:h-[28rem] xl:h-[30rem] lg:w-[50%] xl:w-[55%] 2xl:w-[51%] 3xl:w-[48%] lg:rounded-br-xl lg:rounded-bl-xl">
           {loading ? (
             <div className="flex justify-between items-center">
               <ChevronLeft
@@ -49,7 +49,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 Detalhes do Produto
               </h1>
               <Loader2Icon
-                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:top-[24rem] xl:top-[26rem] xl:left-14 absolute"
+                className="animate-spin top-3 right-5 sm:left-5 sm:top-[22rem] lg:left-6 lg:top-[24rem] xl:top-[26rem] xl:left-14 absolute"
                 size={36}
               />
             </div>
@@ -109,7 +109,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           ))}
         </div>
 
-        <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] lg:left-8 lg:relative lg:justify-start xl:ml-auto xl:top-0 xl:flex-col xl:w-[6rem] xl:h-[6rem] xl:pt-5">
+        <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] xl:left-10 2xl:left-16 3xl:left-48 lg:relative lg:justify-start xl:ml-auto xl:top-0 xl:flex-col xl:w-[6rem] xl:h-[6rem] xl:pt-5 2xl:ml-[37rem]">
           {product.imageURLs.map((url, index) => (
             <div
               key={index}

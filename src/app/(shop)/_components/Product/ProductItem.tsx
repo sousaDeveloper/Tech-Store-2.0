@@ -76,14 +76,14 @@ const ProductItem = ({
         <h2 className="truncate sm:text-lg lg:text-xl">{product.name}</h2>
         {product.discountPercentage > 0 ? (
           <h2 className="flex items-center gap-1 truncate sm:text-lg lg:text-xl">
-            <span>{toCurrency({ price: Number(product.totalPrice) })}</span>{" "}
+            <span>{toCurrency(product.totalPrice)}</span>{" "}
             <span className="line-through text-xs opacity-70">
-              {toCurrency({ price: Number(product.basePrice) })}
+              {toCurrency(Number(product.basePrice))}
             </span>
           </h2>
         ) : (
           <h2 className="lg:text-xl">
-            {toCurrency({ price: Number(product.basePrice) })}
+            {toCurrency(Number(product.basePrice))}
           </h2>
         )}
         <div className="flex gap-[0.1rem] items-center mt-2">

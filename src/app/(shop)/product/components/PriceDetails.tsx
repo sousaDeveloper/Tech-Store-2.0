@@ -44,21 +44,21 @@ const PriceDetails = ({
           <h3 className="text-sm opacity-60 sm:text-lg">
             De:{" "}
             <span className="line-through">
-              {toCurrency({ price: +product.basePrice })}
+              {toCurrency(Number(product.basePrice))}
             </span>
           </h3>
           <div className="flex items-center gap-2">
             <h3 className="text-lg sm:text-2xl">
               Por:{" "}
               <span className="text-xl sm:text-2xl">
-                {toCurrency({ price: product.totalPrice })}
+                {toCurrency(product.totalPrice)}
               </span>
             </h3>
           </div>
         </div>
       ) : (
         <h1 className="text-xl sm:text-2xl">
-          {toCurrency({ price: +product.basePrice })}
+          {toCurrency(Number(product.basePrice))}
         </h1>
       )}
       <button

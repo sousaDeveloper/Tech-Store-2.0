@@ -58,8 +58,8 @@ const Cart = () => {
           <SheetTrigger
             className={`fixed z-50 cursor-pointer ${
               localCart
-                ? "bottom-5 right-5 lg:right-24 lg:bottom-14"
-                : "bottom-24 right-5 lg:right-24"
+                ? "bottom-5 right-5 lg:right-14 xl:right-24 2xl:right-36 lg:bottom-14"
+                : "bottom-24 right-5 lg:right-14 xl:right-24 2xl:right-36"
             } rounded-full bg-gradient h-12 w-12 sm:w-16 sm:h-16 grid place-content-center text-secondaryColor animate-bounce ${
               !isCartVisible ? "flex-none hidden" : ""
             }`}
@@ -103,17 +103,17 @@ const Cart = () => {
               <Separator />
               <div className="flex items-center justify-between text-lg">
                 <h2 className="opacity-70">Sub-Total</h2>
-                <span>{toCurrency({ price: subtotal })}</span>
+                <span>{toCurrency(subtotal)}</span>
               </div>
               <div className="flex items-center justify-between text-lg">
                 <h2 className="opacity-70">Desconto</h2>
                 <span className="text-green-400">
-                  -{toCurrency({ price: totalDiscount })}
+                  -{toCurrency(totalDiscount)}
                 </span>
               </div>
               <div className="flex items-center justify-between text-xl">
                 <h2 className="opacity-70">Valor total</h2>
-                <span>{toCurrency({ price: total })}</span>
+                <span>{toCurrency(total)}</span>
               </div>
               <button className="w-full bg-gradient rounded-md py-3 text-lg">
                 Ir para o checkout
@@ -172,17 +172,17 @@ const Cart = () => {
               <Separator />
               <div className="flex items-center justify-between sm:text-lg">
                 <h2 className="opacity-70">Sub-Total</h2>
-                <span>{toCurrency({ price: subtotal })}</span>
+                <span>{toCurrency(subtotal)}</span>
               </div>
               <div className="flex items-center justify-between sm:text-lg">
                 <h2 className="opacity-70">Desconto</h2>
                 <span className="text-green-400">
-                  -{toCurrency({ price: totalDiscount })}
+                  -{toCurrency(totalDiscount)}
                 </span>
               </div>
               <div className="flex items-center justify-between sm:text-xl">
                 <h2 className="opacity-70">Valor total</h2>
-                <span>{toCurrency({ price: total })}</span>
+                <span>{toCurrency(total)}</span>
               </div>
               <button className="w-full bg-gradient rounded-md py-2 sm:py-3 sm:text-lg">
                 Ir para o checkout

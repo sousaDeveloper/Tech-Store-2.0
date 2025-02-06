@@ -118,7 +118,7 @@ export default async function Home() {
           </h2>
           <div className="my-10 3xl:my-20 transition-all duration-300 hover:text-secondaryColor">
             <a
-              className="bg-gradient rounded-md shadow-xl px-5 py-3 sm:py-4 3xl:py-4 3xl:px-10"
+              className="bg-gradient rounded-md shadow-xl px-5 py-3 sm:py-4 3xl:py-4 3xl:px-10 md:text-lg"
               href="#catalog"
               data-aos-delay="400"
               data-aos="zoom-in"

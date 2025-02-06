@@ -43,16 +43,16 @@ const CartItem = ({
             <div className="flex flex-col">
               <h3 className="flex gap-1 items-center">
                 <span className="text-lg sm:text-xl">
-                  {toCurrency({ price: +product.totalPrice })}
+                  {toCurrency(product.totalPrice)}
                 </span>
                 <span className="line-through opacity-60 text-xs sm:text-sm">
-                  {toCurrency({ price: +product.basePrice })}
+                  {toCurrency(Number(product.basePrice))}
                 </span>
               </h3>
             </div>
           ) : (
             <h1 className="text-lg sm:text-xl">
-              {toCurrency({ price: +product.basePrice })}
+              {toCurrency(Number(product.basePrice))}
             </h1>
           )}
           <div className="flex items-center">
@@ -75,7 +75,7 @@ const CartItem = ({
         <DialogTrigger>
           <TrashIcon size={22} className="mr-2" />
         </DialogTrigger>
-        <DialogContent className="2xl:w-[40%] 3xl:w-[25%]">
+        <DialogContent className="lg:w-[45%] xl:w-[35%] 2xl:w-[30%] 3xl:w-[25%]">
           <DialogHeader>
             <DialogTitle className="sm:text-xl mt-2 sm:w-[90%]">
               Tem certeza que deseja excluir o produto{" "}

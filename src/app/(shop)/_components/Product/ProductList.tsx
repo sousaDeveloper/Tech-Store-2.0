@@ -56,6 +56,7 @@ const ProductList = ({ products, widthContainer }: ProductListProps) => {
             pathname !== "/" && "lg:hidden lg:flex-none"
           } hidden lg:flex absolute right-16 -top-16 2xl:right-20 transform -translate-y-1/2 z-10 bg-backgroundItem hover:text-gray-400 duration-300 p-2 rounded-lg shadow-md`}
           data-aos="zoom-in"
+          aria-label="Voltar nos produtos"
         >
           <ChevronLeft size={24} />
         </button>
@@ -86,6 +87,7 @@ const ProductList = ({ products, widthContainer }: ProductListProps) => {
           } hidden lg:flex absolute right-0 -top-16 2xl:right-5 transform -translate-y-1/2 z-10 bg-backgroundItem p-2 rounded-lg shadow-md hover:text-gray-400 duration-300`}
           data-aos="zoom-in"
           data-aos-delay="100"
+          aria-label="Avançar nos produtos"
         >
           <ChevronRight size={24} />
         </button>

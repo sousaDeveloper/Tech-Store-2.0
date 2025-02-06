@@ -6,8 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Cart from "./_components/Cart/Cart";
 import CartContextProvider from "@/providers/cart";
 import LoadingProvider from "@/providers/loading";
-import Script from "next/script";
 import { useEffect } from "react";
+import "aos/dist/aos.css";
 import Aos from "aos";
 
 const manrope = Manrope({ subsets: ["latin"], weight: "400" });
@@ -19,10 +19,9 @@ export default function RootLayout({
 }>) {
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setTimeout(() => {
-        Aos.init();
-      }, 100);
+      Aos.init();
     }
+
     const disableRightClick = (event: MouseEvent) => {
       event.preventDefault();
     };
@@ -32,14 +31,10 @@ export default function RootLayout({
       document.removeEventListener("contextmenu", disableRightClick);
     };
   }, []);
+
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-          rel="stylesheet"
-        />
-        <Script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></Script>
         <title>Tech Store</title>
       </head>
       <body className={`antialiased bg-background ${manrope.className}`}>
@@ -53,7 +48,6 @@ export default function RootLayout({
         </LoadingProvider>
 
         <Toaster />
-        <script>AOS.init()</script>
       </body>
     </html>
   );

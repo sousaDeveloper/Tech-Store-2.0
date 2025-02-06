@@ -34,6 +34,7 @@ const CartItem = ({
           width={0}
           height={0}
           sizes="100vw"
+          loading="lazy"
           className="w-20 h-20 sm:w-28 sm:h-28 object-contain bg-backgroundItem rounded-lg p-2"
         />
         <div className="flex flex-col sm:gap-1">

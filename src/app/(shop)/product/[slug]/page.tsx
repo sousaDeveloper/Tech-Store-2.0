@@ -2,7 +2,6 @@ import { prisma } from "@/lib/prisma";
 import ProductDetails from "../components/ProductDetails";
 import { computeProductTotalPrice } from "@/helpers/product";
 import ProductList from "@/app/(shop)/_components/Product/ProductList";
-import Separator from "../../_components/Separator";
 
 interface ProductPageProps {
   params: Promise<{

@@ -71,6 +71,11 @@ const FavoriteButton = ({ product }: FavoriteButtonProps) => {
       disabled={isLoading}
       data-aos="zoom-in"
       data-aos-delay="300"
+      aria-label={
+        favoriteItem
+          ? "Remover produto da lista de desejos"
+          : "Adicionar produto à lista de desejos"
+      }
     >
       <HeartIcon
         size={30}

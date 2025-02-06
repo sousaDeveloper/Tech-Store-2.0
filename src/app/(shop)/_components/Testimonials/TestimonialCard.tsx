@@ -15,7 +15,11 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
           <Avatar className="2xl:w-14 2xl:h-14">
-            <AvatarImage src={testimonial.imageUrl} sizes="100vw" />
+            <AvatarImage
+              src={testimonial.imageUrl}
+              sizes="100vw"
+              alt="Avatar de usuário que avaliou sua compra"
+            />
           </Avatar>
           <div className="flex flex-col">
             <h2 className="2xl:text-lg">

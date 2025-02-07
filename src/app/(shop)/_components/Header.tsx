@@ -56,7 +56,7 @@ const Header = () => {
   }, [session]);
 
   return (
-    <header className="flex justify-between items-center gap-2 py-5 text-secondaryColor 3xl:py-7">
+    <header className="flex justify-around items-center gap-2 py-5 text-secondaryColor 3xl:py-7">
       <h1
         className="hidden flex-none md:block text-gradient text-xl lg:text-2xl font-semibold"
         data-aos="fade-down"

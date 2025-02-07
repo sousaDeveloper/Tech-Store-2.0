@@ -4,10 +4,11 @@ import FilteredProducts from "../components/FilteredProducts";
 import Link from "next/link";
 
 interface ProductPageProps {
-  params: { query: string };
+  params: Promise<{ query: string }>;
 }
 
-const ProductFind = async ({ params }: ProductPageProps) => {
+const ProductFind = async (props: ProductPageProps) => {
+  const params = await props.params;
   const query = await params.query;
 
   return (

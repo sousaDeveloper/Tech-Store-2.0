@@ -36,6 +36,7 @@ export default function RootLayout({
           name="description"
           content="Compre os melhores periféricos para seu setup gamer com preços incríveis e ofertas exclusivas."
         />
+        <link rel="shortcut icon" href="/favicon.webp" type="image/x-icon" />
       </head>
       <body className={`antialiased bg-background ${manrope.className}`}>
         <LoadingProvider>

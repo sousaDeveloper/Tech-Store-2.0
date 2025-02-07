@@ -7,13 +7,7 @@ const poppins = Poppins({
   weight: ["300"],
 });
 
-import {
-  Loader2Icon,
-  LogInIcon,
-  LogOutIcon,
-  SearchIcon,
-  User2Icon,
-} from "lucide-react";
+import { Loader2Icon, LogInIcon, LogOutIcon, User2Icon } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -26,6 +20,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import InputSearch from "./InputSearch";
 
 const Header = () => {
   const router = useRouter();
@@ -68,25 +63,7 @@ const Header = () => {
       >
         Tech Store
       </h1>
-      <div className="relative">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="O que você procura?"
-          autoComplete="off"
-          className="rounded-md flex justify-end px-3 py-2 w-[17rem] lg:w-[22rem] md:ml-10 lg:ml-20 bg-background"
-          data-aos="fade-down"
-          data-aos-delay="300"
-        />
-        <span
-          className="absolute right-3 top-[0.7rem] transform -translate-y-1/2 cursor-pointer"
-          data-aos="fade-down"
-          data-aos-delay="300"
-        >
-          <SearchIcon size={20} />
-        </span>
-      </div>
+      <InputSearch />
       <div className="hidden flex-none lg:flex items-center gap-1">
         <NavigationMenu>
           <NavigationMenuList>

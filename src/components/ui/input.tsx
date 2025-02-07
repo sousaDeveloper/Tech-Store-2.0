@@ -1,16 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
-    const [inputType, setInputType] = React.useState(type);
-
-    const handleInputType = () => {
-      setInputType((prevType) =>
-        prevType === "password" ? "text" : "password"
-      );
-    };
+    const [inputType] = React.useState(type);
 
     return (
       <div className="relative">
@@ -23,18 +16,6 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           ref={ref}
           {...props}
         />
-        {type === "password" && (
-          <span
-            onClick={handleInputType}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-          >
-            {inputType === "password" ? (
-              <EyeOffIcon size={20} />
-            ) : (
-              <EyeIcon size={20} />
-            )}
-          </span>
-        )}
       </div>
     );
   }

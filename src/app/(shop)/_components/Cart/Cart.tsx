@@ -58,8 +58,8 @@ const Cart = () => {
           <SheetTrigger
             className={`fixed z-50 cursor-pointer ${
               localCart
-                ? "bottom-5 right-5 lg:right-14 xl:right-24 2xl:right-36 lg:bottom-14"
-                : "bottom-24 right-5 lg:right-14 xl:right-24 2xl:right-36"
+                ? "bottom-5 right-5 lg:right-14 xl:right-24 2xl:right-28 lg:bottom-14"
+                : "bottom-24 right-5 lg:right-14 xl:right-24 2xl:right-56"
             } rounded-full bg-gradient h-12 w-12 sm:w-16 sm:h-16 grid place-content-center text-secondaryColor animate-bounce ${
               !isCartVisible ? "flex-none hidden" : ""
             }`}

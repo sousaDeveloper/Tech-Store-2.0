@@ -16,8 +16,8 @@ const InputSearch = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname && pathname.includes("/product-find/")) {
-      const searchTerm = pathname.split("/product-find/")[1];
+    if (pathname && pathname.includes("/search/")) {
+      const searchTerm = pathname.split("/search/")[1];
       setQuery(searchTerm);
       fetchResults(searchTerm);
     }
@@ -33,7 +33,7 @@ const InputSearch = () => {
 
   const handleSearch = async () => {
     if (query.trim() && !isLoading) {
-      const searchTerm = `/product-find/${query}`;
+      const searchTerm = `/search/${query}`;
 
       if (pathname !== searchTerm) {
         router.push(searchTerm);

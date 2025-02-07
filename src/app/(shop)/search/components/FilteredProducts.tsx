@@ -12,9 +12,8 @@ interface FilteredProductsProps {
 
 const FilteredProducts = ({ query }: FilteredProductsProps) => {
   const [results, setResults] = useState<{
-    categories: Category[];
     products: Product[];
-  }>({ categories: [], products: [] });
+  }>({ products: [] });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -25,9 +24,14 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
           const response = await fetch(`/api/search?q=${query}`);
           const data = await response.json();
 
-          setResults(data);
+          if (data && Array.isArray(data.products)) {
+            setResults(data);
+          } else {
+            setResults({ products: [] });
+          }
         } catch (error) {
           console.log(error);
+          setResults({ products: [] });
         } finally {
           setIsLoading(false);
         }
@@ -42,7 +46,7 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
       <div className="flex gap-5 text-secondaryColor">
         <div className="flex flex-col">
           <h1
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.5rem] mb-1"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.5rem] lg:mb-1"
             data-aos-delay="200"
             data-aos="fade-right"
           >
@@ -52,7 +56,7 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
           </h1>
           <h3
             className={`text-gray-400 text-sm lg:text-base 2xl:text-lg mb-3 ${
-              results.products.length <= 0 && !isLoading
+              results.products.length <= 0 && isLoading
                 ? "flex-none hidden"
                 : ""
             }`}

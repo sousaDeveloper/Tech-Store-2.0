@@ -1,7 +1,8 @@
 "use client";
 
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
+import { useSession } from "next-auth/react"; // Para obter o usuário autenticado
 
 export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
@@ -38,75 +39,73 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
+  const { data: session } = useSession();
+  const userId = session?.user?.email;
+
   const [products, setProducts] = useState<CartProduct[]>([]);
 
-  const addProductToCart = (product: CartProduct) => {
-    const productIsAlreadyOnCart = products.some(
-      (cartProduct) => cartProduct.id === product.id
-    );
-
-    if (productIsAlreadyOnCart) {
-      setProducts((prev) =>
-        prev.map((cartProduct) => {
-          if (cartProduct.id === product.id) {
-            return {
-              ...cartProduct,
-              quantity: cartProduct.quantity + product.quantity,
-            };
-          }
-
-          return cartProduct;
-        })
-      );
-
-      return;
+  useEffect(() => {
+    if (typeof window !== "undefined" && userId) {
+      const storedCart = localStorage.getItem(`cartProducts_${userId}`);
+      setProducts(storedCart ? JSON.parse(storedCart) : []);
     }
+  }, [userId]);
 
-    setProducts((prev) => [...prev, product]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && userId) {
+      localStorage.setItem(`cartProducts_${userId}`, JSON.stringify(products));
+    }
+  }, [products, userId]);
+
+  const addProductToCart = (product: CartProduct) => {
+    setProducts((prev) => {
+      const productExists = prev.some((p) => p.id === product.id);
+
+      if (productExists) {
+        return prev.map((p) =>
+          p.id === product.id
+            ? { ...p, quantity: p.quantity + product.quantity }
+            : p
+        );
+      }
+
+      return [...prev, product];
+    });
   };
-
-  const subtotal = products.reduce((accum, p) => {
-    return accum + Number(p.basePrice) * p.quantity;
-  }, 0);
-
-  const total = products.reduce((accum, p) => {
-    return accum + Number(p.totalPrice) * p.quantity;
-  }, 0);
-
-  const totalDiscount = subtotal - total;
 
   const removeProductToCart = (product: CartProduct) => {
-    return setProducts((prev) => prev.filter((p) => p.id !== product.id));
-  };
-
-  const decreasedQuantity = (productId: string) => {
-    setProducts((prev) =>
-      prev.map((product) => {
-        if (product.id === productId) {
-          const newQuantity = product.quantity > 1 ? product.quantity - 1 : 1;
-          return {
-            ...product,
-            quantity: newQuantity,
-          };
-        }
-        return product;
-      })
-    );
+    setProducts((prev) => prev.filter((p) => p.id !== product.id));
   };
 
   const increasedQuantity = (productId: string) => {
     setProducts((prev) =>
-      prev.map((product) => {
-        if (product.id === productId) {
-          return {
-            ...product,
-            quantity: product.quantity + 1,
-          };
-        }
-        return product;
-      })
+      prev.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
     );
   };
+
+  const decreasedQuantity = (productId: string) => {
+    setProducts((prev) =>
+      prev.map((product) =>
+        product.id === productId && product.quantity > 1
+          ? { ...product, quantity: product.quantity - 1 }
+          : product
+      )
+    );
+  };
+
+  const subtotal = products.reduce(
+    (accum, p) => accum + Number(p.basePrice) * p.quantity,
+    0
+  );
+  const total = products.reduce(
+    (accum, p) => accum + Number(p.totalPrice) * p.quantity,
+    0
+  );
+  const totalDiscount = subtotal - total;
 
   return (
     <CartContext.Provider

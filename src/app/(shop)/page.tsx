@@ -116,9 +116,9 @@ export default async function Home() {
           >
             Turbine seu setup com os melhores periféricos do mercado!
           </h2>
-          <div className="my-10 3xl:my-20 transition-all duration-300 hover:text-secondaryColor">
+          <div className="my-10 3xl:my-20 transition-all duration-300 hover:text-secondaryColor hover:-translate-y-1 hover:shadow-xl">
             <a
-              className="bg-gradient rounded-md shadow-xl px-5 py-3 sm:py-4 3xl:py-4 3xl:px-10 md:text-lg"
+              className="bg-gradient rounded-md px-5 py-3 sm:py-4 3xl:py-4 3xl:px-10 md:text-lg"
               href="#catalog"
               data-aos-delay="400"
               data-aos="zoom-in"

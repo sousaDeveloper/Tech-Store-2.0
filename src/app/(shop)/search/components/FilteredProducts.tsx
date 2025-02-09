@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ProductItem from "../../_components/Product/ProductItem";
 import { computeProductTotalPrice } from "@/helpers/product";
 import { Loader2Icon } from "lucide-react";
+import { SkeletonCard } from "../../_components/SkeletonCard";
 
 interface FilteredProductsProps {
   query: string;
@@ -50,8 +51,8 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
             data-aos="fade-right"
           >
             {results.length <= 0 && !isLoading
-              ? `Nenhum resultado encontrado para: ${query}`
-              : `Resultados para: ${query}`}
+              ? `Nenhum resultado encontrado para: "${query}"`
+              : `Resultados para: "${query}"`}
           </h1>
           <h3
             className={`text-gray-400 text-sm lg:text-base 2xl:text-lg mb-3 ${
@@ -64,21 +65,29 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
             <span className="font-bold">{results.length}</span>
           </h3>
         </div>
-        {isLoading && <Loader2Icon className="animate-spin mt-2" size={30} />}
       </div>
-
-      <div className="flex flex-wrap gap-y-2 lg:gap-y-5 gap-x-10">
-        {results.map((product) => (
-          <ProductItem
-            key={product.id}
-            product={{
-              ...product,
-              totalPrice: computeProductTotalPrice(product),
-            }}
-            dataAosDelay={0}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex flex-wrap gap-y-2 gap-x-10 lg:gap-y-5 mt-10">
+          <SkeletonCard aosDelay="100" />
+          <SkeletonCard aosDelay="200" />
+          <SkeletonCard aosDelay="300" />
+          <SkeletonCard aosDelay="400" />
+          <SkeletonCard aosDelay="500" />
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-y-2 lg:gap-y-5 gap-x-10">
+          {results.map((product, index) => (
+            <ProductItem
+              key={product.id}
+              product={{
+                ...product,
+                totalPrice: computeProductTotalPrice(product),
+              }}
+              dataAosDelay={index * 100}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };

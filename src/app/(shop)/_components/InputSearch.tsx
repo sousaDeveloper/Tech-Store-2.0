@@ -58,7 +58,7 @@ const InputSearch = () => {
         name="search"
         id="search"
         value={query}
-        placeholder="Pesquise sua marca favorita"
+        placeholder="O que deseja encontrar?"
         autoComplete="off"
         className="rounded-md flex justify-end px-3 py-2 w-[17rem] lg:w-[22rem] md:ml-10 lg:ml-20 bg-background"
         data-aos="fade-down"

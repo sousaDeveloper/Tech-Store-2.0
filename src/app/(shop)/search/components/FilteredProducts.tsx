@@ -1,6 +1,6 @@
 "use client";
 
-import { Category, Product } from "@prisma/client";
+import { Product } from "@prisma/client";
 import { useEffect, useState } from "react";
 import ProductItem from "../../_components/Product/ProductItem";
 import { computeProductTotalPrice } from "@/helpers/product";
@@ -11,9 +11,8 @@ interface FilteredProductsProps {
 }
 
 const FilteredProducts = ({ query }: FilteredProductsProps) => {
-  const [results, setResults] = useState<{
-    products: Product[];
-  }>({ products: [] });
+  const [results, setResults] = useState<Product[]>([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -25,13 +24,13 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
           const data = await response.json();
 
           if (data && Array.isArray(data.products)) {
-            setResults(data);
+            setResults(data.products);
           } else {
-            setResults({ products: [] });
+            setResults([]);
           }
         } catch (error) {
           console.log(error);
-          setResults({ products: [] });
+          setResults([]);
         } finally {
           setIsLoading(false);
         }
@@ -50,28 +49,26 @@ const FilteredProducts = ({ query }: FilteredProductsProps) => {
             data-aos-delay="200"
             data-aos="fade-right"
           >
-            {results.products.length <= 0 && !isLoading
+            {results.length <= 0 && !isLoading
               ? `Nenhum resultado encontrado para: ${query}`
               : `Resultados para: ${query}`}
           </h1>
           <h3
             className={`text-gray-400 text-sm lg:text-base 2xl:text-lg mb-3 ${
-              results.products.length <= 0 && isLoading
-                ? "flex-none hidden"
-                : ""
+              results.length <= 0 && isLoading ? "flex-none hidden" : ""
             }`}
             data-aos-delay="300"
             data-aos="fade-right"
           >
             Produtos encontrados:{" "}
-            <span className="font-bold">{results.products.length}</span>
+            <span className="font-bold">{results.length}</span>
           </h3>
         </div>
         {isLoading && <Loader2Icon className="animate-spin mt-2" size={30} />}
       </div>
 
       <div className="flex flex-wrap gap-y-2 lg:gap-y-5 gap-x-10">
-        {results.products.map((product) => (
+        {results.map((product) => (
           <ProductItem
             key={product.id}
             product={{

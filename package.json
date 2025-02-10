@@ -23,6 +23,7 @@
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.4",
+    "@stripe/stripe-js": "^5.6.0",
     "aos": "^2.3.4",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
@@ -35,6 +36,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "sonner": "^1.7.2",
+    "stripe": "^17.6.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"

@@ -11,18 +11,23 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import {
   ChevronDownIcon,
   ChevronRightIcon,
+  Loader2Icon,
   ShoppingCartIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartItem from "./CartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
 import toCurrency from "@/helpers/toCurrency";
 import Separator from "../Separator";
 import { toast } from "sonner";
+import { handleFinishPurchaseClick } from "@/lib/checkout";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
+  const { data } = useSession();
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(false);
   const {
     products,
     total,
@@ -31,6 +36,7 @@ const Cart = () => {
     removeProductToCart,
     increasedQuantity,
     decreasedQuantity,
+    setProducts,
   } = useContext(CartContext);
 
   const totalItems = products.reduce(
@@ -50,6 +56,14 @@ const Cart = () => {
     pathname !== "/user-profile/orders";
 
   const localCart = pathname === "/";
+
+  const handleCheckoutClick = async (products: CartProduct[]) => {
+    console.log("a");
+    setIsLoading(true);
+    await handleFinishPurchaseClick(data?.user.id as string, products);
+    setProducts([]);
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -115,8 +129,13 @@ const Cart = () => {
                 <h2 className="opacity-70">Valor total</h2>
                 <span>{toCurrency(total)}</span>
               </div>
-              <button className="w-full bg-gradient rounded-md py-3 text-lg">
+              <button
+                className="w-full bg-gradient rounded-md py-3 text-lg flex items-center justify-center gap-1"
+                onClick={() => handleCheckoutClick(products)}
+                disabled={products.length === 0 || isLoading}
+              >
                 Ir para o checkout
+                {isLoading && <Loader2Icon className="animate-spin" />}
               </button>
             </div>
           </SheetContent>
@@ -184,8 +203,13 @@ const Cart = () => {
                 <h2 className="opacity-70">Valor total</h2>
                 <span>{toCurrency(total)}</span>
               </div>
-              <button className="w-full bg-gradient rounded-md py-2 sm:py-3 sm:text-lg">
+              <button
+                className="w-full bg-gradient flex items-center justify-center gap-1 rounded-md py-2 sm:py-3 sm:text-lg"
+                onClick={() => handleCheckoutClick(products)}
+                disabled={products.length === 0 || isLoading}
+              >
                 Ir para o checkout
+                {isLoading && <Loader2Icon className="animate-spin" />}
               </button>
             </div>
           </SheetContent>

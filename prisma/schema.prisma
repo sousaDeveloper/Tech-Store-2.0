@@ -27,17 +27,18 @@ model Category {
 }
 
 model Product {
-  id                 String     @id @default(uuid())
+  id                 String         @id @default(uuid())
   name               String
   slug               String
   imageURLs          String[]
   description        String
-  basePrice          Decimal    @db.Decimal(8, 2)
-  discountPercentage Int        @default(0)
+  basePrice          Decimal        @db.Decimal(8, 2)
+  discountPercentage Int            @default(0)
   categoryID         String
-  category           Category   @relation(fields: [categoryID], references: [id])
-  favorite           Boolean    @default(false)
+  category           Category       @relation(fields: [categoryID], references: [id])
+  favorite           Boolean        @default(false)
   Favorite           Favorite[]
+  OrderItem          OrderProduct[]
 }
 
 model Favorite {
@@ -59,6 +60,33 @@ model Testimonial {
   imageUrl   String
 }
 
+enum OrderStatus {
+  PENDING
+  PAID
+  CANCELED
+}
+
+model Order {
+  id            String         @id @default(uuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  orderProducts OrderProduct[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt
+  status        OrderStatus    @default(PENDING)
+}
+
+model OrderProduct {
+  id                 String  @id @default(uuid())
+  productId          String
+  product            Product @relation(fields: [productId], references: [id])
+  orderId            String
+  order              Order   @relation(fields: [orderId], references: [id])
+  basePrice          Decimal @db.Decimal(8, 2)
+  discountPercentage Int     @default(0)
+  quantity           Int
+}
+
 model User {
   id            String          @id @default(cuid())
   name          String?
@@ -74,6 +102,7 @@ model User {
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   Favorite      Favorite[]
+  Order         Order[]
 }
 
 model Account {

@@ -1,10 +1,9 @@
 "use client";
 
 import Separator from "@/app/(shop)/_components/Separator";
-import { LoadingContext } from "@/providers/loading";
 import { ChevronLeft, Loader2Icon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useState } from "react";
 
 interface HeaderProps {
   text: string;
@@ -12,11 +11,11 @@ interface HeaderProps {
 
 const Header = ({ text }: HeaderProps) => {
   const router = useRouter();
-  const { handleLoadingClick, isLoading } = useContext(LoadingContext);
+  const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
 
   const handleRouterBackClick = () => {
-    handleLoadingClick(true);
+    setIsLoading(true);
     router.back();
   };
 

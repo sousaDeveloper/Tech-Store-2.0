@@ -36,7 +36,6 @@ const Cart = () => {
     removeProductToCart,
     increasedQuantity,
     decreasedQuantity,
-    setProducts,
   } = useContext(CartContext);
 
   const totalItems = products.reduce(
@@ -58,10 +57,8 @@ const Cart = () => {
   const localCart = pathname === "/";
 
   const handleCheckoutClick = async (products: CartProduct[]) => {
-    console.log("a");
     setIsLoading(true);
     await handleFinishPurchaseClick(data?.user.id as string, products);
-    setProducts([]);
     setIsLoading(false);
   };
 

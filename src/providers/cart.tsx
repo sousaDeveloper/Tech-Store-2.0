@@ -21,6 +21,7 @@ interface ICartContext {
   increasedQuantity: (productId: string) => void;
   decreasedQuantity: (productId: string) => void;
   setProducts: React.Dispatch<React.SetStateAction<CartProduct[]>>;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -36,6 +37,7 @@ export const CartContext = createContext<ICartContext>({
   increasedQuantity: () => {},
   decreasedQuantity: () => {},
   setProducts: () => {},
+  clearCart: () => {},
 });
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
@@ -107,6 +109,11 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
   );
   const totalDiscount = subtotal - total;
 
+  const clearCart = () => {
+    setProducts([]);
+    localStorage.removeItem("cart");
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -122,6 +129,7 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         cartTotalDiscount: 0,
         addProductToCart,
         setProducts,
+        clearCart,
       }}
     >
       {children}

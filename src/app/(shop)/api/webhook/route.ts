@@ -1,4 +1,6 @@
+import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -8,6 +10,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(request: Request) {
   const signature = request.headers.get("stripe-signature");
+  const user = await getServerSession(authOptions);
 
   if (!signature) {
     return NextResponse.error();
@@ -37,6 +40,7 @@ export async function POST(request: Request) {
       await prisma.order.update({
         where: {
           id: session.metadata?.orderId,
+          userId: user?.user.id,
         },
         data: {
           status: "PAID",

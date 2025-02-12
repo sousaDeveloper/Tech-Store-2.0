@@ -4,7 +4,7 @@ import { CartContext } from "@/providers/cart";
 import { ShoppingCartIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { toast } from "sonner";
 
 interface PriceDetailsProps {
@@ -21,18 +21,20 @@ const PriceDetails = ({
   const router = useRouter();
   const { status } = useSession();
   const { addProductToCart } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(1);
+
+  const isUnauthenticated = status === "unauthenticated";
 
   const handleAddProductToCart = () => {
-    if (status === "unauthenticated") {
+    if (isUnauthenticated) {
       toast("Primeiro realize seu login.");
       router.push("/api/auth/signin");
-    } else {
-      toast("Produto adicionado ao carrinho.", {
-        description: "Clique no ícone e veja os itens do seu carrinho.",
-      });
-      addProductToCart({ ...product, quantity });
+      return;
     }
+
+    toast("Produto adicionado ao carrinho.", {
+      description: "Clique no ícone e veja os itens do seu carrinho.",
+    });
+    addProductToCart({ ...product, quantity: 1 });
   };
 
   return (

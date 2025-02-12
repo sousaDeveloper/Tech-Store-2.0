@@ -68,7 +68,7 @@ const ProductInfo = ({ product, setQuantity }: ProductInfoProps) => {
           {isShow ? "Ver menos" : "Ver mais"}
         </span>
         <Dialog>
-          <DialogTrigger className="flex justify-end">
+          <DialogTrigger className="flex-none hidden lg:flex lg:ml-auto">
             <span className="underline cursor-pointer">Ver mais</span>
           </DialogTrigger>
           <DialogContent className="2xl:w-[40%]">

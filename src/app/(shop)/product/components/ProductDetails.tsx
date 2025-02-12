@@ -7,6 +7,7 @@ import { useState } from "react";
 import ProductInfo from "./ProductInfo";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import PriceDetails from "./PriceDetails";
+import ProductImages from "./ProductImages";
 
 interface ProductDetailsProps {
   product: ProductWithTotalPrice;
@@ -21,10 +22,6 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const handleRouterBackClick = () => {
     setLoading(true);
     router.back();
-  };
-
-  const handleImageLoad = () => {
-    setLoading(false);
   };
 
   const handleImageClick = (url: string) => {
@@ -76,7 +73,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             sizes="100vw"
             loading="lazy"
             className="w-[15rem] h-[15rem] sm:w-[20rem] sm:h-[20rem] object-contain"
-            onLoad={handleImageLoad}
+            onLoad={() => setLoading(false)}
           />
 
           <ChevronLeft
@@ -87,49 +84,21 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             }`}
           />
         </div>
-        <div className="hidden flex-none relative sm:ml-auto sm:flex-col sm:flex sm:w-[80px] lg:hidden lg:flex-none gap-4 mx-6 top-6">
-          {product.imageURLs.map((url, index) => (
-            <div
-              key={index}
-              className="cursor-pointer bg-background rounded-xl sm:w-fit"
-              onClick={() => handleImageClick(url)}
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-            >
-              <Image
-                src={url}
-                alt={`${product.slug}`}
-                width={70}
-                height={70}
-                loading="lazy"
-                sizes="100vw"
-                className="w-[5rem] h-[5rem] object-contain"
-              />
-            </div>
-          ))}
-        </div>
 
-        <div className="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] xl:left-10 2xl:left-16 3xl:left-48 lg:relative lg:justify-start xl:ml-auto xl:top-0 xl:flex-col xl:w-[6rem] xl:h-[6rem] xl:pt-5 2xl:ml-[37rem]">
-          {product.imageURLs.map((url, index) => (
-            <div
-              key={index}
-              className="cursor-pointer bg-backgroundItem xl:bg-background rounded-xl"
-              onClick={() => handleImageClick(url)}
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-            >
-              <Image
-                src={url}
-                alt={`${product.slug}`}
-                width={70}
-                height={70}
-                loading="lazy"
-                sizes="100vw"
-                className="w-[5rem] h-[5rem] lg:w-[6rem] lg:h-[6rem] object-contain"
-              />
-            </div>
-          ))}
-        </div>
+        <ProductImages
+          product={product}
+          classNameContainer="hidden flex-none relative sm:ml-auto sm:flex-col sm:flex sm:w-[80px] lg:hidden lg:flex-none gap-4 mx-6 top-6"
+          classNameDiv="bg-background rounded-xl sm:w-fit"
+          handleImageClick={handleImageClick}
+        />
+
+        <ProductImages
+          product={product}
+          classNameContainer="flex justify-center gap-4 mt-2 sm:flex-none sm:hidden lg:h-[6rem] lg:flex lg:mt-0 lg:top-[29rem] xl:left-10 2xl:left-16 3xl:left-48 lg:relative lg:justify-start xl:ml-auto xl:top-0 xl:flex-col xl:w-[6rem] xl:h-[6rem] xl:pt-5 2xl:ml-[37rem]"
+          classNameDiv="bg-backgroundItem xl:bg-background rounded-xl"
+          classNameImage="lg:w-[6rem] lg:h-[6rem]"
+          handleImageClick={handleImageClick}
+        />
 
         <ProductInfo product={product} setQuantity={setQuantity} />
       </div>

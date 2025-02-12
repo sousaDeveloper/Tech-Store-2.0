@@ -9,6 +9,7 @@ import LoadingProvider from "@/providers/loading";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { ReactLenis } from "lenis/react";
 
 const manrope = Manrope({ subsets: ["latin"], weight: "400" });
 
@@ -38,17 +39,19 @@ export default function RootLayout({
         />
         <link rel="shortcut icon" href="/favicon.webp" type="image/x-icon" />
       </head>
-      <body className={`antialiased bg-background ${manrope.className}`}>
-        <LoadingProvider>
-          <AuthProvider>
-            <CartContextProvider>
-              <Cart />
-              {children}
-            </CartContextProvider>
-          </AuthProvider>
-        </LoadingProvider>
-        <Toaster />
-      </body>
+      <ReactLenis root>
+        <body className={`antialiased bg-background ${manrope.className}`}>
+          <LoadingProvider>
+            <AuthProvider>
+              <CartContextProvider>
+                <Cart />
+                {children}
+              </CartContextProvider>
+            </AuthProvider>
+          </LoadingProvider>
+          <Toaster />
+        </body>
+      </ReactLenis>
     </html>
   );
 }

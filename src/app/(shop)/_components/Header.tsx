@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 import { Loader2Icon, LogInIcon, LogOutIcon, User2Icon } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { CartContext } from "@/providers/cart";
@@ -21,24 +21,27 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import InputSearch from "./InputSearch";
+import Link from "next/link";
+
+const linkStyles =
+  "flex items-center gap-2 w-fit cursor-pointer hover:text-gray-400 mt-1 hover:translate-x-1 duration-300";
 
 const Header = () => {
   const router = useRouter();
   const { status, data: session } = useSession();
+  const pathname = usePathname();
   const { setProducts } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleRouterClick = () => {
-    if (status === "authenticated") {
-      router.push("/user-profile");
-    } else {
-      router.push("/api/auth/signin");
-    }
-  };
+  const isAuthenticated = status === "authenticated";
 
-  const handleRouterClickDesktop = (href: string) => {
-    setIsLoading(true);
-    router.push(`${href}`);
+  const handleRouterClick = () => {
+    if (isAuthenticated) {
+      router.push("/user-profile");
+      return;
+    }
+
+    router.push("/api/auth/signin");
   };
 
   const handleLogoutClick = async () => {
@@ -46,7 +49,11 @@ const Header = () => {
     await signOut({ redirect: false });
     router.push("/");
     toast("Você saiu da conta com sucesso.", {
-      description: "Redirecionando para página inicial em instantes.",
+      description: `${
+        pathname !== "/"
+          ? "Redirecionando para página inicial em instantes."
+          : ""
+      }`,
     });
     setProducts([]);
   };
@@ -101,24 +108,20 @@ const Header = () => {
                       </h3>
                       <ul className="flex flex-col text-lg">
                         <li
-                          onClick={() =>
-                            handleRouterClickDesktop("/user-profile/orders")
-                          }
                           className={`cursor-pointer hover:text-gray-400 hover:translate-x-1 duration-300 ${
                             isLoading ? "pointer-events-none" : ""
                           }`}
                         >
-                          Meus pedidos{" "}
+                          <Link href="/user-profile/orders">Meus pedidos</Link>
                         </li>
                         <li
-                          onClick={() =>
-                            handleRouterClickDesktop("/user-profile/wishlist")
-                          }
                           className={`cursor-pointer hover:text-gray-400 hover:translate-x-1 mb-1 duration-300 ${
                             isLoading ? "pointer-events-none" : ""
                           }`}
                         >
-                          Lista de desejos{" "}
+                          <Link href="/user-profile/wishlist">
+                            Lista de desejos
+                          </Link>
                         </li>
                         <hr />
                         <li
@@ -137,17 +140,15 @@ const Header = () => {
                       <h3 className="flex gap-1 items-center mt-1 font-semibold">
                         Já possui cadastro?
                       </h3>
-                      <button
-                        className={`cursor-pointer flex items-center gap-2 hover:text-gray-400 mt-1 hover:translate-x-1 duration-300 ${
+                      <Link
+                        href="/api/auth/signin"
+                        className={`${linkStyles} ${
                           isLoading ? "pointer-events-none" : ""
                         }`}
-                        onClick={() =>
-                          handleRouterClickDesktop("/api/auth/signin")
-                        }
                       >
                         <LogInIcon size={20} />
                         Entrar
-                      </button>
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -157,15 +158,15 @@ const Header = () => {
                     <h3 className="flex gap-1 items-center mt-2 font-semibold">
                       Ainda não é cadastrado?
                     </h3>
-                    <button
-                      className={`cursor-pointer flex items-center gap-2 hover:text-gray-400 mt-1 hover:translate-x-1 duration-300 ${
+                    <Link
+                      href="/user/sign-up"
+                      className={`${linkStyles} ${
                         isLoading ? "pointer-events-none" : ""
                       }`}
-                      onClick={() => handleRouterClickDesktop("/user/sign-up")}
                     >
                       <LogInIcon size={20} />
                       Cadastra-se
-                    </button>
+                    </Link>
                   </div>
                 )}
               </NavigationMenuContent>
@@ -173,7 +174,7 @@ const Header = () => {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div
+      <button
         className="bg-background p-2 rounded-md sm:flex-none sm:hidden"
         onClick={handleRouterClick}
       >
@@ -182,7 +183,7 @@ const Header = () => {
         ) : (
           <User2Icon className="cursor-pointer" />
         )}
-      </div>
+      </button>
       <button
         className="hidden flex-none items-center gap-1 sm:flex lg:hidden lg:flex-none bg-primaryColor px-7 py-2 rounded-md"
         data-aos="fade-down"

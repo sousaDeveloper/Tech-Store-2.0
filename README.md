@@ -27,11 +27,15 @@ O Tech Store é uma plataforma de comércio eletrônico online que oferece aos u
 
 Clonando o repositório:
 
-`git clone https://github.com/sousaDeveloper/Tech-Store.git`
+`git clone https://github.com/sousaDeveloper/Tech-Store-2.0.git`
 
 ## Instalando as dependências:
 
 `npm install`
+
+## Rodar seed:
+
+`npx prisma db seed`
 
 ## E, por fim, rode a aplicação:
 
